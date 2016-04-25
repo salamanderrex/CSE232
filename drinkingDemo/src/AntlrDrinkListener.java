@@ -33,7 +33,7 @@ public class AntlrDrinkListener extends DrinkBaseListener {
     public static void main(String[] args){
 
         AntlrDrinkListener al = new AntlrDrinkListener();
-        al.printDrink("123");
+        al.printDrink("a pint of drink");
     }
 
 }

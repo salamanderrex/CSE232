@@ -32,38 +32,37 @@ public class DrinkLexer extends Lexer {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "ARTICLE", "OF", "DRINKING_VESSEL", "TEXT", "WHITESPACE"
 	};
-	// public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+	 public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
 	 */
-//	@Deprecated
-//	public static final String[] tokenNames;
-//	static {
-//		tokenNames = new String[_SYMBOLIC_NAMES.length];
-//		for (int i = 0; i < tokenNames.length; i++) {
-//			tokenNames[i] = VOCABULARY.getLiteralName(i);
-//			if (tokenNames[i] == null) {
-//				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-//			}
-//
-//			if (tokenNames[i] == null) {
-//				tokenNames[i] = "<INVALID>";
-//			}
-//		}
-//	}
+	@Deprecated
+	public static final String[] tokenNames;
+	static {
+		tokenNames = new String[_SYMBOLIC_NAMES.length];
+		for (int i = 0; i < tokenNames.length; i++) {
+			tokenNames[i] = VOCABULARY.getLiteralName(i);
+			if (tokenNames[i] == null) {
+				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+			}
+
+			if (tokenNames[i] == null) {
+				tokenNames[i] = "<INVALID>";
+			}
+		}
+	}
+
+	@Override
+	@Deprecated
+	public String[] getTokenNames() {
+		return tokenNames;
+	}
 
 //	@Override
-//	@Deprecated
-////	public String[] getTokenNames() {
-////		return tokenNames;
-////	}
-
-//	@Override
-
-//	public Vocabulary getVocabulary() {
-//		return VOCABULARY;
-//	}
+	public Vocabulary getVocabulary() {
+		return VOCABULARY;
+	}
 
 
 	public DrinkLexer(CharStream input) {
