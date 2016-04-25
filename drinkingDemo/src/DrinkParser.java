@@ -29,41 +29,46 @@ public class DrinkParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "ARTICLE", "OF", "DRINKING_VESSEL", "TEXT", "WHITESPACE"
 	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+//	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+//
+//	/**
+//	 * @deprecated Use {@link #VOCABULARY} instead.
+//	 */
+//	@Deprecated
+//	public static final String[] tokenNames;
+//	static {
+//		tokenNames = new String[_SYMBOLIC_NAMES.length];
+//		for (int i = 0; i < tokenNames.length; i++) {
+//			tokenNames[i] = VOCABULARY.getLiteralName(i);
+//			if (tokenNames[i] == null) {
+//				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+//			}
+//
+//			if (tokenNames[i] == null) {
+//				tokenNames[i] = "<INVALID>";
+//			}
+//		}
+//	}
 
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
+//	@Override
+//	@Deprecated
+//	public String[] getTokenNames() {
+//		return tokenNames;
+//	}
+//
+//	@Override
+//
+//	public Vocabulary getVocabulary() {
+//		return VOCABULARY;
+//	}
 
 	@Override
 	public String getGrammarFileName() { return "Drink.g4"; }
+
+	@Override
+	public String[] getTokenNames() {
+		return new String[0];
+	}
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }

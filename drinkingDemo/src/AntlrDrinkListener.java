@@ -1,7 +1,5 @@
-package demo;
-
-
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 /**
@@ -14,7 +12,7 @@ public class AntlrDrinkListener extends DrinkBaseListener {
         System.out.println(ctx.getText());
     }
 
-    private void printDrink(String drinkSentence) {
+    public void printDrink(String drinkSentence) {
         // Get our lexer
         DrinkLexer lexer = new DrinkLexer(new ANTLRInputStream(drinkSentence));
 
@@ -30,9 +28,12 @@ public class AntlrDrinkListener extends DrinkBaseListener {
         // Walk it and attach our listener
         ParseTreeWalker walker = new ParseTreeWalker();
         AntlrDrinkListener listener = new AntlrDrinkListener();
-        walker.walk(listener, DrinkParser.drinkSentenceContext);
+        walker.walk(listener, drinkSentenceContext);
     }
     public static void main(String[] args){
-        System.out.print("hello");
+
+        AntlrDrinkListener al = new AntlrDrinkListener();
+        al.printDrink("123");
     }
+
 }

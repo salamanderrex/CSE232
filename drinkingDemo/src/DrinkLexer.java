@@ -1,16 +1,13 @@
 // Generated from Drink.g4 by ANTLR 4.5.3
-import com.sun.xml.internal.fastinfoset.vocab.Vocabulary;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.TokenStream;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
-
-
-
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class DrinkLexer extends Lexer {
@@ -35,38 +32,38 @@ public class DrinkLexer extends Lexer {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "ARTICLE", "OF", "DRINKING_VESSEL", "TEXT", "WHITESPACE"
 	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
+	// public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
 	 * @deprecated Use {@link #VOCABULARY} instead.
 	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
+//	@Deprecated
+//	public static final String[] tokenNames;
+//	static {
+//		tokenNames = new String[_SYMBOLIC_NAMES.length];
+//		for (int i = 0; i < tokenNames.length; i++) {
+//			tokenNames[i] = VOCABULARY.getLiteralName(i);
+//			if (tokenNames[i] == null) {
+//				tokenNames[i] = VOCABULARY.getSymbolicName(i);
+//			}
+//
+//			if (tokenNames[i] == null) {
+//				tokenNames[i] = "<INVALID>";
+//			}
+//		}
+//	}
 
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
+//	@Override
+//	@Deprecated
+////	public String[] getTokenNames() {
+////		return tokenNames;
+////	}
 
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
+//	@Override
 
-
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
+//	public Vocabulary getVocabulary() {
+//		return VOCABULARY;
+//	}
 
 
 	public DrinkLexer(CharStream input) {

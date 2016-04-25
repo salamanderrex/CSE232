@@ -1,4 +1,4 @@
-package demo;// Generated from Drink.g4 by ANTLR 4.5.3
+// Generated from Drink.g4 by ANTLR 4.5.3
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -15,48 +15,48 @@ public class DrinkBaseListener implements DrinkListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void enterDrinkSentence(DrinkParser.DrinkSentenceContext ctx) { }
+	@Override public void enterDrinkSentence(DrinkParser.DrinkSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void exitDrinkSentence(DrinkParser.DrinkSentenceContext ctx) { }
+	@Override public void exitDrinkSentence(DrinkParser.DrinkSentenceContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void enterDrink(DrinkParser.DrinkContext ctx) { }
+	@Override public void enterDrink(DrinkParser.DrinkContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void exitDrink(DrinkParser.DrinkContext ctx) { }
+	@Override public void exitDrink(DrinkParser.DrinkContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	 public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(ErrorNode node) { }
 }
