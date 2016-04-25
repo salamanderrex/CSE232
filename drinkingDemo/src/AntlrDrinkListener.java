@@ -10,6 +10,11 @@ public class AntlrDrinkListener extends DrinkBaseListener {
     @Override
     public void enterDrink(DrinkParser.DrinkContext ctx) {
         System.out.println(ctx.getText());
+
+    }
+    public void enterDrinkSentence(DrinkParser.DrinkSentenceContext ctx) {
+        System.out.println("just enter the sentence");
+        System.out.println(ctx.getText());
     }
 
     public void printDrink(String drinkSentence) {
@@ -21,6 +26,7 @@ public class AntlrDrinkListener extends DrinkBaseListener {
 
         // Pass the tokens to the parser
         DrinkParser parser = new DrinkParser(tokens);
+
 
         // Specify our entry point
         DrinkParser.DrinkSentenceContext drinkSentenceContext = parser.drinkSentence();
