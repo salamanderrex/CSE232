@@ -9,12 +9,23 @@ public class AntlrDrinkListener extends DrinkBaseListener {
 
     @Override
     public void enterDrink(DrinkParser.DrinkContext ctx) {
-        System.out.println(ctx.getText());
+        //System.out.println(ctx.getText());
+        System.out.println("just enter the drink");
 
     }
     public void enterDrinkSentence(DrinkParser.DrinkSentenceContext ctx) {
         System.out.println("just enter the sentence");
-        System.out.println(ctx.getText());
+        //System.out.println(ctx.getText());
+    }
+
+    @Override
+    public void exitDrinkSentence(DrinkParser.DrinkSentenceContext ctx) {
+        System.out.println("hey I exit the drinkSentence");
+
+    }
+    @Override
+    public void exitDrink(DrinkParser.DrinkContext ctx) {
+        System.out.println("hey I exit the Drink");
     }
 
     public void printDrink(String drinkSentence) {
@@ -43,3 +54,4 @@ public class AntlrDrinkListener extends DrinkBaseListener {
     }
 
 }
+
