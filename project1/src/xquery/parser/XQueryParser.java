@@ -131,7 +131,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class XqVarContext extends XqContext {
-		public TerminalNode Var() { return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Var, 0); }
+		public TerminalNode Var() { return getToken(XQueryParser.Var, 0); }
 		public XqVarContext(XqContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -219,9 +219,9 @@ public class XQueryParser extends Parser {
 		public XqContext xq() {
 			return getRuleContext(XqContext.class,0);
 		}
-		public List<TerminalNode> Identifier() { return getTokens(dk.martinbmadsen.xquery.parser.XQueryParser.Identifier); }
+		public List<TerminalNode> Identifier() { return getTokens(XQueryParser.Identifier); }
 		public TerminalNode Identifier(int i) {
-			return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Identifier, i);
+			return getToken(XQueryParser.Identifier, i);
 		}
 		public XqTagNameContext(XqContext ctx) { copyFrom(ctx); }
 		@Override
