@@ -32,6 +32,7 @@ forClause
   ;
 
 // Let Clause: let $var1 := "superman", $var2 := "batman", ...
+// collection
 letClause
   : 'let' Var ':=' xq (',' Var ':=' xq)*
   ;
