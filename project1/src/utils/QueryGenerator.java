@@ -1,9 +1,6 @@
 package project1.utils;
 
-import com.pholser.junit.quickcheck.generator.GenerationStatus;
-import com.pholser.junit.quickcheck.generator.Generator;
-import com.pholser.junit.quickcheck.random.SourceOfRandomness;
-
+/*
 import java.util.*;
 
 public class QueryGenerator extends Generator<String> {
@@ -89,3 +86,4 @@ public class QueryGenerator extends Generator<String> {
         else return "not " + generateFilter(random);
     }
 }
+*/

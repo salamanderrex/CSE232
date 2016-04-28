@@ -1,13 +1,8 @@
 package project1.utils;
 
-import com.pholser.junit.quickcheck.generator.GenerationStatus;
-import com.pholser.junit.quickcheck.generator.Generator;
-import com.pholser.junit.quickcheck.random.SourceOfRandomness;
-import dk.martinbmadsen.xquery.xmltree.IXMLElement;
-import dk.martinbmadsen.xquery.xmltree.XMLDocument;
 
 import java.util.*;
-
+/*
 public class XQQueryGenerator extends Generator<String> {
     List<String> stringContants = new ArrayList<>();
     List<String> rps = new ArrayList<>();
@@ -189,3 +184,4 @@ public class XQQueryGenerator extends Generator<String> {
         else return "not " + generateFilter(random);
     }
 }
+*/

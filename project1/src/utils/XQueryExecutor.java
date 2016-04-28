@@ -3,7 +3,8 @@ package project1.utils;
 import project1.xquery.parser.XQueryLexer;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.parser.XQueryVisitor;
-import project1.xquery.value.XQueryList;
+import project1.xquery.parser.*;
+import project1.xquery.value.*;
 import project1.xquery.xmltree.*;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -52,6 +53,7 @@ public class XQueryExecutor {
         }
 
         try {
+
             Document doc = sb.build(new StringReader(xml));
 
             xout.output(doc, new FileWriter(path));
@@ -90,7 +92,7 @@ public class XQueryExecutor {
     private static XQueryList execute(ANTLRInputStream input) {
         XQueryLexer lexer   = new XQueryLexer(input);
         XQueryParser parser  = new XQueryParser(new CommonTokenStream(lexer));
-        XQueryVisitor visitor = new XQueryVisitor();
+        XQueryVisitor visitor = new myXQueryVisitor();
 
         // set entry point to 'xq' non-terminal in grammar
         XQueryParser.XqContext context = parser.xq();

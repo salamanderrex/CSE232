@@ -1,47 +1,52 @@
 package project1.xquery.visitor;
 
 
-
+import project1.xquery.parser.XQueryParser;
+import project1.xquery.value.*;
+import project1.xquery.parser.*;
+import project1.xquery.xmltree.*;
+import project1.xquery.context.*;
+import project1.utils.*;
 public class FEvaluator extends XQueryEvaluator {
     public FEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
     }
 
-    public XQueryFilter evalFRp(FRpContext ctx) {
+    public XQueryFilter evalFRp(XQueryParser.FRpContext ctx) {
         XQueryList resultR = (XQueryList)visitor.visit(ctx.rp());
         if(resultR.size() > 0)
             return XQueryFilter.trueValue();
         return XQueryFilter.falseValue();
     }
 
-    public XQueryFilter evalParen(FParenContext ctx) {
+    public XQueryFilter evalParen(XQueryParser.FParenContext ctx) {
         return (XQueryFilter)visitor.visit(ctx.f());
     }
 
-    public XQueryFilter evalAnd(FAndContext ctx) {
+    public XQueryFilter evalAnd(XQueryParser.FAndContext ctx) {
         XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
         XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
         return l.and(r);
     }
 
-    public XQueryFilter evalOr(FOrContext ctx) {
+    public XQueryFilter evalOr(XQueryParser.FOrContext ctx) {
         XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
         XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
         return l.or(r);
     }
 
-    public XQueryFilter evalNot(FNotContext ctx) {
+    public XQueryFilter evalNot(XQueryParser.FNotContext ctx) {
         XQueryFilter v = (XQueryFilter)visitor.visit(ctx.f());
         return v.not();
     }
 
-    public XQueryFilter evalValEqual(FValEqualContext ctx) {
+    public XQueryFilter evalValEqual(XQueryParser.FValEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
-    public XQueryFilter evalIdEqual(FIdEqualContext ctx) {
+    public XQueryFilter evalIdEqual(XQueryParser.FIdEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsId(r);

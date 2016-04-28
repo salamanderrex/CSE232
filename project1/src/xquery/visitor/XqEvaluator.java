@@ -146,17 +146,16 @@ public class XqEvaluator extends XQueryEvaluator {
         return res;
     }
 
-    public IXQueryValue evalJoin(XQueryParser.XqJoinContext ctx) {
+    public IXQueryValue evalJoin(XQueryParser.JoinClauseContext ctx) {
         // Get results of inner for loops
-       // XQueryList list1 = (XQueryList)visitor.visit(ctx.xq1);
-       // XQueryList list2 = (XQueryList)visitor.visit(ctx.xq2);
+        XQueryList list1 = (XQueryList)visitor.visit(ctx.xq1);
+        XQueryList list2 = (XQueryList)visitor.visit(ctx.xq2);
         //change latter!!!!!!!!!!!!!!!!!!!!!!
-        XQueryList list1 = (XQueryList)visitor.visit(ctx.getChild(1));
-        XQueryList list2 = (XQueryList)visitor.visit(ctx.getChild(2));
+
         XQueryList res = new XQueryList();
 
         // Get join attributes
-        String idl1 = ctx.getInIdentifierList(0).getText();
+        String idl1 = ctx.IdentifierList(0).getText();
         String idl2 = ctx.IdentifierList(1).getText();
         List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));

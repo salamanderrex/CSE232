@@ -2,6 +2,12 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import project1.xquery.parser.XQueryParser;
+import project1.xquery.value.*;
+import project1.xquery.parser.*;
+import project1.xquery.xmltree.*;
+import project1.xquery.context.*;
+import project1.utils.*;
 import java.util.stream.Collectors;
 
 public class ApRpEvaluator extends XQueryEvaluator {
@@ -10,7 +16,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryList evalAp(@NotNull ApContext ctx) {
+    public XQueryList evalAp(@NotNull  XQueryParser.ApContext ctx) {
+        System.out.println("start ap xml document");
         XMLDocument document = new XMLDocument(ctx.fileName.getText());
         XQueryList results = new XQueryList();
 
@@ -40,7 +47,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results.unique();
     }
 
-    public XQueryList evalTagName(@NotNull RpTagNameContext ctx) {
+    public XQueryList evalTagName(@NotNull  XQueryParser.RpTagNameContext ctx) {
         String tagName = ctx.getText();
 
         return evalWildCard().stream().filter(
@@ -85,7 +92,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
          */
     }
 
-    public XQueryList evalAttr(RpAttrContext ctx) {
+    public XQueryList evalAttr(XQueryParser.RpAttrContext ctx) {
         // TODO: Don't return a list value here, return an attribute value... or something!
         String attrib = ctx.Identifier().getSymbol().getText();
         XQueryList res = new XQueryList(qc.peekContextElement().size());
@@ -101,11 +108,11 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return res;
     }
 
-    public XQueryList evalParen(@NotNull RpParenExprContext ctx) {
+    public XQueryList evalParen(@NotNull  XQueryParser.RpParenExprContext ctx) {
         return (XQueryList)visitor.visit(ctx.rp());
     }
 
-    public XQueryList evalSlashes(@NotNull RpSlashContext ctx) {
+    public XQueryList evalSlashes(@NotNull  XQueryParser.RpSlashContext ctx) {
         XQueryList results = new XQueryList();
         switch(ctx.slash.getType()) {
             case XQueryParser.SLASH:
@@ -121,7 +128,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results;
     }
 
-    private XQueryList evalRpSlash(@NotNull RpSlashContext ctx) {
+    private XQueryList evalRpSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
         XQueryList y = new XQueryList();
         XQueryList x = (XQueryList)visitor.visit(ctx.left);
 
@@ -133,7 +140,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return y.unique();
     }
 
-    private XQueryList evalRpSlashSlash(@NotNull RpSlashContext ctx) {
+    private XQueryList evalRpSlashSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList descendants = new XQueryList();
 
@@ -148,7 +155,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return r.unique();
     }
 
-    public XQueryList evalFilter(@NotNull RpFilterContext ctx) {
+    public XQueryList evalFilter(@NotNull  XQueryParser.RpFilterContext ctx) {
         XQueryList res = new XQueryList();
 
         // Evaluate rp to get x
@@ -165,7 +172,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return res;
     }
 
-    public XQueryList evalConcat(@NotNull RpConcatContext ctx) {
+    public XQueryList evalConcat(@NotNull  XQueryParser.RpConcatContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
 

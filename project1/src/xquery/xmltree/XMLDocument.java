@@ -14,6 +14,8 @@ public class XMLDocument implements IXMLDocument {
         SAXBuilder sax = new SAXBuilder();
 
         try {
+            System.out.println("to read the xml file ......"+fileName);
+
             this.doc = sax.build(sanitizeFileName(fileName));
         } catch (JDOMException | IOException e) {
             e.printStackTrace();

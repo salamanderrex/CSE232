@@ -286,7 +286,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class XqStringConstantContext extends XqContext {
-		public TerminalNode StringLiteral() { return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.StringLiteral, 0); }
+		public TerminalNode StringLiteral() { return getToken(XQueryParser.StringLiteral, 0); }
 		public XqStringConstantContext(XqContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -536,9 +536,9 @@ public class XQueryParser extends Parser {
 		public XqContext xq(int i) {
 			return getRuleContext(XqContext.class,i);
 		}
-		public List<TerminalNode> IdentifierList() { return getTokens(dk.martinbmadsen.xquery.parser.XQueryParser.IdentifierList); }
+		public List<TerminalNode> IdentifierList() { return getTokens( XQueryParser.IdentifierList); }
 		public TerminalNode IdentifierList(int i) {
-			return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.IdentifierList, i);
+			return getToken( XQueryParser.IdentifierList, i);
 		}
 		public JoinClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -599,9 +599,9 @@ public class XQueryParser extends Parser {
 	}
 
 	public static class ForClauseContext extends ParserRuleContext {
-		public List<TerminalNode> Var() { return getTokens(dk.martinbmadsen.xquery.parser.XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Var, i);
+			return getToken( XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -677,9 +677,9 @@ public class XQueryParser extends Parser {
 	}
 
 	public static class LetClauseContext extends ParserRuleContext {
-		public List<TerminalNode> Var() { return getTokens(dk.martinbmadsen.xquery.parser.XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Var, i);
+			return getToken( XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -901,9 +901,9 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class CondSomeSatisContext extends CondContext {
-		public List<TerminalNode> Var() { return getTokens(dk.martinbmadsen.xquery.parser.XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Var, i);
+			return getToken( XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -1237,7 +1237,7 @@ public class XQueryParser extends Parser {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
 		}
-		public TerminalNode StringLiteral() { return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.StringLiteral, 0); }
+		public TerminalNode StringLiteral() { return getToken( XQueryParser.StringLiteral, 0); }
 		public ApContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1430,7 +1430,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class RpTagNameContext extends RpContext {
-		public TerminalNode Identifier() { return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Identifier, 0); }
+		public TerminalNode Identifier() { return getToken( XQueryParser.Identifier, 0); }
 		public RpTagNameContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1485,7 +1485,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class RpAttrContext extends RpContext {
-		public TerminalNode Identifier() { return getToken(dk.martinbmadsen.xquery.parser.XQueryParser.Identifier, 0); }
+		public TerminalNode Identifier() { return getToken( XQueryParser.Identifier, 0); }
 		public RpAttrContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {

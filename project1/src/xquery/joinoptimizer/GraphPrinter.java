@@ -1,15 +1,5 @@
-package dk.martinbmadsen.xquery.joinoptimizer;
 
-import org.jgrapht.Graph;
-import org.jgrapht.ext.DOTExporter;
-import org.jgrapht.ext.EdgeNameProvider;
-import org.jgrapht.ext.StringEdgeNameProvider;
-import org.jgrapht.ext.VertexNameProvider;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
+/*
 public class GraphPrinter {
     public static class XQueryVertexNameProvider<T> implements VertexNameProvider<T> {
         @Override
@@ -53,3 +43,4 @@ public class GraphPrinter {
         }
     }
 }
+*/

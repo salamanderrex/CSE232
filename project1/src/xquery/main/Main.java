@@ -8,20 +8,20 @@ import project1.xquery.xmltree.IXMLElement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        if (args.length != 1) {
-            System.out.println("You must run this program with 1 parameter, being the file name");
-            System.exit(-1);
-        }
-
+        System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
+        String filename = System.getProperty("user.dir") + "/xquery.txt";
+        System.out.println(filename);
         List<IXMLElement> result = new ArrayList<>();
         try {
 
-            result = XQueryExecutor.executeFromFile(args[0]);
+            result = XQueryExecutor.executeFromFile(filename);
         } catch (IOException e) {
             e.printStackTrace();
         }
