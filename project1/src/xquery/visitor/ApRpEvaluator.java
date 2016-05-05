@@ -51,7 +51,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         String tagName = ctx.getText();
 
         return evalWildCard().stream().filter(
-                e -> e.tag().equals(tagName)
+                e -> e.tag().equalsIgnoreCase(tagName)
         ).collect(Collectors.toCollection(XQueryList::new));
     }
 
