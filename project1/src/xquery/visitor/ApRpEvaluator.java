@@ -24,7 +24,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalAp(@NotNull  XQueryParser.ApContext ctx) {
-        System.out.println("start ap xml document");
+       // System.out.println("start ap xml document");
         if (readFileCounter ==0) {
             XMLDocument document = new XMLDocument(ctx.fileName.getText());
             XQueryList results = new XQueryList();
@@ -95,18 +95,20 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryList evalTagName(@NotNull  XQueryParser.RpTagNameContext ctx) {
         String tagName = ctx.getText();
-        System.out.println("in evalTagName tagName: "+tagName);
-
+       // System.out.println("in evalTagName tagName: "+tagName);
+/*
         XQueryList  context = qc.peekContextElement();
         XQueryList  context2 = evalWildCard();
+        */
         XQueryList x =  evalWildCard().stream().filter(
                 e -> e.tag().equalsIgnoreCase(tagName)
         ).collect(Collectors.toCollection(XQueryList::new));
 
+        /*
         if (tagName.equals("title")) {
             System.out.println(x.toArray().toString());
         }
-
+*/
         return x;
     }
 
@@ -136,8 +138,9 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalText() {
-        System.out.println("nc is ctxElems " );
+        //System.out.println("nc is ctxElems " );
        // System.out.println(qc.nc.ctxElems );
+        /*
         System.out.println("st var env is " );
         Iterator <VarEnvironment> it = qc.st.varEnv.iterator();
         if(it.hasNext()){
@@ -145,10 +148,10 @@ public class ApRpEvaluator extends XQueryEvaluator {
             System.out.print(it.next().varEnv.keySet());
         }
 
-
+*/
         XQueryList x =qc.peekContextElement().stream().map(
                 IXMLElement::txt).collect(Collectors.toCollection(XQueryList::new));
-        System.out.println(x.values);
+       // System.out.println(x.values);
        return x;
         /* ^^^is equal to vvv*/
         /*
@@ -199,7 +202,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     private XQueryList evalRpSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
-        System.out.println("in evalRpSlash ");
+       // System.out.println("in evalRpSlash ");
         XQueryList y = new XQueryList();
         XQueryList x = (XQueryList)visitor.visit(ctx.left);
 
@@ -244,7 +247,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalConcat(@NotNull  XQueryParser.RpConcatContext ctx) {
-        System.out.println("in aprp concat");
+        //System.out.println("in aprp concat");
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
