@@ -43,7 +43,7 @@ whereClause
 
 // Return Clause: return $var1
 returnClause
-  : 'return' xq
+  : 'return' xq ','? xq?
   ;
 
 // Condition
