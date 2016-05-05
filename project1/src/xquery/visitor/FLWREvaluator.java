@@ -9,6 +9,7 @@ import project1.xquery.xmltree.*;
 import project1.xquery.parser.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Pack200;
 
 public class FLWREvaluator extends XQueryEvaluator {
     public FLWREvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -64,6 +65,15 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
-        return (XQueryList)visitor.visit(ctx.xq());
+        XQueryList xq =new XQueryList();
+        for (int i = 0 ; i < ctx.xq().size(); i ++) {
+            XQueryList tmp =   (XQueryList)visitor.visit(ctx.xq(i));
+            int length = tmp.values.size();
+            for (int j = 0; j < length; j ++) {
+                xq.add(tmp.get(j));
+            }
+
+        }
+        return xq;
     }
 }

@@ -1,8 +1,6 @@
 package project1.utils;
 
-import project1.xquery.parser.XQueryLexer;
-import project1.xquery.parser.XQueryParser;
-import project1.xquery.parser.XQueryVisitor;
+
 import project1.xquery.parser.*;
 import project1.xquery.value.*;
 import project1.xquery.xmltree.*;

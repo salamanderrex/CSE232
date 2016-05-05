@@ -1,7 +1,7 @@
 grammar XQuery;
 
 @header {
-package dk.martinbmadsen.xquery.parser;
+package project1.xquery.parser;
 }
 
 // XQuery
@@ -43,7 +43,7 @@ whereClause
 
 // Return Clause: return $var1
 returnClause
-  : 'return' xq
+  : 'return' xq ','? xq?
   ;
 
 // Condition
