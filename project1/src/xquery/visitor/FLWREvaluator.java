@@ -65,15 +65,16 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
-        XQueryList xq =new XQueryList();
-        for (int i = 0 ; i < ctx.xq().size(); i ++) {
-            XQueryList tmp =   (XQueryList)visitor.visit(ctx.xq(i));
-            int length = tmp.values.size();
-            for (int j = 0; j < length; j ++) {
-                xq.add(tmp.get(j));
-            }
-
-        }
-        return xq;
+//        XQueryList xq =new XQueryList();
+//        for (int i = 0 ; i < ctx.xq().size(); i ++) {
+//            XQueryList tmp =   (XQueryList)visitor.visit(ctx.xq(i));
+//            int length = tmp.values.size();
+//            for (int j = 0; j < length; j ++) {
+//                xq.add(tmp.get(j));
+//            }
+//
+//        }
+//        return xq;
+        return (XQueryList)visitor.visit(ctx.xq());
     }
 }
