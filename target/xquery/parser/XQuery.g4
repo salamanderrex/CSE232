@@ -1,7 +1,7 @@
 grammar XQuery;
 
 @header {
-package dk.martinbmadsen.xquery.parser;
+package project1.xquery.parser;
 }
 
 // XQuery
