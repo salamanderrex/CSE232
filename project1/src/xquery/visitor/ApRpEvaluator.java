@@ -8,18 +8,26 @@ import project1.xquery.parser.*;
 import project1.xquery.xmltree.*;
 import project1.xquery.context.*;
 import project1.utils.*;
+
+import java.util.Iterator;
 import java.util.stream.Collectors;
+import java.util.Arrays;
 
 public class ApRpEvaluator extends XQueryEvaluator {
 
+    public int readFileCounter;
+    public XQueryList cachedXQueryList;
     public ApRpEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
+        readFileCounter = 0;
+        cachedXQueryList= null;
     }
 
     public XQueryList evalAp(@NotNull  XQueryParser.ApContext ctx) {
         System.out.println("start ap xml document");
-        XMLDocument document = new XMLDocument(ctx.fileName.getText());
-        XQueryList results = new XQueryList();
+        if (readFileCounter ==0) {
+            XMLDocument document = new XMLDocument(ctx.fileName.getText());
+            XQueryList results = new XQueryList();
 
         /* Replace the below code with this commented out code
          * in case documents roots have to excplictly be referenced
@@ -30,29 +38,76 @@ public class ApRpEvaluator extends XQueryEvaluator {
         qc.pushContextElement(root);
         */
 
-        qc.pushContextElement(document.root());
+            qc.pushContextElement(document.root());
 
-        switch(ctx.slash.getType()) {
-            case XQueryParser.SLASH:
-                results.addAll((XQueryList)visitor.visit(ctx.rp()));
-                break;
-            case XQueryParser.SSLASH:
-                qc.pushContextElement(document.root().descendants());
-                results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
-                break;
-            default:
-                Debugger.error("Oops, shouldn't be here");
-                break;
+            switch(ctx.slash.getType()) {
+                case XQueryParser.SLASH:
+                    results.addAll((XQueryList)visitor.visit(ctx.rp()));
+                    break;
+                case XQueryParser.SSLASH:
+                    qc.pushContextElement(document.root().descendants());
+                    results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
+                    break;
+                default:
+                    Debugger.error("Oops, shouldn't be here");
+                    break;
+            }
+            readFileCounter++;
+            return results.unique();
         }
-        return results.unique();
+
+        if (readFileCounter ==1) {
+
+            XMLDocument document = new XMLDocument(ctx.fileName.getText());
+            XQueryList results = new XQueryList();
+
+        /* Replace the below code with this commented out code
+         * in case documents roots have to excplictly be referenced
+         * e.g. doc("j_caesar.xml")/PLAY/TITLE/text() instead of
+         *      doc("j_caesar.xml")/TITLE/text() which is the current setting
+        XMLElement root = new XMLElement("root");
+        root.add(document.root());
+        qc.pushContextElement(root);
+        */
+
+            qc.pushContextElement(document.root());
+
+            switch(ctx.slash.getType()) {
+                case XQueryParser.SLASH:
+                    results.addAll((XQueryList)visitor.visit(ctx.rp()));
+                    break;
+                case XQueryParser.SSLASH:
+                    qc.pushContextElement(document.root().descendants());
+                    results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
+                    break;
+                default:
+                    Debugger.error("Oops, shouldn't be here");
+                    break;
+            }
+            readFileCounter++;
+            cachedXQueryList = results.unique();
+            return cachedXQueryList;
+
+        }
+        return cachedXQueryList;
+
     }
 
     public XQueryList evalTagName(@NotNull  XQueryParser.RpTagNameContext ctx) {
         String tagName = ctx.getText();
+        System.out.println("in evalTagName tagName: "+tagName);
 
-        return evalWildCard().stream().filter(
+        XQueryList  context = qc.peekContextElement();
+        XQueryList  context2 = evalWildCard();
+        XQueryList x =  evalWildCard().stream().filter(
                 e -> e.tag().equalsIgnoreCase(tagName)
         ).collect(Collectors.toCollection(XQueryList::new));
+
+        if (tagName.equals("title")) {
+            System.out.println(x.toArray().toString());
+        }
+
+        return x;
     }
 
     public XQueryList evalWildCard() {
@@ -81,15 +136,30 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalText() {
-        return qc.peekContextElement().stream().map(
+        System.out.println("nc is ctxElems " );
+       // System.out.println(qc.nc.ctxElems );
+        System.out.println("st var env is " );
+        Iterator <VarEnvironment> it = qc.st.varEnv.iterator();
+        if(it.hasNext()){
+
+            System.out.print(it.next().varEnv.keySet());
+        }
+
+
+        XQueryList x =qc.peekContextElement().stream().map(
                 IXMLElement::txt).collect(Collectors.toCollection(XQueryList::new));
-        /* ^^^is equal to vvv
+        System.out.println(x.values);
+       return x;
+        /* ^^^is equal to vvv*/
+        /*
         XQueryList res = new XQueryList();
         for(IXMLElement x : qc.peekContextElement()) {
+            System.out.println(x.txt());
             res.add(x.txt());
         }
         return res;
-         */
+        */
+
     }
 
     public XQueryList evalAttr(XQueryParser.RpAttrContext ctx) {
@@ -129,6 +199,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     private XQueryList evalRpSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
+        System.out.println("in evalRpSlash ");
         XQueryList y = new XQueryList();
         XQueryList x = (XQueryList)visitor.visit(ctx.left);
 
@@ -173,6 +244,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalConcat(@NotNull  XQueryParser.RpConcatContext ctx) {
+        System.out.println("in aprp concat");
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
