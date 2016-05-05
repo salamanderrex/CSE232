@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Working Directory = " +
                 System.getProperty("user.dir"));
-        String filename = System.getProperty("user.dir") + "/xquery.txt";
+        String filename = System.getProperty("user.dir") + "/1.txt";
         System.out.println(filename);
         List<IXMLElement> result = new ArrayList<>();
         try {
