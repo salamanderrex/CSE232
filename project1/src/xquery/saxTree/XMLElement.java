@@ -34,12 +34,14 @@ public class XMLElement implements IXMLElement {
         elem = DocumentHelper.createElement(tagName);
     }
 
+
     public void add(XMLElement child) {
-        Element t = DocumentHelper.createElement(child.tag());
-        for (String str : child.getAttribNames()) {
-                t.addAttribute(str,this.getAttribute(str,child.elem));
-        }
-        t.addText(child.txt());
+
+
+       this.elem.add(child.elem.createCopy());
+
+
+
     }
 
 
