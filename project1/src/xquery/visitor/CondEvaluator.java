@@ -3,7 +3,7 @@ package project1.xquery.visitor;
 import project1.xquery.value.*;
 import project1.xquery.visitor.*;
 import project1.xquery.context.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 import project1.xquery.parser.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -36,6 +36,7 @@ public class CondEvaluator extends XQueryEvaluator {
             ve.put(ctx.Var(i).getText(), res);
         }
 
+        //System.out.println("here in eval push ");
         qc.pushVarEnv(ve);
 
         XQueryFilter res = (XQueryFilter)visitor.visit(ctx.cond());

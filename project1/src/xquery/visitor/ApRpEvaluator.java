@@ -2,14 +2,17 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import org.dom4j.Element;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 import project1.xquery.context.*;
 import project1.utils.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 
@@ -149,8 +152,17 @@ public class ApRpEvaluator extends XQueryEvaluator {
         }
 
 */
-        XQueryList x =qc.peekContextElement().stream().map(
-                IXMLElement::txt).collect(Collectors.toCollection(XQueryList::new));
+
+
+        //modify here!!!!!!!!!!!
+
+        List<IXMLElement> values = new ArrayList<IXMLElement>();
+        Iterator elementIterator =  qc.peekContextElement().iterator();
+        while(elementIterator.hasNext()) {
+            XMLElement tt = (XMLElement) elementIterator.next();
+            values.add(new XMLElement(tt.elem));
+        }
+        XQueryList x =new XQueryList(values);
        // System.out.println(x.values);
        return x;
         /* ^^^is equal to vvv*/

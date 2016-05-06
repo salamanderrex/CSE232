@@ -3,10 +3,11 @@ package project1.xquery.visitor;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 import project1.xquery.context.*;
 import project1.utils.*;
 import org.antlr.v4.runtime.misc.NotNull;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx){
-        return new XQueryList(new XMLText(ctx.StringLiteral().getText()));
+        return new XQueryList((new XMLElement(ctx.StringLiteral().getText())).textFlag =1);
     }
 
     public XQueryList evalAp(@NotNull XQueryParser.XqApContext ctx) {
@@ -97,9 +98,9 @@ public class XqEvaluator extends XQueryEvaluator {
 
         // Figure out whether to add result as text or child element
         for(IXMLElement v : xq) {
-            if(v instanceof XMLText)
-                res.add((XMLText)v);
-            else if(v instanceof XMLElement)
+            if(v.TextFlag() )
+                res.add((XMLElement) v);
+            else
                 res.add((XMLElement)v);
         }
 

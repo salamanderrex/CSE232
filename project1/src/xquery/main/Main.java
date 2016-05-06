@@ -3,7 +3,7 @@ package project1.xquery.main;
 
 import project1.utils.Debugger;
 import project1.utils.XQueryExecutor;
-import project1.xquery.xmltree.IXMLElement;
+import project1.xquery.saxTree.IXMLElement;
 
 
 import java.io.IOException;

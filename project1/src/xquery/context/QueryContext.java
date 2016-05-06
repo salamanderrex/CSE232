@@ -1,6 +1,6 @@
 package project1.xquery.context;
 import project1.xquery.value.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 
 /**
  * Encapsulates everything that has to do with the context of a query: from

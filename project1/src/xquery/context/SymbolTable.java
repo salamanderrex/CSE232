@@ -1,6 +1,6 @@
 package project1.xquery.context;
 import project1.xquery.value.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 import java.util.Stack;
 
 public class SymbolTable {

@@ -3,15 +3,11 @@ package project1.utils;
 
 import project1.xquery.parser.*;
 import project1.xquery.value.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.saxTree.*;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.jdom2.Document;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -41,6 +37,7 @@ public class XQueryExecutor {
         return execute(new ANTLRInputStream(query));
     }
 
+    /*
     public static void printResultsToFile(List<IXMLElement> res, String path) {
         SAXBuilder sb = new SAXBuilder();
         XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
@@ -60,7 +57,7 @@ public class XQueryExecutor {
             e.printStackTrace();
         }
     }
-
+*/
     public static void printPrettyResults(List<IXMLElement> result) {
         if (result == null){
             System.out.println("Result is null");
