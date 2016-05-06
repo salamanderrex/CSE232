@@ -1,0 +1,5985 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/bin/java -Didea.launcher.port=7533 "-Didea.launcher.bin.path=/Applications/IntelliJ IDEA 15.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/lib/tools.jar:/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/target/classes:/Users/kezhang/.m2/repository/org/antlr/antlr4-runtime/4.5.3/antlr4-runtime-4.5.3.jar:/Users/kezhang/.m2/repository/org/jdom/jdom2/2.0.6/jdom2-2.0.6.jar:/Applications/IntelliJ IDEA 15.app/Contents/lib/idea_rt.jar" com.intellij.rt.execution.application.AppMain Main
+Working Directory = /Users/kezhang/Documents/UCSD/cse-232b/project/CSE232
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query1
+start querying.........1query
+1 results below:
+RESULT: #0
+<result>
+  <TITLE>ACT I</TITLE>
+  <TITLE>ACT II</TITLE>
+  <TITLE>ACT III</TITLE>
+  <TITLE>ACT IV</TITLE>
+  <TITLE>ACT V</TITLE>
+  <TITLE>Dramatis Personae</TITLE>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query2
+start querying.........2query
+1 results below:
+RESULT: #0
+<SCENES>
+  <TITLE>SCENE I.  Rome. A street.</TITLE>
+  <TITLE>SCENE II.  A public place.</TITLE>
+  <TITLE>SCENE III.  The same. A street.</TITLE>
+  <TITLE>SCENE I.  Rome. BRUTUS's orchard.</TITLE>
+  <TITLE>SCENE II.  CAESAR's house.</TITLE>
+  <TITLE>SCENE III.  A street near the Capitol.</TITLE>
+  <TITLE>SCENE IV.  Another part of the same street, before the house of BRUTUS.</TITLE>
+  <TITLE>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</TITLE>
+  <TITLE>SCENE II.  The Forum.</TITLE>
+  <TITLE>SCENE III.  A street.</TITLE>
+  <TITLE>SCENE I.  A house in Rome.</TITLE>
+  <TITLE>SCENE II.  Camp near Sardis. Before BRUTUS's tent.</TITLE>
+  <TITLE>SCENE III.  Brutus's tent.</TITLE>
+  <TITLE>SCENE I.  The plains of Philippi.</TITLE>
+  <TITLE>SCENE II.  The same. The field of battle.</TITLE>
+  <TITLE>SCENE III.  Another part of the field.</TITLE>
+  <TITLE>SCENE IV.  Another part of the field.</TITLE>
+  <TITLE>SCENE V.  Another part of the field.</TITLE>
+</SCENES>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query3
+start querying.........3query
+1 results below:
+RESULT: #0
+<result>
+  <speaks>
+    <speaker>BRUTUS</speaker>
+    <when>
+      <act>ACT III</act>
+      <scene>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</scene>
+    </when>
+  </speaks>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query4
+start querying.........4query
+1 results below:
+RESULT: #0
+<result />
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query5
+start querying.........5query
+1 results below:
+RESULT: #0
+<result>
+  <PERSONA>CICERO</PERSONA>
+  <PERSONA>PUBLIUS</PERSONA>
+  <PERSONA>CASSIUS</PERSONA>
+  <PERSONA>CASCA</PERSONA>
+  <PERSONA>TREBONIUS</PERSONA>
+  <PERSONA>LIGARIUS</PERSONA>
+  <PERSONA>DECIUS BRUTUS</PERSONA>
+  <PERSONA>METELLUS CIMBER</PERSONA>
+  <PERSONA>CINNA</PERSONA>
+  <PERSONA>FLAVIUS</PERSONA>
+  <PERSONA>MARULLUS</PERSONA>
+  <PERSONA>LUCILIUS</PERSONA>
+  <PERSONA>TITINIUS</PERSONA>
+  <PERSONA>MESSALA</PERSONA>
+  <PERSONA>VOLUMNIUS</PERSONA>
+  <PERSONA>VARRO</PERSONA>
+  <PERSONA>CLITUS</PERSONA>
+  <PERSONA>CLAUDIUS</PERSONA>
+  <PERSONA>STRATO</PERSONA>
+  <PERSONA>LUCIUS</PERSONA>
+  <PERSONA>DARDANIUS</PERSONA>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query6
+start querying.........6query
+1 results below:
+RESULT: #0
+<result>
+  <PERSONA>JULIUS CAESAR</PERSONA>
+  <PERSONA>Another Poet</PERSONA>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query7
+start querying.........7query
+1 results below:
+RESULT: #0
+<result>
+  <PERSONA>ARTEMIDORUS Of Cnidos, a teacher of rhetoric.</PERSONA>
+  <PERSONA>A Soothsayer</PERSONA>
+  <PERSONA>CINNA, a poet.</PERSONA>
+  <PERSONA>PINDARUS, servant to Cassius.</PERSONA>
+  <PERSONA>CALPURNIA, wife to Caesar.</PERSONA>
+  <PERSONA>PORTIA, wife to Brutus.</PERSONA>
+  <PERSONA>Senators, Citizens, Guards, Attendants, &amp;c.</PERSONA>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query8
+start querying.........8query
+1 results below:
+RESULT: #0
+<result>
+  <who>CAESAR</who>
+  <when>
+    <act>ACT III</act>
+    <scene>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</scene>
+  </when>
+</result>
+/Users/kezhang/Documents/UCSD/cse-232b/project/CSE232/testcases/Query9
+start querying.........9query
+798 results below:
+RESULT: #0
+<speaks>
+  <who>FLAVIUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #1
+<speaks>
+  <who>First Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #2
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #3
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #4
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #5
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #6
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #7
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #8
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #9
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #10
+<speaks>
+  <who>FLAVIUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #11
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #12
+<speaks>
+  <who>FLAVIUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #13
+<speaks>
+  <who>Second Commoner</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #14
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #15
+<speaks>
+  <who>FLAVIUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #16
+<speaks>
+  <who>MARULLUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #17
+<speaks>
+  <who>FLAVIUS</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #18
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #19
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #20
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #21
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #22
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #23
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #24
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #25
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #26
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #27
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #28
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #29
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #30
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #31
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #32
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #33
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #34
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #35
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #36
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #37
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #38
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #39
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #40
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #41
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #42
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #43
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #44
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #45
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #46
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #47
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #48
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #49
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #50
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #51
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #52
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #53
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #54
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #55
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #56
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #57
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #58
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #59
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #60
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #61
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #62
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #63
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #64
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #65
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #66
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #67
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #68
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #69
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #70
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #71
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #72
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #73
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #74
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #75
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #76
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #77
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #78
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #79
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #80
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #81
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #82
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #83
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #84
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #85
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #86
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #87
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #88
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #89
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #90
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #91
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #92
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #93
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #94
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #95
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #96
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #97
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #98
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #99
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #100
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #101
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #102
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #103
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #104
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #105
+<speaks>
+  <who>CICERO</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #106
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #107
+<speaks>
+  <who>CICERO</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #108
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #109
+<speaks>
+  <who>CICERO</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #110
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #111
+<speaks>
+  <who>CICERO</who>
+  <when>ACT I</when>
+</speaks>
+RESULT: #112
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #113
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #114
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #115
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #116
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #117
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #118
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #119
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #120
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #121
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #122
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #123
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #124
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #125
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #126
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #127
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #128
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #129
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #130
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #131
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #132
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #133
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #134
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #135
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #136
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #137
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #138
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #139
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #140
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #141
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #142
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #143
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #144
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #145
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #146
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #147
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #148
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #149
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #150
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #151
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #152
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #153
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #154
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #155
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #156
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #157
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #158
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #159
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #160
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #161
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #162
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #163
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #164
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #165
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #166
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #167
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #168
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #169
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #170
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #171
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #172
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #173
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #174
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #175
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #176
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #177
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #178
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #179
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #180
+<speaks>
+  <who>METELLUS CIMBER</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #181
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #182
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #183
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #184
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #185
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #186
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #187
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #188
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #189
+<speaks>
+  <who>TREBONIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #190
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #191
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #192
+<speaks>
+  <who>TREBONIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #193
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #194
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #195
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #196
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #197
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #198
+<speaks>
+  <who>METELLUS CIMBER</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #199
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #200
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #201
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #202
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #203
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #204
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #205
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #206
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #207
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #208
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #209
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #210
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #211
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #212
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #213
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #214
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #215
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #216
+<speaks>
+  <who>LIGARIUS</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #217
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #218
+<speaks>
+  <who>LIGARIUS</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #219
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #220
+<speaks>
+  <who>LIGARIUS</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #221
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #222
+<speaks>
+  <who>LIGARIUS</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #223
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #224
+<speaks>
+  <who>LIGARIUS</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #225
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #226
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #227
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #228
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #229
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #230
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #231
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #232
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #233
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #234
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #235
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #236
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #237
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #238
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #239
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #240
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #241
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #242
+<speaks>
+  <who>CALPURNIA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+</speaks>
+RESULT: #243
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #244
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #245
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #246
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #247
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #248
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #249
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #250
+<speaks>
+  <who>PUBLIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #251
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #252
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #253
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #254
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #255
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #256
+<speaks>
+  <who>TREBONIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #257
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #258
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #259
+<speaks>
+  <who>ARTEMIDORUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #260
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #261
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #262
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #263
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #264
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #265
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #266
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #267
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #268
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #269
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #270
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #271
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #272
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #273
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #274
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #275
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #276
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #277
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #278
+<speaks>
+  <who>PORTIA</who>
+  <when>ACT II</when>
+</speaks>
+RESULT: #279
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #280
+<speaks>
+  <who>Soothsayer</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #281
+<speaks>
+  <who>ARTEMIDORUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #282
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #283
+<speaks>
+  <who>ARTEMIDORUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #284
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #285
+<speaks>
+  <who>ARTEMIDORUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #286
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #287
+<speaks>
+  <who>PUBLIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #288
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #289
+<speaks>
+  <who>POPILIUS</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #290
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #291
+<speaks>
+  <who>POPILIUS</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #292
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #293
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #294
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #295
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #296
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #297
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #298
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #299
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #300
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #301
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #302
+<speaks>
+  <who>METELLUS CIMBER</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #303
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #304
+<speaks>
+  <who>METELLUS CIMBER</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #305
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #306
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #307
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #308
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #309
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #310
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #311
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #312
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #313
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #314
+<speaks>
+  <who>CAESAR</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #315
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #316
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #317
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #318
+<speaks>
+  <who>CASCA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #319
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #320
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #321
+<speaks>
+  <who>CINNA</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #322
+<speaks>
+  <who>METELLUS CIMBER</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #323
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #324
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #325
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #326
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #327
+<speaks>
+  <who>TREBONIUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #328
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #329
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #330
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #331
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #332
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #333
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #334
+<speaks>
+  <who>DECIUS BRUTUS</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #335
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #336
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #337
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #338
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #339
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #340
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #341
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #342
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #343
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #344
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #345
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #346
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #347
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #348
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #349
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #350
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #351
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #352
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #353
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #354
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #355
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #356
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #357
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #358
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #359
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #360
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #361
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #362
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #363
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #364
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #365
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #366
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #367
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #368
+<speaks>
+  <who>Citizens</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #369
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #370
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #371
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #372
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #373
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #374
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #375
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #376
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #377
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #378
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #379
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #380
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #381
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #382
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #383
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #384
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #385
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #386
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #387
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #388
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #389
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #390
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #391
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #392
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #393
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #394
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #395
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #396
+<speaks>
+  <who>Citizens</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #397
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #398
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #399
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #400
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #401
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #402
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #403
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #404
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #405
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #406
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #407
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #408
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #409
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #410
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #411
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #412
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #413
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #414
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #415
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #416
+<speaks>
+  <who>Several Citizens</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #417
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #418
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #419
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #420
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #421
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #422
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #423
+<speaks>
+  <who>Several Citizens</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #424
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #425
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #426
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #427
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #428
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #429
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #430
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #431
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #432
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #433
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #434
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #435
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #436
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #437
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #438
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #439
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #440
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #441
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #442
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #443
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #444
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #445
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #446
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #447
+<speaks>
+  <who>All</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #448
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #449
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #450
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #451
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #452
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #453
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #454
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #455
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #456
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #457
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #458
+<speaks>
+  <who>Servant</who>
+  <when>ACT II</when>
+  <when>ACT III</when>
+</speaks>
+RESULT: #459
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #460
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #461
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #462
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #463
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #464
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #465
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #466
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #467
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #468
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #469
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #470
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #471
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #472
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #473
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #474
+<speaks>
+  <who>Second Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #475
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #476
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #477
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #478
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #479
+<speaks>
+  <who>First Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #480
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #481
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #482
+<speaks>
+  <who>CINNA THE POET</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #483
+<speaks>
+  <who>Fourth Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #484
+<speaks>
+  <who>Third Citizen</who>
+  <when>ACT III</when>
+</speaks>
+RESULT: #485
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #486
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #487
+<speaks>
+  <who>LEPIDUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #488
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #489
+<speaks>
+  <who>LEPIDUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #490
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #491
+<speaks>
+  <who>LEPIDUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #492
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #493
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #494
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #495
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #496
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #497
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #498
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #499
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #500
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #501
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #502
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #503
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #504
+<speaks>
+  <who>PINDARUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #505
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #506
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #507
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #508
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #509
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #510
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #511
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #512
+<speaks>
+  <who>First Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #513
+<speaks>
+  <who>Second Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #514
+<speaks>
+  <who>Third Soldier</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #515
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #516
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #517
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #518
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #519
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #520
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #521
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #522
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #523
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #524
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #525
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #526
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #527
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #528
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #529
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #530
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #531
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #532
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #533
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #534
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #535
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #536
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #537
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #538
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #539
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #540
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #541
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #542
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #543
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #544
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #545
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #546
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #547
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #548
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #549
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #550
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #551
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #552
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #553
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #554
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #555
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #556
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #557
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #558
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #559
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #560
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #561
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #562
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #563
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #564
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #565
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #566
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #567
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #568
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #569
+<speaks>
+  <who>Poet</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #570
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #571
+<speaks>
+  <who>Poet</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #572
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #573
+<speaks>
+  <who>Poet</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #574
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #575
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #576
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #577
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #578
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #579
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #580
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #581
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #582
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #583
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #584
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #585
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #586
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #587
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #588
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #589
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #590
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #591
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #592
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #593
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #594
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #595
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #596
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #597
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #598
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #599
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #600
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #601
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #602
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #603
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #604
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #605
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #606
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #607
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #608
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #609
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #610
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #611
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #612
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #613
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #614
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #615
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #616
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #617
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #618
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #619
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #620
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #621
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #622
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #623
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #624
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #625
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #626
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #627
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #628
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #629
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #630
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #631
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #632
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #633
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #634
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #635
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #636
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #637
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #638
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #639
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #640
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #641
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #642
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #643
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #644
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #645
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #646
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #647
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #648
+<speaks>
+  <who>GHOST</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #649
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #650
+<speaks>
+  <who>GHOST</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #651
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #652
+<speaks>
+  <who>GHOST</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #653
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #654
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #655
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #656
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #657
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #658
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #659
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #660
+<speaks>
+  <who>LUCIUS</who>
+  <when>ACT II</when>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #661
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #662
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #663
+<speaks>
+  <who>CLAUDIUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #664
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #665
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #666
+<speaks>
+  <who>CLAUDIUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #667
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #668
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #669
+<speaks>
+  <who>CLAUDIUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #670
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #671
+<speaks>
+  <who>VARRO</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #672
+<speaks>
+  <who>CLAUDIUS</who>
+  <when>ACT IV</when>
+</speaks>
+RESULT: #673
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #674
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #675
+<speaks>
+  <who>Messenger</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #676
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #677
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #678
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #679
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #680
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #681
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #682
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #683
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #684
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #685
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #686
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #687
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #688
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #689
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #690
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #691
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #692
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #693
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #694
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #695
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #696
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #697
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #698
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #699
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #700
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #701
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #702
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #703
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #704
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #705
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #706
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #707
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #708
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #709
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #710
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #711
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #712
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #713
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #714
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #715
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #716
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #717
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #718
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #719
+<speaks>
+  <who>PINDARUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #720
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #721
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #722
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #723
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #724
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #725
+<speaks>
+  <who>PINDARUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #726
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #727
+<speaks>
+  <who>PINDARUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #728
+<speaks>
+  <who>CASSIUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #729
+<speaks>
+  <who>PINDARUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #730
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #731
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #732
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #733
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #734
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #735
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #736
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #737
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #738
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #739
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #740
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #741
+<speaks>
+  <who>TITINIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #742
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #743
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #744
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #745
+<speaks>
+  <who>CATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #746
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #747
+<speaks>
+  <who>CATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #748
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #749
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #750
+<speaks>
+  <who>CATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #751
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #752
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #753
+<speaks>
+  <who>First Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #754
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #755
+<speaks>
+  <who>First Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #756
+<speaks>
+  <who>Second Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #757
+<speaks>
+  <who>First Soldier</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #758
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #759
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #760
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #761
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #762
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #763
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #764
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #765
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #766
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #767
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #768
+<speaks>
+  <who>DARDANIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #769
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #770
+<speaks>
+  <who>DARDANIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #771
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #772
+<speaks>
+  <who>DARDANIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #773
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #774
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #775
+<speaks>
+  <who>VOLUMNIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #776
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #777
+<speaks>
+  <who>VOLUMNIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #778
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #779
+<speaks>
+  <who>VOLUMNIUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #780
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #781
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #782
+<speaks>
+  <who>CLITUS</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #783
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #784
+<speaks>
+  <who>STRATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #785
+<speaks>
+  <who>BRUTUS</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #786
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #787
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #788
+<speaks>
+  <who>STRATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #789
+<speaks>
+  <who>LUCILIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #790
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #791
+<speaks>
+  <who>STRATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #792
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #793
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #794
+<speaks>
+  <who>STRATO</who>
+  <when>ACT V</when>
+</speaks>
+RESULT: #795
+<speaks>
+  <who>MESSALA</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #796
+<speaks>
+  <who>ANTONY</who>
+  <when>ACT I</when>
+  <when>ACT II</when>
+  <when>ACT III</when>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+RESULT: #797
+<speaks>
+  <who>OCTAVIUS</who>
+  <when>ACT IV</when>
+  <when>ACT V</when>
+</speaks>
+
+Process finished with exit code 0
