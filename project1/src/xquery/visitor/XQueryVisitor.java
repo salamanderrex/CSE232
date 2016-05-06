@@ -15,214 +15,214 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 //    private XqEvaluator xqEval = new XqEvaluator(this, qc);
 //    private FLWREvaluator FLWREval = new FLWREvaluator(this, qc);
 //    private CondEvaluator condEval = new CondEvaluator(this, qc);
-    private MyXQueryEvaluator Evaluaotr = new MyXQueryEvaluator(this,qc);
+    private MyXQueryEvaluator Evaluator = new MyXQueryEvaluator(this,qc);
 
     /** APS **/
 
     @Override
     public XQueryList visitAp(@NotNull XQueryParser.ApContext ctx) {
-        return Evaluaotr.evalAp(ctx);
+        return Evaluator.evalAp(ctx);
     }
 
     /** RPS **/
 
     @Override
     public XQueryList visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
-        return Evaluaotr.evalTagName(ctx);
+        return Evaluator.evalTagName(ctx);
     }
 
     @Override
     public XQueryList visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
-        return Evaluaotr.evalWildCard();
+        return Evaluator.evalWildCard();
     }
 
     @Override
     public XQueryList visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
-        return Evaluaotr.evalDot();
+        return Evaluator.evalDot();
     }
 
     @Override
     public XQueryList visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
-        return Evaluaotr.evalDotDot();
+        return Evaluator.evalDotDot();
     }
 
     @Override
     public XQueryList visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        return Evaluaotr.evalText();
+        return Evaluator.evalText();
     }
 
     @Override
     public XQueryList visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
-        return Evaluaotr.evalParen(ctx);
+        return Evaluator.evalParen(ctx);
     }
 
     @Override
     public XQueryList visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
 
-        return Evaluaotr.evalSlashes(ctx);
+        return Evaluator.evalSlashes(ctx);
     }
 
     @Override
     public XQueryList visitRpAttr(@NotNull XQueryParser.RpAttrContext ctx) {
-        return Evaluaotr.evalAttr(ctx);
+        return Evaluator.evalAttr(ctx);
     }
 
     @Override
     public XQueryList visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
-        return Evaluaotr.evalFilter(ctx);
+        return Evaluator.evalFilter(ctx);
     }
 
     @Override
     public XQueryList visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
-        return Evaluaotr.evalConcat(ctx);
+        return Evaluator.evalConcat(ctx);
     }
 
     /** FILTERS **/
 
     @Override
     public XQueryFilter visitFRp(@NotNull XQueryParser.FRpContext ctx) {
-        return Evaluaotr.evalFRp(ctx);
+        return Evaluator.evalFRp(ctx);
     }
 
     @Override
     public IXQueryValue visitFValEqual(@NotNull XQueryParser.FValEqualContext ctx) {
-        return Evaluaotr.evalValEqual(ctx);
+        return Evaluator.evalValEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitFIdEqual(@NotNull XQueryParser.FIdEqualContext ctx) {
-        return Evaluaotr.evalIdEqual(ctx);
+        return Evaluator.evalIdEqual(ctx);
     }
 
     @Override
     public XQueryFilter visitFParen(@NotNull XQueryParser.FParenContext ctx) {
-        return Evaluaotr.evalParen(ctx);
+        return Evaluator.evalParen(ctx);
     }
 
     @Override
     public XQueryFilter visitFAnd(@NotNull XQueryParser.FAndContext ctx) {
-        return Evaluaotr.evalAnd(ctx);
+        return Evaluator.evalAnd(ctx);
     }
 
     @Override
     public XQueryFilter visitFOr(@NotNull XQueryParser.FOrContext ctx) {
-        return Evaluaotr.evalOr(ctx);
+        return Evaluator.evalOr(ctx);
     }
 
     @Override
     public XQueryFilter visitFNot(@NotNull XQueryParser.FNotContext ctx) {
-        return Evaluaotr.evalNot(ctx);
+        return Evaluator.evalNot(ctx);
     }
 
     /** XQ **/
 
     @Override
     public IXQueryValue visitXqVar(@NotNull XQueryParser.XqVarContext ctx) {
-        return Evaluaotr.evalVar(ctx);
+        return Evaluator.evalVar(ctx);
     }
 
     @Override
     public IXQueryValue visitXqStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx) {
-        return Evaluaotr.evalStringConstant(ctx);
+        return Evaluator.evalStringConstant(ctx);
     }
 
     @Override
     public IXQueryValue visitXqAp(@NotNull XQueryParser.XqApContext ctx) {
-        return Evaluaotr.evalAp(ctx);
+        return Evaluator.evalAp(ctx);
     }
 
     @Override
     public IXQueryValue visitXqParenExpr(@NotNull XQueryParser.XqParenExprContext ctx) {
-        return Evaluaotr.evalParen(ctx);
+        return Evaluator.evalParen(ctx);
     }
 
     @Override
     public IXQueryValue visitXqConcat(@NotNull XQueryParser.XqConcatContext ctx) {
-        return Evaluaotr.evalConcat(ctx);
+        return Evaluator.evalConcat(ctx);
     }
 
     @Override
     public IXQueryValue visitXqSlash(@NotNull XQueryParser.XqSlashContext ctx) {
-        return Evaluaotr.evalSlashes(ctx);
+        return Evaluator.evalSlashes(ctx);
     }
 
     @Override
     public IXQueryValue visitXqTagName(@NotNull XQueryParser.XqTagNameContext ctx) {
-        return Evaluaotr.evalTagname(ctx);
+        return Evaluator.evalTagname(ctx);
     }
 
     @Override
     public IXQueryValue visitXqFLWR(@NotNull XQueryParser.XqFLWRContext ctx) {
-        return Evaluaotr.evalFLWR(ctx);
+        return Evaluator.evalFLWR(ctx);
     }
 
     @Override
     public IXQueryValue visitXqLet(@NotNull XQueryParser.XqLetContext ctx) {
-        return Evaluaotr.evalLet(ctx);
+        return Evaluator.evalLet(ctx);
     }
 
     /** FLOWR CLAUSES **/
 
     @Override
     public IXQueryValue visitForClause(@NotNull XQueryParser.ForClauseContext ctx) {
-        return Evaluaotr.evalFor(ctx);
+        return Evaluator.evalFor(ctx);
     }
 
     @Override
     public IXQueryValue visitLetClause(@NotNull XQueryParser.LetClauseContext ctx) {
-        return Evaluaotr.evalLet(ctx);
+        return Evaluator.evalLet(ctx);
     }
 
     @Override
     public IXQueryValue visitWhereClause(@NotNull XQueryParser.WhereClauseContext ctx) {
-        return Evaluaotr.evalWhere(ctx);
+        return Evaluator.evalWhere(ctx);
     }
 
     @Override
     public IXQueryValue visitReturnClause(@NotNull XQueryParser.ReturnClauseContext ctx) {
-        return Evaluaotr.evalReturn(ctx);
+        return Evaluator.evalReturn(ctx);
     }
 
     /** CONDITION CLAUSES **/
 
     @Override
     public IXQueryValue visitCondValEqual(@NotNull XQueryParser.CondValEqualContext ctx) {
-        return Evaluaotr.evalValEqual(ctx);
+        return Evaluator.evalValEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitCondIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx) {
-        return Evaluaotr.evalIdEqual(ctx);
+        return Evaluator.evalIdEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitCondEmpty(@NotNull XQueryParser.CondEmptyContext ctx) {
-        return Evaluaotr.evalEmpty(ctx);
+        return Evaluator.evalEmpty(ctx);
     }
 
     @Override
     public IXQueryValue visitCondSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx) {
-        return Evaluaotr.evalSomeSatis(ctx);
+        return Evaluator.evalSomeSatis(ctx);
     }
 
     @Override
     public IXQueryValue visitCondParenExpr(@NotNull XQueryParser.CondParenExprContext ctx) {
-        return Evaluaotr.evalParen(ctx);
+        return Evaluator.evalParen(ctx);
     }
 
     @Override
     public IXQueryValue visitCondAnd(@NotNull XQueryParser.CondAndContext ctx) {
-        return Evaluaotr.evalAnd(ctx);
+        return Evaluator.evalAnd(ctx);
     }
 
     @Override
     public IXQueryValue visitCondOr(@NotNull XQueryParser.CondOrContext ctx) {
-        return Evaluaotr.evalOr(ctx);
+        return Evaluator.evalOr(ctx);
     }
 
     @Override
     public IXQueryValue visitCondNot(@NotNull XQueryParser.CondNotContext ctx) {
-        return Evaluaotr.evalNot(ctx);
+        return Evaluator.evalNot(ctx);
     }
 
     @Override
@@ -232,6 +232,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitJoinClause(@NotNull XQueryParser.JoinClauseContext ctx) {
-        return Evaluaotr.evalJoin(ctx);
+        return Evaluator.evalJoin(ctx);
     }
 }
