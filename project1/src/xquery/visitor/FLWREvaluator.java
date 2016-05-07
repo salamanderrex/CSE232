@@ -2,7 +2,7 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import project1.xquery.saxTree.XMLElement;
+import project1.xquery.xmlElement.XMLElement;
 import project1.xquery.value.*;
 import project1.xquery.context.*;
 ;

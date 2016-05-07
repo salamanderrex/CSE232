@@ -1,5 +1,5 @@
 package project1.xquery.value;
-import project1.xquery.saxTree.XMLElement;
+import project1.xquery.xmlElement.XMLElement;
 
 import java.util.*;
 import java.util.function.Consumer;

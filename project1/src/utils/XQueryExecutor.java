@@ -2,7 +2,7 @@ package project1.utils;
 
 
 import project1.xquery.parser.*;
-import project1.xquery.saxTree.XMLElement;
+import project1.xquery.xmlElement.XMLElement;
 import project1.xquery.value.*;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;

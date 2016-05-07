@@ -3,7 +3,7 @@ package project1.xquery.main;
 
 import project1.utils.Debugger;
 import project1.utils.XQueryExecutor;
-import project1.xquery.saxTree.XMLElement;
+import project1.xquery.xmlElement.XMLElement;
 ;
 
 

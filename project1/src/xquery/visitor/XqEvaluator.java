@@ -3,7 +3,7 @@ package project1.xquery.visitor;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
-import project1.xquery.saxTree.*;
+import project1.xquery.xmlElement.*;
 import project1.xquery.context.*;
 import project1.utils.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -101,7 +101,7 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());
 
-        // Figure out whether to add result as text or child element
+        // Figure out whether to add result as text or child xmlElement
         for(XMLElement v : xq) {
             if(v.isConstantStr() )
                 res.add((XMLElement) v);
@@ -181,7 +181,7 @@ public class XqEvaluator extends XQueryEvaluator {
                         }
                 }
                 if(join){
-                    // Create new dummy element "Tuple" and add to result
+                    // Create new dummy xmlElement "Tuple" and add to result
                     XMLElement tuple = new XMLElement("tuple");
                     tuple.addAll(elem1.children());
                     tuple.addAll(elem2.children());
