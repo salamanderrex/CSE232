@@ -18,7 +18,12 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx){
-        return new XQueryList((new XMLElement(ctx.StringLiteral().getText())).textFlag =1);
+
+        // it will become < CASExxx> remove them
+        String text = ctx.StringLiteral().getText();
+        XMLElement t = new XMLElement(text.substring(1,text.length()-1));
+        t.textFlag =1;
+        return new XQueryList(t);
     }
 
     public XQueryList evalAp(@NotNull XQueryParser.XqApContext ctx) {

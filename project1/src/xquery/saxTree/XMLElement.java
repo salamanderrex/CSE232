@@ -9,7 +9,6 @@ import project1.xquery.value.XQueryList;
 import project1.xquery.saxTree.IXMLElement;
 
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,10 +21,11 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public boolean TextFlag() {
-        if (this.textFlag==1)
+        if (this.textFlag == 1)
             return true;
         return false;
     }
+
     public XMLElement(Element element) {
         elem = element;
     }
@@ -38,8 +38,7 @@ public class XMLElement implements IXMLElement {
     public void add(XMLElement child) {
 
 
-       this.elem.add(child.elem.createCopy());
-
+        this.elem.add(child.elem.createCopy());
 
 
     }
@@ -67,9 +66,9 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public XQueryList children() {
-        List<IXMLElement> values = new  ArrayList<IXMLElement>();
-        Iterator elementIterator =  this.elem.elementIterator();
-        while(elementIterator.hasNext()) {
+        List<IXMLElement> values = new ArrayList<IXMLElement>();
+        Iterator elementIterator = this.elem.elementIterator();
+        while (elementIterator.hasNext()) {
             Element tt = (Element) elementIterator.next();
             values.add(new XMLElement(tt));
         }
@@ -86,8 +85,7 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public String tag()
-    {
+    public String tag() {
         return elem.getName();
     }
 
@@ -97,13 +95,12 @@ public class XMLElement implements IXMLElement {
     }
 
 
-
     //??? what ?
     @Override
     public IXMLElement attrib(String attName) {
         // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
         // TODO: This is the root of all evil (returning null!)
-        String att = elem.valueOf("@"+attName);
+        String att = elem.valueOf("@" + attName);
         if (att == null)
             return null;
 
@@ -113,8 +110,8 @@ public class XMLElement implements IXMLElement {
         return new XMLElement(attEl);
     }
 
-    public String getAttribute(String attNAME,Element x) {
-        return x.valueOf("@"+attNAME);
+    public String getAttribute(String attNAME, Element x) {
+        return x.valueOf("@" + attNAME);
     }
 
     @Override
@@ -125,6 +122,13 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public boolean equalsRef(IXMLElement o) {
+        //text only compare content???????
+        if (this.textFlag == 1) {
+            XMLElement e = (XMLElement) o;
+            return this.elem.getText().equals(e.elem.getText());
+        }
+
+
         if (o instanceof XMLElement) {
             XMLElement e = (XMLElement) o;
             return elem.equals(e.elem);
@@ -135,9 +139,9 @@ public class XMLElement implements IXMLElement {
     @Override
     public List<String> getAttribNames() {
 
-        List <String> attributes = new ArrayList<>();
-        for ( Iterator i = this.elem.attributeIterator(); i.hasNext(); ) {
-            Attribute attr= (Attribute) i.next();
+        List<String> attributes = new ArrayList<>();
+        for (Iterator i = this.elem.attributeIterator(); i.hasNext(); ) {
+            Attribute attr = (Attribute) i.next();
             attributes.add(attr.getName());
         }
         return attributes;
@@ -157,8 +161,27 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public boolean equals(Object o) {
+        XMLElement e = (XMLElement) o;
+
+        if (e.textFlag == 1) {
+//            System.out.println("compare constant string");
+//            System.out.println(e.elem.getName());
+//            System.out.println(e.elem.asXML());
+//            System.out.print("xx"+e.elem.getData());
+//
+//            System.out.print("this"+ this.elem.asXML());
+//            System.out.print("this"+ this.elem.getText());
+            // System.out.println("elem"+this.elem.get());
+
+
+            return this.elem.getText().equals(e.elem.getName());
+        }
+
         if (o instanceof XMLElement) {
-            XMLElement e = (XMLElement) o;
+
+    //System.out.println("this"+this.elem.asXML());
+            //  System.out.println("e"+e.elem.asXML());
+
             return this.elem.asXML().equals(e.elem.asXML());
         }
         return false;
