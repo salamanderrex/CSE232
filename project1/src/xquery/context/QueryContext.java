@@ -1,6 +1,6 @@
 package project1.xquery.context;
+import project1.xquery.saxTree.XMLElement;
 import project1.xquery.value.*;
-import project1.xquery.saxTree.*;
 
 /**
  * Encapsulates everything that has to do with the context of a query: from
@@ -21,7 +21,7 @@ public class QueryContext {
         return nc.popContextElement();
     }
 
-    public void pushContextElement(IXMLElement elem) {
+    public void pushContextElement(XMLElement elem) {
         nc.pushContextElement(elem);
     }
 

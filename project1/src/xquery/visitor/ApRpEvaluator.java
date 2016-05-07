@@ -2,7 +2,6 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import org.dom4j.Element;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class ApRpEvaluator extends XQueryEvaluator {
 
@@ -118,7 +116,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     public XQueryList evalWildCard() {
         XQueryList res = new XQueryList();
 
-        for(IXMLElement context : qc.peekContextElement())
+        for(XMLElement context : qc.peekContextElement())
             res.addAll(context.children());
         return res;
     }
@@ -133,7 +131,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         ).collect(Collectors.toCollection(XQueryList::new)).unique();
         /* ^^^ is equal to vvv
         XQueryList res = new XQueryList();
-        for(IXMLElement e : qc.peekContextElement()) {
+        for(XMLElement e : qc.peekContextElement()) {
             res.add(e.parent().get(0));
         }
         return res.unique();
@@ -156,11 +154,13 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
         //modify here!!!!!!!!!!!
 
-        List<IXMLElement> values = new ArrayList<IXMLElement>();
+        List<XMLElement> values = new ArrayList<XMLElement>();
         Iterator elementIterator =  qc.peekContextElement().iterator();
         while(elementIterator.hasNext()) {
             XMLElement tt = (XMLElement) elementIterator.next();
-            values.add(new XMLElement(tt.elem));
+            XMLElement ntt = new XMLElement(tt.elem);
+            ntt.istext=1;
+            values.add(ntt);
         }
         XQueryList x =new XQueryList(values);
        // System.out.println(x.values);
@@ -168,7 +168,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         /* ^^^is equal to vvv*/
         /*
         XQueryList res = new XQueryList();
-        for(IXMLElement x : qc.peekContextElement()) {
+        for(XMLElement x : qc.peekContextElement()) {
             System.out.println(x.txt());
             res.add(x.txt());
         }
@@ -186,7 +186,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         if(attrib == null)
             return res;
 
-        for(IXMLElement x : qc.peekContextElement()) {
+        for(XMLElement x : qc.peekContextElement()) {
             if(x.attrib(attrib) != null)
                 res.add(x.attrib(attrib));
         }
@@ -230,7 +230,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList descendants = new XQueryList();
 
-        for(IXMLElement x : l) {
+        for(XMLElement x : l) {
             descendants.addAll(x.descendants());
         }
 
@@ -247,7 +247,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         // Evaluate rp to get x
         XQueryList xs = (XQueryList)visitor.visit(ctx.rp());
 
-        for(IXMLElement x : xs) {
+        for(XMLElement x : xs) {
             qc.pushContextElement(x);
             XQueryFilter y = (XQueryFilter)visitor.visit(ctx.f());
             qc.popContextElement();

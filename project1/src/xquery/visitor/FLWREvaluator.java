@@ -2,14 +2,11 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import project1.xquery.saxTree.XMLElement;
 import project1.xquery.value.*;
-import project1.xquery.visitor.*;
 import project1.xquery.context.*;
-import project1.xquery.saxTree.*;;
+;
 import project1.xquery.parser.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.jar.Pack200;
 
 public class FLWREvaluator extends XQueryEvaluator {
     public FLWREvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -26,7 +23,7 @@ public class FLWREvaluator extends XQueryEvaluator {
         VarEnvironmentList varEnvs = new VarEnvironmentList();
         XQueryList res = (XQueryList)visitor.visit(ctx.xq(var));
         if(var == ctx.xq().size() - 1){
-            for(IXMLElement elem : res){
+            for(XMLElement elem : res){
                 VarEnvironment currentVE = new VarEnvironment();
                 currentVE.putAll(previousVE);
                 currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
@@ -34,7 +31,7 @@ public class FLWREvaluator extends XQueryEvaluator {
             }
             return varEnvs;
         }
-        for (IXMLElement elem : res){
+        for (XMLElement elem : res){
             qc.pushContextElement(elem);
             VarEnvironment currentVE = previousVE.copy();
             currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));

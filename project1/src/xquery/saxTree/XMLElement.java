@@ -2,11 +2,7 @@
 package project1.xquery.saxTree;
 
 import org.dom4j.*;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import project1.xquery.value.XQueryList;
-import project1.xquery.saxTree.IXMLElement;
 
 
 import java.util.ArrayList;
@@ -14,15 +10,23 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class XMLElement implements IXMLElement {
+public class XMLElement {
     public Element elem;
 
-    public int textFlag = 0;
+    public int isconstantstring = 0;
+    public int istext = 0;
 
-    @Override
-    public boolean TextFlag() {
-        if (this.textFlag == 1)
+
+    public boolean isConstantStr() {
+        if (this.isconstantstring == 1)
             return true;
+        return false;
+    }
+
+    public boolean isText() {
+        if (this.istext==1 ) {
+            return true;
+        }
         return false;
     }
 
@@ -45,7 +49,7 @@ public class XMLElement implements IXMLElement {
 
 
     public void addAll(XQueryList list) {
-        for (IXMLElement e : list.values)
+        for (XMLElement e : list.values)
             this.add((XMLElement) e);
     }
 
@@ -53,7 +57,7 @@ public class XMLElement implements IXMLElement {
         elem.addText(txt);
     }
 
-    @Override
+
     public XQueryList parent() {
         XQueryList res = new XQueryList(1);
 
@@ -64,9 +68,9 @@ public class XMLElement implements IXMLElement {
         return res;
     }
 
-    @Override
+
     public XQueryList children() {
-        List<IXMLElement> values = new ArrayList<IXMLElement>();
+        List<XMLElement> values = new ArrayList<XMLElement>();
         Iterator elementIterator = this.elem.elementIterator();
         while (elementIterator.hasNext()) {
             Element tt = (Element) elementIterator.next();
@@ -75,30 +79,29 @@ public class XMLElement implements IXMLElement {
         return new XQueryList(values);
     }
 
-    @Override
+
     public XQueryList getChildByTag(String tagName) {
         XQueryList res = new XQueryList();
-        for (IXMLElement e : this.children())
+        for (XMLElement e : this.children())
             if (e.tag().equals(tagName))
                 res.add(e);
         return res;
     }
 
-    @Override
+
     public String tag() {
         return elem.getName();
     }
 
-    @Override
     public String txt() {
         return elem.getText();
     }
 
 
     //??? what ?
-    @Override
-    public IXMLElement attrib(String attName) {
-        // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
+
+    public XMLElement attrib(String attName) {
+        // TODO: This should not return an {@link XMLElement}, but probably an {@link IXQueryValue} of type Text, or something
         // TODO: This is the root of all evil (returning null!)
         String att = elem.valueOf("@" + attName);
         if (att == null)
@@ -114,16 +117,16 @@ public class XMLElement implements IXMLElement {
         return x.valueOf("@" + attNAME);
     }
 
-    @Override
+
     public String toString() {
         return this.elem.asXML();
 
     }
 
-    @Override
-    public boolean equalsRef(IXMLElement o) {
+
+    public boolean equalsRef(XMLElement o) {
         //text only compare content???????
-        if (this.textFlag == 1) {
+        if (this.isconstantstring == 1) {
             XMLElement e = (XMLElement) o;
             return this.elem.getText().equals(e.elem.getText());
         }
@@ -136,7 +139,7 @@ public class XMLElement implements IXMLElement {
         return false;
     }
 
-    @Override
+
     public List<String> getAttribNames() {
 
         List<String> attributes = new ArrayList<>();
@@ -147,53 +150,57 @@ public class XMLElement implements IXMLElement {
         return attributes;
     }
 
-    @Override
     public XQueryList descendants() {
         XQueryList res = new XQueryList();
         res.add(this);
 
-        for (IXMLElement e : children()) {
+        for (XMLElement e : children()) {
             res.add(e);
             res.addAll(e.descendants());
         }
         return res;
     }
 
-    @Override
+
     public boolean equals(Object o) {
         XMLElement e = (XMLElement) o;
 
-        if (e.textFlag == 1) {
+        if (e.isconstantstring == 1) {
 //            System.out.println("compare constant string");
-//            System.out.println(e.elem.getName());
-//            System.out.println(e.elem.asXML());
-//            System.out.print("xx"+e.elem.getData());
+//            System.out.println("elem" + e.elem.getName());
+//            System.out.println("elem" + e.elem.asXML());
+//            System.out.print("elem" + e.elem.getText());
 //
-//            System.out.print("this"+ this.elem.asXML());
-//            System.out.print("this"+ this.elem.getText());
-            // System.out.println("elem"+this.elem.get());
+//
+//            System.out.println("this" + this.elem.getName());
+//            System.out.print("this" + this.elem.asXML());
+//            System.out.print("this" + this.elem.getText());
 
 
             return this.elem.getText().equals(e.elem.getName());
         }
 
-        if (o instanceof XMLElement) {
+        if (e.isText() && this.isText()) {
+            //System.out.println("here!!!!");
+            return this.elem.getText().equals(e.elem.getText());
+        }
 
-    //System.out.println("this"+this.elem.asXML());
-            //  System.out.println("e"+e.elem.asXML());
+        if (o instanceof XMLElement) {
+//
+//            System.out.println("this" + this.elem.asXML());
+//            System.out.println("e" + e.elem.asXML());
 
             return this.elem.asXML().equals(e.elem.asXML());
         }
         return false;
     }
 
-    @Override
     public boolean childrenEquals(Object o) {
         if (o instanceof XMLElement) {
             XMLElement e = (XMLElement) o;
 
-            for (IXMLElement e1 : this.children())
-                for (IXMLElement e2 : e.children())
+            for (XMLElement e1 : this.children())
+                for (XMLElement e2 : e.children())
                     if (!e1.equals(e2))
                         return false;
             return true;
@@ -201,7 +208,7 @@ public class XMLElement implements IXMLElement {
         return false;
     }
 
-    @Override
+   
     public String toCompactString() {
         return this.elem.asXML();
     }

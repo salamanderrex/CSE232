@@ -22,7 +22,7 @@ public class XqEvaluator extends XQueryEvaluator {
         // it will become < CASExxx> remove them
         String text = ctx.StringLiteral().getText();
         XMLElement t = new XMLElement(text.substring(1,text.length()-1));
-        t.textFlag =1;
+        t.isconstantstring =1;
         return new XQueryList(t);
     }
 
@@ -65,7 +65,7 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList l = (XQueryList)visitor.visit(ctx.xq());
         XQueryList descendants = new XQueryList();
 
-        for(IXMLElement x : l) {
+        for(XMLElement x : l) {
             descendants.addAll(x.descendants());
         }
 
@@ -102,8 +102,8 @@ public class XqEvaluator extends XQueryEvaluator {
         XMLElement res = new XMLElement(ctx.open.getText());
 
         // Figure out whether to add result as text or child element
-        for(IXMLElement v : xq) {
-            if(v.TextFlag() )
+        for(XMLElement v : xq) {
+            if(v.isConstantStr() )
                 res.add((XMLElement) v);
             else
                 res.add((XMLElement)v);
@@ -166,15 +166,15 @@ public class XqEvaluator extends XQueryEvaluator {
         List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
 
-        for(IXMLElement elem1 : list1)
-            for(IXMLElement elem2 : list2) {
+        for(XMLElement elem1 : list1)
+            for(XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
                     // Get elements to join on
                     XQueryList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     XQueryList list2Elems = elem2.getChildByTag(joinVars2.get(i));
-                    for (IXMLElement listElem1 : list1Elems)
-                        for (IXMLElement listElem2 : list2Elems) {
+                    for (XMLElement listElem1 : list1Elems)
+                        for (XMLElement listElem2 : list2Elems) {
                             if (!listElem1.childrenEquals(listElem2)) {
                                 join = false;
                             }
