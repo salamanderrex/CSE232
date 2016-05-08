@@ -181,7 +181,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
         Iterator elementIterator = qc.peekContextElement().iterator();
         while (elementIterator.hasNext()) {
             XMLElement tt = (XMLElement) elementIterator.next();
-            XMLElement ntt = new XMLElement(tt.elem);
+            XMLElement ntt = new XMLElement(tt.elem.getText());
+
             ntt.istext = 1;
             values.add(ntt);
         }

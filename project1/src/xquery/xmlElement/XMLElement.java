@@ -41,8 +41,15 @@ public class XMLElement {
 
     public void add(XMLElement child) {
 
+      //  System.out.println("add"+child.toString());
+      //  System.out.println("add"+child.elem.getName());
+        if (child.isText()) {
+        //    System.out.println("is text");
+            this.elem.addText(child.elem.getName());
+        }
 
-        this.elem.add(child.elem.createCopy());
+        else
+         this.elem.add(child.elem.createCopy());
 
 
     }
@@ -119,6 +126,7 @@ public class XMLElement {
 
 
     public String toString() {
+
         return this.elem.asXML();
 
     }
@@ -177,12 +185,13 @@ public class XMLElement {
 //            System.out.print("this" + this.elem.getText());
 
 
-            return this.elem.getText().equals(e.elem.getName());
+           // return this.elem.getText().equals(e.elem.getName());
+            return this.elem.getName().equals(e.elem.getName());
         }
 
         if (e.isText() && this.isText()) {
             //System.out.println("here!!!!");
-            return this.elem.getText().equals(e.elem.getText());
+            return this.elem.getName().equals(e.elem.getName());
         }
 
         if (o instanceof XMLElement) {

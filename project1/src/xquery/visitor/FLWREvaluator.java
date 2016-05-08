@@ -53,6 +53,7 @@ public class FLWREvaluator extends XQueryEvaluator {
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
             ve.put(ctx.Var(i).getText(), res);
+            qc.pushVarEnv(ve);
         }
         return ve;
     }
