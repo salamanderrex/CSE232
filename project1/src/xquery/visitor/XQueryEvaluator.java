@@ -2,9 +2,7 @@ package project1.xquery.visitor;
 
 
 import project1.xquery.value.*;
-import project1.xquery.visitor.*;
 import project1.xquery.context.*;
-import project1.xquery.xmltree.*;
 import project1.xquery.parser.*;
 
 public class XQueryEvaluator {

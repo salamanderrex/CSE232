@@ -2,31 +2,55 @@ package project1.xquery.visitor;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.xmlElement.*;
 import project1.xquery.context.*;
 import project1.utils.*;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class ApRpEvaluator extends XQueryEvaluator {
 
     public int readFileCounter;
     public XQueryList cachedXQueryList;
+
     public ApRpEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
         readFileCounter = 0;
-        cachedXQueryList= null;
+        cachedXQueryList = null;
     }
 
-    public XQueryList evalAp(@NotNull  XQueryParser.ApContext ctx) {
-       // System.out.println("start ap xml document");
-        if (readFileCounter ==0) {
-            XMLDocument document = new XMLDocument(ctx.fileName.getText());
+    public XQueryList evalAp(@NotNull XQueryParser.ApContext ctx) {
+        // System.out.println("start ap xml document");
+        Document doc=null;
+        XMLElement freshRoot =null;
+
+        if (readFileCounter <=1) {
+
+            try {
+                String filename = ctx.fileName.getText();
+                System.out.println("to read the xml file ......" +filename);
+                File inputFile = new File(System.getProperty("user.dir").toString() + "/" + filename.substring(1, filename.length() - 1));
+                SAXReader reader = new SAXReader();
+                doc = reader.read(inputFile);
+                freshRoot = new XMLElement(doc.getRootElement());
+
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (readFileCounter == 0) {
+            // XMLDocument document = new XMLDocument(ctx.fileName.getText());
             XQueryList results = new XQueryList();
 
         /* Replace the below code with this commented out code
@@ -38,15 +62,15 @@ public class ApRpEvaluator extends XQueryEvaluator {
         qc.pushContextElement(root);
         */
 
-            qc.pushContextElement(document.root());
+            qc.pushContextElement(freshRoot);
 
-            switch(ctx.slash.getType()) {
+            switch (ctx.slash.getType()) {
                 case XQueryParser.SLASH:
-                    results.addAll((XQueryList)visitor.visit(ctx.rp()));
+                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 case XQueryParser.SSLASH:
-                    qc.pushContextElement(document.root().descendants());
-                    results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
+                    qc.pushContextElement(freshRoot.descendants());
+                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 default:
                     Debugger.error("Oops, shouldn't be here");
@@ -56,9 +80,9 @@ public class ApRpEvaluator extends XQueryEvaluator {
             return results.unique();
         }
 
-        if (readFileCounter ==1) {
+        if (readFileCounter == 1) {
 
-            XMLDocument document = new XMLDocument(ctx.fileName.getText());
+          //  XMLDocument document = new XMLDocument(ctx.fileName.getText());
             XQueryList results = new XQueryList();
 
         /* Replace the below code with this commented out code
@@ -70,15 +94,15 @@ public class ApRpEvaluator extends XQueryEvaluator {
         qc.pushContextElement(root);
         */
 
-            qc.pushContextElement(document.root());
+            qc.pushContextElement(freshRoot);
 
-            switch(ctx.slash.getType()) {
+            switch (ctx.slash.getType()) {
                 case XQueryParser.SLASH:
-                    results.addAll((XQueryList)visitor.visit(ctx.rp()));
+                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 case XQueryParser.SSLASH:
-                    qc.pushContextElement(document.root().descendants());
-                    results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
+                    qc.pushContextElement(freshRoot.descendants());
+                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 default:
                     Debugger.error("Oops, shouldn't be here");
@@ -93,14 +117,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     }
 
-    public XQueryList evalTagName(@NotNull  XQueryParser.RpTagNameContext ctx) {
+    public XQueryList evalTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
         String tagName = ctx.getText();
-       // System.out.println("in evalTagName tagName: "+tagName);
+        // System.out.println("in evalTagName tagName: "+tagName);
 /*
         XQueryList  context = qc.peekContextElement();
         XQueryList  context2 = evalWildCard();
         */
-        XQueryList x =  evalWildCard().stream().filter(
+        XQueryList x = evalWildCard().stream().filter(
                 e -> e.tag().equalsIgnoreCase(tagName)
         ).collect(Collectors.toCollection(XQueryList::new));
 
@@ -115,7 +139,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     public XQueryList evalWildCard() {
         XQueryList res = new XQueryList();
 
-        for(IXMLElement context : qc.peekContextElement())
+        for (XMLElement context : qc.peekContextElement())
             res.addAll(context.children());
         return res;
     }
@@ -130,7 +154,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         ).collect(Collectors.toCollection(XQueryList::new)).unique();
         /* ^^^ is equal to vvv
         XQueryList res = new XQueryList();
-        for(IXMLElement e : qc.peekContextElement()) {
+        for(XMLElement e : qc.peekContextElement()) {
             res.add(e.parent().get(0));
         }
         return res.unique();
@@ -139,7 +163,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryList evalText() {
         //System.out.println("nc is ctxElems " );
-       // System.out.println(qc.nc.ctxElems );
+        // System.out.println(qc.nc.ctxElems );
         /*
         System.out.println("st var env is " );
         Iterator <VarEnvironment> it = qc.st.varEnv.iterator();
@@ -149,14 +173,26 @@ public class ApRpEvaluator extends XQueryEvaluator {
         }
 
 */
-        XQueryList x =qc.peekContextElement().stream().map(
-                IXMLElement::txt).collect(Collectors.toCollection(XQueryList::new));
-       // System.out.println(x.values);
-       return x;
+
+
+        //modify here!!!!!!!!!!!
+
+        List<XMLElement> values = new ArrayList<XMLElement>();
+        Iterator elementIterator = qc.peekContextElement().iterator();
+        while (elementIterator.hasNext()) {
+            XMLElement tt = (XMLElement) elementIterator.next();
+            XMLElement ntt = new XMLElement(tt.elem.getText());
+
+            ntt.istext = 1;
+            values.add(ntt);
+        }
+        XQueryList x = new XQueryList(values);
+        // System.out.println(x.values);
+        return x;
         /* ^^^is equal to vvv*/
         /*
         XQueryList res = new XQueryList();
-        for(IXMLElement x : qc.peekContextElement()) {
+        for(XMLElement x : qc.peekContextElement()) {
             System.out.println(x.txt());
             res.add(x.txt());
         }
@@ -171,23 +207,23 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryList res = new XQueryList(qc.peekContextElement().size());
 
         // If @ followed by nothing
-        if(attrib == null)
+        if (attrib == null)
             return res;
 
-        for(IXMLElement x : qc.peekContextElement()) {
-            if(x.attrib(attrib) != null)
+        for (XMLElement x : qc.peekContextElement()) {
+            if (x.attrib(attrib) != null)
                 res.add(x.attrib(attrib));
         }
         return res;
     }
 
-    public XQueryList evalParen(@NotNull  XQueryParser.RpParenExprContext ctx) {
-        return (XQueryList)visitor.visit(ctx.rp());
+    public XQueryList evalParen(@NotNull XQueryParser.RpParenExprContext ctx) {
+        return (XQueryList) visitor.visit(ctx.rp());
     }
 
-    public XQueryList evalSlashes(@NotNull  XQueryParser.RpSlashContext ctx) {
+    public XQueryList evalSlashes(@NotNull XQueryParser.RpSlashContext ctx) {
         XQueryList results = new XQueryList();
-        switch(ctx.slash.getType()) {
+        switch (ctx.slash.getType()) {
             case XQueryParser.SLASH:
                 results = evalRpSlash(ctx);
                 break;
@@ -201,55 +237,55 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results;
     }
 
-    private XQueryList evalRpSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
-       // System.out.println("in evalRpSlash ");
+    private XQueryList evalRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        // System.out.println("in evalRpSlash ");
         XQueryList y = new XQueryList();
-        XQueryList x = (XQueryList)visitor.visit(ctx.left);
+        XQueryList x = (XQueryList) visitor.visit(ctx.left);
 
         qc.pushContextElement(x);
-        XQueryList context = (XQueryList)visitor.visit(ctx.right);
+        XQueryList context = (XQueryList) visitor.visit(ctx.right);
         y.addAll(context);
 
         qc.popContextElement();
         return y.unique();
     }
 
-    private XQueryList evalRpSlashSlash(@NotNull  XQueryParser.RpSlashContext ctx) {
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
+    private XQueryList evalRpSlashSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        XQueryList l = (XQueryList) visitor.visit(ctx.left);
         XQueryList descendants = new XQueryList();
 
-        for(IXMLElement x : l) {
+        for (XMLElement x : l) {
             descendants.addAll(x.descendants());
         }
 
         qc.pushContextElement(descendants);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        XQueryList r = (XQueryList) visitor.visit(ctx.right);
         qc.popContextElement();
 
         return r.unique();
     }
 
-    public XQueryList evalFilter(@NotNull  XQueryParser.RpFilterContext ctx) {
+    public XQueryList evalFilter(@NotNull XQueryParser.RpFilterContext ctx) {
         XQueryList res = new XQueryList();
 
         // Evaluate rp to get x
-        XQueryList xs = (XQueryList)visitor.visit(ctx.rp());
+        XQueryList xs = (XQueryList) visitor.visit(ctx.rp());
 
-        for(IXMLElement x : xs) {
+        for (XMLElement x : xs) {
             qc.pushContextElement(x);
-            XQueryFilter y = (XQueryFilter)visitor.visit(ctx.f());
+            XQueryFilter y = (XQueryFilter) visitor.visit(ctx.f());
             qc.popContextElement();
 
-            if(y == XQueryFilter.trueValue())
+            if (y == XQueryFilter.trueValue())
                 res.add(x);
         }
         return res;
     }
 
-    public XQueryList evalConcat(@NotNull  XQueryParser.RpConcatContext ctx) {
+    public XQueryList evalConcat(@NotNull XQueryParser.RpConcatContext ctx) {
         //System.out.println("in aprp concat");
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        XQueryList l = (XQueryList) visitor.visit(ctx.left);
+        XQueryList r = (XQueryList) visitor.visit(ctx.right);
 
         l.addAll(r);
         return l;

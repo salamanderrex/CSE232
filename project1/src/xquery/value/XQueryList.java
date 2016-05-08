@@ -1,12 +1,13 @@
 package project1.xquery.value;
-import project1.xquery.xmltree.*;
+import project1.xquery.xmlElement.XMLElement;
+
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collection<IXMLElement>, List<IXMLElement> {
-    public List<IXMLElement> values;
+public class XQueryList implements IXQueryValue, Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
+    public List<XMLElement> values;
 
     public XQueryList(int size) {
         this.values = new ArrayList<>(size);
@@ -16,12 +17,14 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         this(10);
     }
 
-    public XQueryList(IXMLElement e) {
+
+
+    public XQueryList(XMLElement e) {
         this(1);
         values.add(e);
     }
 
-    public XQueryList(List<IXMLElement> values) {
+    public XQueryList(List<XMLElement> values) {
         this.values = values;
     }
 
@@ -39,16 +42,16 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         return results;
     }
 
-    private boolean containsRef(List<IXMLElement> list, IXMLElement elem) {
-        for (IXMLElement x : list)
+    private boolean containsRef(List<XMLElement> list, XMLElement elem) {
+        for (XMLElement x : list)
             if (!(x == null) && x.equalsRef(elem))
                 return true;
         return false;
     }
 
     public XQueryFilter equalsId(XQueryList o) {
-        for(IXMLElement x : this)
-            for(IXMLElement y : o)
+        for(XMLElement x : this)
+            for(XMLElement y : o)
                 if(x.equalsRef(y))
                     return XQueryFilter.trueValue();
         return XQueryFilter.falseValue();
@@ -71,8 +74,8 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     public XQueryFilter equalsVal(XQueryList o) {
-        for(IXMLElement x : this)
-            for(IXMLElement y : o)
+        for(XMLElement x : this)
+            for(XMLElement y : o)
                 if(x.equals(y))
                     return XQueryFilter.trueValue();
         return XQueryFilter.falseValue();
@@ -99,7 +102,7 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public Iterator<IXMLElement> iterator() {
+    public Iterator<XMLElement> iterator() {
         return values.iterator();
     }
 
@@ -114,7 +117,7 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public boolean add(IXMLElement e) {
+    public boolean add(XMLElement e) {
         return e != null && values.add(e);
     }
 
@@ -129,15 +132,15 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public boolean addAll(Collection<? extends IXMLElement> c) {
+    public boolean addAll(Collection<? extends XMLElement> c) {
         boolean result = false;
-        for (IXMLElement x : c)
+        for (XMLElement x : c)
             result |= add(x);
         return result;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends IXMLElement> c) {
+    public boolean addAll(int index, Collection<? extends XMLElement> c) {
         return values.addAll(index, c);
     }
 
@@ -147,7 +150,7 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public boolean removeIf(Predicate<? super IXMLElement> filter) {
+    public boolean removeIf(Predicate<? super XMLElement> filter) {
         return values.removeIf(filter);
     }
 
@@ -162,7 +165,7 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public IXMLElement get(int index) {
+    public XMLElement get(int index) {
         if (values.size() > 0)
             return values.get(index);
         else
@@ -170,17 +173,17 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public IXMLElement set(int index, IXMLElement element) {
+    public XMLElement set(int index, XMLElement element) {
         return values.set(index, element);
     }
 
     @Override
-    public void add(int index, IXMLElement element) {
+    public void add(int index, XMLElement element) {
         values.add(index, element);
     }
 
     @Override
-    public IXMLElement remove(int index) {
+    public XMLElement remove(int index) {
         return values.remove(index);
     }
 
@@ -195,17 +198,17 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public ListIterator<IXMLElement> listIterator() {
+    public ListIterator<XMLElement> listIterator() {
         return values.listIterator();
     }
 
     @Override
-    public ListIterator<IXMLElement> listIterator(int index) {
+    public ListIterator<XMLElement> listIterator(int index) {
         return values.listIterator(index);
     }
 
     @Override
-    public List<IXMLElement> subList(int fromIndex, int toIndex) {
+    public List<XMLElement> subList(int fromIndex, int toIndex) {
         return values.subList(fromIndex, toIndex);
     }
 
@@ -220,12 +223,12 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public Stream<IXMLElement> stream() {
+    public Stream<XMLElement> stream() {
         return values.stream();
     }
 
     @Override
-    public Stream<IXMLElement> parallelStream() {
+    public Stream<XMLElement> parallelStream() {
         return values.parallelStream();
     }
 }

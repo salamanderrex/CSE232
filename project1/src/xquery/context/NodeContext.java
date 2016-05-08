@@ -1,7 +1,8 @@
 package project1.xquery.context;
 import java.util.Stack;
+
+import project1.xquery.xmlElement.XMLElement;
 import project1.xquery.value.*;
-import project1.xquery.xmltree.*;
 
 
 /**
@@ -17,25 +18,25 @@ public class NodeContext {
 
     public XQueryList peekContextElement() {
         XQueryList res = new XQueryList(this.ctxElems.peek().size());
-        for (IXMLElement x : this.ctxElems.peek())
+        for (XMLElement x : this.ctxElems.peek())
             if (x != null)
                 res.add(x);
         return res;
     }
 
     /**
-     * Gets the current context element (WARNING: this pops it from the stack)
-     * @return the {@link IXMLElement} we are currently exploring
+     * Gets the current context xmlElement (WARNING: this pops it from the stack)
+     * @return the {@link XMLElement} we are currently exploring
      */
     public XQueryList popContextElement() {
         return this.ctxElems.pop();
     }
 
     /**
-     * Pushes an element/tree onto the context stack.
-     * @param elem the tree/element to be added as context
+     * Pushes an xmlElement/tree onto the context stack.
+     * @param elem the tree/xmlElement to be added as context
      */
-    public void pushContextElement(IXMLElement elem) {
+    public void pushContextElement(XMLElement elem) {
         this.ctxElems.push(new XQueryList(elem));
     }
 

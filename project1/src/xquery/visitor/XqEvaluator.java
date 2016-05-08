@@ -3,10 +3,12 @@ package project1.xquery.visitor;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.value.*;
 import project1.xquery.parser.*;
-import project1.xquery.xmltree.*;
+import project1.xquery.xmlElement.*;
 import project1.xquery.context.*;
 import project1.utils.*;
 import org.antlr.v4.runtime.misc.NotNull;
+import sun.invoke.util.VerifyAccess;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,12 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx){
-        return new XQueryList(new XMLText(ctx.StringLiteral().getText()));
+
+        // it will become < CASExxx> remove them
+        String text = ctx.StringLiteral().getText();
+        XMLElement t = new XMLElement(text.substring(1,text.length()-1));
+        t.isconstantstring =1;
+        return new XQueryList(t);
     }
 
     public XQueryList evalAp(@NotNull XQueryParser.XqApContext ctx) {
@@ -59,7 +66,7 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList l = (XQueryList)visitor.visit(ctx.xq());
         XQueryList descendants = new XQueryList();
 
-        for(IXMLElement x : l) {
+        for(XMLElement x : l) {
             descendants.addAll(x.descendants());
         }
 
@@ -95,11 +102,11 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());
 
-        // Figure out whether to add result as text or child element
-        for(IXMLElement v : xq) {
-            if(v instanceof XMLText)
-                res.add((XMLText)v);
-            else if(v instanceof XMLElement)
+        // Figure out whether to add result as text or child xmlElement
+        for(XMLElement v : xq) {
+            if(v.isConstantStr() )
+                res.add((XMLElement) v);
+            else
                 res.add((XMLElement)v);
         }
 
@@ -118,8 +125,46 @@ public class XqEvaluator extends XQueryEvaluator {
             }
 
             if(ctx.whereClause() != null) {
-                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+//
+//                if(ctx.letClause() != null) {
+//                    if (ctx.letClause().xq().size()==1) {
+//                        if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+//                            res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+//                    } else if (ctx.letClause().xq().size()==2){
+//                        // now you have magic
+//                        //$sc size 3, $sp size 142. then what?
+//                        //var 1
+//                        //String var1 = ctx.letClause().Var(0).getText();
+//                        String var2  = ctx.letClause().Var(1).getText();
+//                      //  for (int i = 0 ; i < qc.st.getVar(var1).size(); i++) {
+//                            for (int j = 0 ; j < qc.st.getVar(var2).size(); j ++ ) {
+//
+//
+//                                VarEnvironment v = qc.cloneVarEnv();
+//                               // XMLElement e1 = v.get(var1).get(i);
+//                                XMLElement e2 = v.get(var2).get(j);
+//                               // v.get(var1).clear();
+//                                v.get(var2).clear();
+//                               // v.get(var1).add(e1);
+//                                v.get(var2).add(e2);
+//                                qc.pushVarEnv(v);
+//                                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+//                                {
+//                                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+//                                }
+//                                qc.popVarEnv();
+//
+//                            }
+//
+//                       // }
+//                    } else {
+//                        System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
+//                    }
+//                } else {
+                    if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+                        res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+//                }
+
             }
             else
                 res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
@@ -127,7 +172,9 @@ public class XqEvaluator extends XQueryEvaluator {
             qc.popVarEnv();
 
             if(ctx.letClause() != null)
-                qc.popVarEnv();
+                for(int i = 0 ; i < ctx.letClause().xq().size(); i ++)  {
+                    qc.popVarEnv();
+                }
 
         }
         return res;
@@ -160,22 +207,22 @@ public class XqEvaluator extends XQueryEvaluator {
         List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
 
-        for(IXMLElement elem1 : list1)
-            for(IXMLElement elem2 : list2) {
+        for(XMLElement elem1 : list1)
+            for(XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
                     // Get elements to join on
                     XQueryList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     XQueryList list2Elems = elem2.getChildByTag(joinVars2.get(i));
-                    for (IXMLElement listElem1 : list1Elems)
-                        for (IXMLElement listElem2 : list2Elems) {
+                    for (XMLElement listElem1 : list1Elems)
+                        for (XMLElement listElem2 : list2Elems) {
                             if (!listElem1.childrenEquals(listElem2)) {
                                 join = false;
                             }
                         }
                 }
                 if(join){
-                    // Create new dummy element "Tuple" and add to result
+                    // Create new dummy xmlElement "Tuple" and add to result
                     XMLElement tuple = new XMLElement("tuple");
                     tuple.addAll(elem1.children());
                     tuple.addAll(elem2.children());
