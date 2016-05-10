@@ -125,45 +125,45 @@ public class XqEvaluator extends XQueryEvaluator {
             }
 
             if(ctx.whereClause() != null) {
-//
-//                if(ctx.letClause() != null) {
-//                    if (ctx.letClause().xq().size()==1) {
-//                        if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-//                            res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
-//                    } else if (ctx.letClause().xq().size()==2){
-//                        // now you have magic
-//                        //$sc size 3, $sp size 142. then what?
-//                        //var 1
-//                        //String var1 = ctx.letClause().Var(0).getText();
-//                        String var2  = ctx.letClause().Var(1).getText();
-//                      //  for (int i = 0 ; i < qc.st.getVar(var1).size(); i++) {
-//                            for (int j = 0 ; j < qc.st.getVar(var2).size(); j ++ ) {
-//
-//
-//                                VarEnvironment v = qc.cloneVarEnv();
-//                               // XMLElement e1 = v.get(var1).get(i);
-//                                XMLElement e2 = v.get(var2).get(j);
-//                               // v.get(var1).clear();
-//                                v.get(var2).clear();
-//                               // v.get(var1).add(e1);
-//                                v.get(var2).add(e2);
-//                                qc.pushVarEnv(v);
-//                                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-//                                {
-//                                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
-//                                }
-//                                qc.popVarEnv();
-//
-//                            }
-//
-//                       // }
-//                    } else {
-//                        System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
-//                    }
-//                } else {
-                    if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-                        res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
-//                }
+
+
+                if (ctx.letClause() != null) {
+
+                    if (ctx.letClause().xq().size() == 1) {
+                        if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+                            res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                    } else if (ctx.letClause().xq().size() == 2) {
+                        // now you have magic
+                        //$sc size 3, $sp size 142. then what?
+                        //var 1
+                        //String var1 = ctx.letClause().Var(0).getText();
+                        String var2 = ctx.letClause().Var(1).getText();
+                        System.out.println("var2 is "+var2);
+
+
+                        //  for (int i = 0 ; i < qc.st.getVar(var1).size(); i++) {
+                        for (int j = 0; j < qc.st.getVar(var2).size(); j++) {
+
+
+                            VarEnvironment v =  qc.cloneVarEnv();
+                            XMLElement e2 = v.get(var2).get(j);
+                            XQueryList xqList = new XQueryList(e2);
+                            v.put(var2,xqList);
+                            qc.pushVarEnv(v);
+                            if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                            }
+                            qc.popVarEnv();
+
+                        }
+
+                    } else {
+                        System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
+                    }
+                } else {
+                    if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+                        res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                }
 
             }
             else

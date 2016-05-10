@@ -7,7 +7,7 @@ import project1.xquery.value.*;
  * handling where the engine is in the XML tree, to what XQuery variables are in scope.
  */
 public class QueryContext {
-    private SymbolTable st = new SymbolTable();
+    public SymbolTable st = new SymbolTable();
     private NodeContext nc = new NodeContext();
 
     public QueryContext() {
