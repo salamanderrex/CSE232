@@ -13,17 +13,17 @@ public class FLWREvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public VarEnvironmentList evalFor(@NotNull XQueryParser.ForClauseContext ctx){
+    public VarEnvironmentList evalFor(@NotNull XQueryParser.ForClauseContext ctx) {
         VarEnvironmentList varEnvs = new VarEnvironmentList();
         varEnvs.addAll(getVarEnvs(0, ctx, qc.cloneVarEnv()));
         return varEnvs;
     }
 
-    private VarEnvironmentList getVarEnvs (int var, @NotNull XQueryParser.ForClauseContext ctx, VarEnvironment previousVE){
+    private VarEnvironmentList getVarEnvs(int var, @NotNull XQueryParser.ForClauseContext ctx, VarEnvironment previousVE) {
         VarEnvironmentList varEnvs = new VarEnvironmentList();
-        XQueryList res = (XQueryList)visitor.visit(ctx.xq(var));
-        if(var == ctx.xq().size() - 1){
-            for(XMLElement elem : res){
+        XQueryList res = (XQueryList) visitor.visit(ctx.xq(var));
+        if (var == ctx.xq().size() - 1) {
+            for (XMLElement elem : res) {
                 VarEnvironment currentVE = new VarEnvironment();
                 currentVE.putAll(previousVE);
                 currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
@@ -31,7 +31,7 @@ public class FLWREvaluator extends XQueryEvaluator {
             }
             return varEnvs;
         }
-        for (XMLElement elem : res){
+        for (XMLElement elem : res) {
             qc.pushContextElement(elem);
             VarEnvironment currentVE = previousVE.copy();
             currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
@@ -45,21 +45,35 @@ public class FLWREvaluator extends XQueryEvaluator {
 
     /**
      * Evaluates a let expression, thus updating the global scope
+     *
      * @param ctx list of xquery and variable expression
      */
-    public VarEnvironment evalLet(@NotNull XQueryParser.LetClauseContext ctx){
+    public VarEnvironment evalLet(@NotNull XQueryParser.LetClauseContext ctx) {
         VarEnvironment ve = qc.cloneVarEnv();
+        if (qc.letFilter==null) {
+            for (int i = 0; i < ctx.xq().size(); i++) {
+                XQueryList res = (XQueryList) visitor.visit(ctx.xq(i));
+                ve.put(ctx.Var(i).getText(), res);
+                qc.pushVarEnv(ve);
+            }
 
-        for(int i = 0; i < ctx.xq().size(); i++) {
-            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            ve.put(ctx.Var(i).getText(), res);
-            qc.pushVarEnv(ve);
+        } else {
+            for (int i = 0; i < ctx.xq().size(); i++) {
+                XQueryList res = (XQueryList) visitor.visit(ctx.xq(i));
+                if (!qc.letFilter[i]) {
+                    ve.put(ctx.Var(i).getText(), res);
+                    qc.pushVarEnv(ve);
+                }
+
+            }
         }
+
+
         return ve;
     }
 
-    public XQueryFilter evalWhere(@NotNull XQueryParser.WhereClauseContext ctx){
-        return (XQueryFilter)visitor.visit(ctx.cond());
+    public XQueryFilter evalWhere(@NotNull XQueryParser.WhereClauseContext ctx) {
+        return (XQueryFilter) visitor.visit(ctx.cond());
     }
 
     public XQueryList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
@@ -73,6 +87,6 @@ public class FLWREvaluator extends XQueryEvaluator {
 //
 //        }
 //        return xq;
-        return (XQueryList)visitor.visit(ctx.xq());
+        return (XQueryList) visitor.visit(ctx.xq());
     }
 }

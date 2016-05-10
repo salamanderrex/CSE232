@@ -184,66 +184,65 @@ public class XqEvaluator extends XQueryEvaluator {
                             }
                         }
 
-
+                        qc.letFilter = inWhereVariable;
                         //pop out previous let clause env
                         String var2 = null;
-                        for (int index =0 ; index < inWhereVariable.length ; index++) {
+                        for (int index = 0; index < inWhereVariable.length; index++) {
                             if (inWhereVariable[index]) {
-                                var2 =   ctx.letClause().Var(index).getText();
+                                var2 = ctx.letClause().Var(index).getText();
                             }
                         }
 
+
+                        boolean[] hit_ = new boolean[qc.st.getVar(var2).size()];
                         for (int j = 0; j < qc.st.getVar(var2).size(); j++) {
 
 
-                            VarEnvironment v =  qc.cloneVarEnv();
+                            VarEnvironment v = qc.cloneVarEnv();
                             XMLElement e2 = v.get(var2).get(j);
                             XQueryList xqList = new XQueryList(e2);
-                            v.put(var2,xqList);
+                            v.put(var2, xqList);
                             qc.pushVarEnv(v);
                             if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
-                                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                                hit_[j] = true;
+                                //pop out of the old let
+
+
+                                VarEnvironment letEnv = (VarEnvironment) visitor.visit(ctx.letClause());
+                                qc.pushVarEnv(letEnv);
+                                if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                                    res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                                }
+
+                                qc.popVarEnv();
                             }
                             qc.popVarEnv();
 
                         }
-
-                            for (int j = 0; j < qc.st.getVar(var2).size(); j++) {
-
-                                VarEnvironment v = qc.cloneVarEnv();
-                                XMLElement e2 = v.get(var2).get(j);
-                                XQueryList xqList = new XQueryList(e2);
-                                v.put(var2, xqList);
-                                qc.pushVarEnv(v);
-                                if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
-                                    res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
-                                }
-                                qc.popVarEnv();
-
-                            }
+                        qc.letFilter = null;
 
 
-                        }else{
-                            System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
-                        }
                     } else {
-                        if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-                            res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                        System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
                     }
+                } else {
+                    if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+                        res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                }
 
-                } else
-                    res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+            } else
+                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
 
-                qc.popVarEnv();
+            qc.popVarEnv();
 
-                if (ctx.letClause() != null)
-                    for (int i = 0; i < ctx.letClause().xq().size(); i++) {
-                        qc.popVarEnv();
-                    }
+            if (ctx.letClause() != null)
+                for (int i = 0; i < ctx.letClause().xq().size(); i++) {
+                    qc.popVarEnv();
+                }
 
-            }
-            return res;
         }
+        return res;
+    }
 
     public XQueryList evalLet(@NotNull XQueryParser.XqLetContext ctx) {
         // Changes a bunch of stuff within the global scope

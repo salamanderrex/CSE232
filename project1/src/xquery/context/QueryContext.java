@@ -9,7 +9,7 @@ import project1.xquery.value.*;
 public class QueryContext {
     public SymbolTable st = new SymbolTable();
     private NodeContext nc = new NodeContext();
-
+    public boolean [] letFilter = null;
     public QueryContext() {
     }
 
