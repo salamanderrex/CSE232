@@ -1,6 +1,11 @@
 
 
 
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import project1.utils.Debugger;
 import project1.utils.XQueryExecutor;
 import project1.xquery.xmlElement.XMLElement;
@@ -9,6 +14,7 @@ import project1.xquery.xmlElement.XMLElement;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,10 +24,10 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 9 ; i ++ ) {
-            String filename = System.getProperty("user.dir").toString() + "/testcases/Query"+i;
+        for (int i = 1; i <= 10; i++) {
+            String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
-            System.out.println("start querying........."+i+"query");
+            System.out.println("start querying........." + i + "query");
             List<XMLElement> result = new ArrayList<>();
             try {
                 result = XQueryExecutor.executeFromFile(filename);
@@ -32,14 +38,24 @@ public class Main {
 
             System.out.println(result.size() + " results below:");
             Integer j = 0;
+            Document document = DocumentHelper.createDocument();
+            Element root = document.addElement("xml");
             for (XMLElement c : result) {
                 Debugger.result("#" + j++);
-                System.out.println(c.toString());
+                //System.out.println(c.toString());
+                root.add(c.elem);
+            }
+            XMLWriter writer = null;
+            OutputFormat format = OutputFormat.createPrettyPrint();
+            try {
+                writer = new XMLWriter(System.out, format);
+                writer.write(document);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
 
         }
-
 
 
     }

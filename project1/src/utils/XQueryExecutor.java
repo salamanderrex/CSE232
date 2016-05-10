@@ -35,52 +35,6 @@ public class XQueryExecutor {
         return execute(new ANTLRInputStream(query));
     }
 
-    /*
-    public static void printResultsToFile(List<XMLElement> res, String path) {
-        SAXBuilder sb = new SAXBuilder();
-        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
-        String xml = "";
-
-        for(XMLElement e : res) {
-            xml += e.toCompactString();
-        }
-
-        try {
-
-            Document doc = sb.build(new StringReader(xml));
-
-            xout.output(doc, new FileWriter(path));
-
-        } catch (JDOMException | IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-    public static void printPrettyResults(List<XMLElement> result) {
-        if (result == null){
-            System.out.println("Result is null");
-            return;
-        }
-        System.out.println(result.size() + " results below:");
-        Integer i = 0;
-        for(XMLElement c : result) {
-            //Debugger.result("#" + i++);
-            System.out.println(c.toString());
-        }
-    }
-
-    public static void printCompactResults(List<XMLElement> result) {
-        if (result == null){
-            System.out.println("Result is null");
-            return;
-        }
-        System.out.println(result.size() + " results below:");
-        Integer i = 0;
-        for(XMLElement c : result) {
-            Debugger.result("#" + i++);
-            System.out.println(c.toCompactString());
-        }
-    }
 
     private static XQueryList execute(ANTLRInputStream input) {
         XQueryLexer lexer   = new XQueryLexer(input);
