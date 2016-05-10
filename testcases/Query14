@@ -1,0 +1,17 @@
+<result>
+{
+for	$a	in	document("j_caesar.xml")/ACT
+let	$sc:=	$a/SCENE,	$sp:=$sc/SPEECH, $l:= $sp/LINE
+where ($sp/LINE/text() ="That now on Pompey's basis lies along") or ($l/text()="That now on Pompey's basis lies along")
+return	<speaks>{
+<who>{$sp/SPEAKER/text()}</who>,
+<content>{$l/text()}</content>,
+<when>
+{<act>{$a/TITLE/text()}</act>,
+        <scene>{$sc/TITLE/text()}</scene>
+}
+</when>
+}
+</speaks>
+}
+</result>
