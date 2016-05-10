@@ -149,11 +149,11 @@ public class XqEvaluator extends XQueryEvaluator {
                         // ======================================
 
                         boolean[] inWhereVariable = new boolean[ctx.letClause().xq().size()];
-                        int temp = 0;
+
                         for (int varIndex = 0; varIndex < ctx.letClause().xq().size(); varIndex++) {
                             String var = ctx.letClause().Var(varIndex).getText();
                             //System.out.println("testing var is "+var);
-
+                            int temp = 0;
 
                             //  for (int i = 0 ; i < qc.st.getVar(var1).size(); i++) {
                             for (int j = 0; j < qc.st.getVar(var).size(); j++) {
@@ -169,7 +169,7 @@ public class XqEvaluator extends XQueryEvaluator {
                                         temp = 1;
                                     }
                                     if (temp == -1) {
-                                        //System.out.println(var + " is in where........");
+                                        System.out.println(var + " is in where........");
                                         qc.popVarEnv();
                                         inWhereVariable[varIndex] = true;
 
@@ -180,7 +180,7 @@ public class XqEvaluator extends XQueryEvaluator {
                                         temp = -1;
                                     }
                                     if (temp == 1) {
-                                        //System.out.println(var + " is in where......");
+                                        System.out.println(var + " is in where......");
                                         qc.popVarEnv();
                                         inWhereVariable[varIndex] = true;
                                         break;
