@@ -11,7 +11,9 @@ import sun.invoke.util.VerifyAccess;
 
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -139,6 +141,13 @@ public class XqEvaluator extends XQueryEvaluator {
                         //String var1 = ctx.letClause().Var(0).getText();
 
 
+                        // ======================================
+//                        Set<String> varInqc = qc.cloneVarEnv().keySet();
+//                        for (int i = 0 i < ctx.whereClause().cond().)
+
+
+                        // ======================================
+
                         boolean[] inWhereVariable = new boolean[ctx.letClause().xq().size()];
                         int temp = 0;
                         for (int varIndex = 0; varIndex < ctx.letClause().xq().size(); varIndex++) {
@@ -160,7 +169,7 @@ public class XqEvaluator extends XQueryEvaluator {
                                         temp = 1;
                                     }
                                     if (temp == -1) {
-                                        System.out.println(var + " is in where........");
+                                        //System.out.println(var + " is in where........");
                                         qc.popVarEnv();
                                         inWhereVariable[varIndex] = true;
 
@@ -171,7 +180,7 @@ public class XqEvaluator extends XQueryEvaluator {
                                         temp = -1;
                                     }
                                     if (temp == 1) {
-                                        System.out.println(var + " is in where......");
+                                        //System.out.println(var + " is in where......");
                                         qc.popVarEnv();
                                         inWhereVariable[varIndex] = true;
                                         break;
@@ -185,16 +194,32 @@ public class XqEvaluator extends XQueryEvaluator {
                         }
 
                         qc.letFilter = inWhereVariable;
-                        //pop out previous let clause env
-                        String var2 = null;
-                        for (int index = 0; index < inWhereVariable.length; index++) {
-                            if (inWhereVariable[index]) {
-                                var2 = ctx.letClause().Var(index).getText();
+                        /////// know what is in where
+
+
+                        HashSet<String> varset = new HashSet<>();
+
+                        for (int i = 0; i < inWhereVariable.length; i++) {
+                            if (inWhereVariable[i]) {
+                                varset.add(ctx.letClause().Var(i).getText());
                             }
                         }
+                        System.out.println(varset.size());
 
+                        //pop out previous let clause env
+//                        String var2 = null;
+//
+//
+//
+//                        for (int index = 0; index < inWhereVariable.length; index++) {
+//                            if (inWhereVariable[index]) {
+//                                var2 = ctx.letClause().Var(index).getText();
+//                            }
+//
+//                        }
+                        for (String var2 : varset){
 
-                        boolean[] hit_ = new boolean[qc.st.getVar(var2).size()];
+                            boolean[] hit_ = new boolean[qc.st.getVar(var2).size()];
                         for (int j = 0; j < qc.st.getVar(var2).size(); j++) {
 
 
@@ -220,6 +245,7 @@ public class XqEvaluator extends XQueryEvaluator {
 
                         }
                         qc.letFilter = null;
+                    }
 
 
                     } else {
