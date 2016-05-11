@@ -1,0 +1,15 @@
+<result>
+{
+for	$a	in	document("j_caesar.xml")/ACT
+let $l:= $a/SCENE/SPEECH/LINE
+where  $l/text()="That now on Pompey's basis lies along"
+return	<speaks>{
+<content>{$l/text()}</content>,
+<when>
+{<act>{$a/TITLE/text()}</act>
+}
+</when>
+}
+</speaks>
+}
+</result>

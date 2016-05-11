@@ -161,7 +161,7 @@ public class XqEvaluator extends XQueryEvaluator {
 
                 if (ctx.letClause() != null) {
 
-                    if (ctx.letClause().xq().size() == 1) {
+                    if (ctx.letClause().xq().size() == 0) {
                         if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
                             res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
                     } else if (ctx.letClause().xq().size() >= 1) {
@@ -175,10 +175,10 @@ public class XqEvaluator extends XQueryEvaluator {
                         //Set<String> varInqc = qc.cloneVarEnv().keySet();
                         visitor.visit(ctx.whereClause());
                         List<String> wherevar = qc.getWhereVar2();
-                        for (String s : wherevar) {
-                            System.out.print(s + ",");
-                        }
-                        System.out.println();
+//                        for (String s : wherevar) {
+//                            System.out.print(s + ",");
+//                        }
+//                        System.out.println();
 
                         int[] whereList = new int[wherevar.size()];
 
@@ -193,11 +193,11 @@ public class XqEvaluator extends XQueryEvaluator {
                             total = total * whereList[i];
                         }
 
-                        System.out.println("total possibility" + total);
+                        //System.out.println("total possibility" + total);
 
                         for (int i = 0; i < total; i++) {
                             //start from 0000
-                            System.out.println(Arrays.toString(counter));
+                           // System.out.println(Arrays.toString(counter));
 
                             VarEnvironment v = qc.cloneVarEnv();
                             for (int j = 0; j < counter.length; j++) {
@@ -214,7 +214,10 @@ public class XqEvaluator extends XQueryEvaluator {
                             }
 
                             qc.popVarEnv();
-                            Plusone(whereList,counter);
+
+                            if(i != total-1)
+                                Plusone(whereList,counter);
+
 
 
                         }
