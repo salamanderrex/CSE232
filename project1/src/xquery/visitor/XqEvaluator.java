@@ -41,19 +41,19 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList ans = qc.getVar(ctx.getText());
         //if (qc.firstVisitWhere) {
 
-            //return qc.getVar(ctx.getText());
+        //return qc.getVar(ctx.getText());
 
-            //Set<String> WhereVar = qc.getWhereVar();
-            List<String> WhereVar2 = qc.getWhereVar2();
-            if (qc.inwhere) {
-                //qc.getWhereVar().add(qc.getVar(ctx.getText()));
-                //System.out.println(ctx.getText());
+        //Set<String> WhereVar = qc.getWhereVar();
+        List<String> WhereVar2 = qc.getWhereVar2();
+        if (qc.inwhere) {
+            //qc.getWhereVar().add(qc.getVar(ctx.getText()));
+            //System.out.println(ctx.getText());
 //            if (!WhereVar.contains(ctx.getText()))
 //                WhereVar.add(ctx.getText());
-                if (!WhereVar2.contains(ctx.getText()))
-                    WhereVar2.add(ctx.getText());
+            if (!WhereVar2.contains(ctx.getText()))
+                WhereVar2.add(ctx.getText());
 
-            }
+        }
         //}
         return ans;
 
@@ -156,13 +156,13 @@ public class XqEvaluator extends XQueryEvaluator {
         if (ctx.whereClause() != null) {
 
         }
-        List<String> wherevar=null;
-        int flag =1;
+        List<String> wherevar = null;
+        int flag = 1;
         for (VarEnvironment ve : veFor) {
             qc.pushVarEnv(ve);
             if (ctx.letClause() != null) {
                 VarEnvironment letEnv = (VarEnvironment) visitor.visit(ctx.letClause());
-                qc.pushVarEnv(letEnv);
+               qc.pushVarEnv(letEnv);
             }
 
 
@@ -183,12 +183,12 @@ public class XqEvaluator extends XQueryEvaluator {
 
                         // ======================================
                         //Set<String> varInqc = qc.cloneVarEnv().keySet();
-                        if (flag ==1) {
-                        flag++;
-                        visitor.visit(ctx.whereClause());
+                        if (flag == 1) {
+                            flag++;
+                            visitor.visit(ctx.whereClause());
                             wherevar = new ArrayList<String>();
                             wherevar.addAll(qc.getWhereVar2());
-                       // wherevar = qc.getWhereVar2();
+                            // wherevar = qc.getWhereVar2();
                         }
 
 
@@ -218,7 +218,7 @@ public class XqEvaluator extends XQueryEvaluator {
                                 letFilter[i] = true;
                             }
                         }
-                        System.out.println("letFilter" + Arrays.toString(letFilter));
+                        //System.out.println("letFilter" + Arrays.toString(letFilter));
 
 
                         //System.out.println("total possibility" + total);
@@ -227,33 +227,32 @@ public class XqEvaluator extends XQueryEvaluator {
                             //start from 0000
                             // System.out.println(Arrays.toString(counter));
 
-
-
+                            VarEnvironment v = qc.cloneVarEnv();
                             for (int j = 0; j < counter.length; j++) {
-                                VarEnvironment v = qc.cloneVarEnv();
+
                                 String varName = wherevar.get(j);
-                                System.out.println(counter[j]);
-                                System.out.println();
-                                System.out.println("size of "+wherevar.get(j)+" "+v.get(wherevar.get(j)).size());
+                              //  System.out.println(counter[j]);
+                              //  System.out.println();
+                              //  System.out.println("size of " + wherevar.get(j) + " " + v.get(wherevar.get(j)).size());
 
                                 XMLElement e2 = v.get(wherevar.get(j)).get(counter[j]);
                                 XQueryList xqList = new XQueryList(e2);
                                 v.put(varName, xqList);
-                                qc.pushVarEnv(v);
+
 
                             }
-
+                            qc.pushVarEnv(v);
 
                             for (int j = 0; j < counter.length; j++) {
-                                System.out.println("size of "+wherevar.get(j)+" "+qc.cloneVarEnv().get(wherevar.get(j)).size());
+                              //  System.out.println("size of " + wherevar.get(j) + " " + qc.cloneVarEnv().get(wherevar.get(j)).size());
 
 
                             }
-                            System.out.println("jjjj===");
+                         //   System.out.println("jjjj===");
 
                             if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
                                 qc.letFilter = letFilter;
-                                System.out.println("here");
+                           //     System.out.println("here");
                                 VarEnvironment letEnvn = (VarEnvironment) visitor.visit(ctx.letClause());
                                 qc.pushVarEnv(letEnvn);
                                 if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
@@ -262,36 +261,41 @@ public class XqEvaluator extends XQueryEvaluator {
                                 qc.letFilter = null;
                                 qc.popVarEnv();
                                 for (int j = 0; j < counter.length; j++) {
-                                    System.out.println("size of "+wherevar.get(j)+" "+qc.cloneVarEnv().get(wherevar.get(j)).size());
+                                 //   System.out.println("size of " + wherevar.get(j) + " " + qc.cloneVarEnv().get(wherevar.get(j)).size());
 
 
                                 }
-                                System.out.println("=======");
+                                for (int vv = 0; vv < ctx.letClause().xq().size(); vv++) {
+
+                                    //in let it push a lot of times
+                                    qc.popVarEnv();
+                                }
+                              //  System.out.println("=======");
                             }
 
                             qc.popVarEnv();
 
                             for (int j = 0; j < counter.length; j++) {
-                                System.out.println("size of "+wherevar.get(j)+" "+qc.cloneVarEnv().get(wherevar.get(j)).size());
+                               // System.out.println("size of " + wherevar.get(j) + " " + qc.cloneVarEnv().get(wherevar.get(j)).size());
 
 
                             }
-                            System.out.println("xxxx===");
+                           // System.out.println("xxxx===");
 
                             if (i != total - 1)
                                 Plusone(whereList, counter);
-                            System.out.println("wherelist" + Arrays.toString(whereList));
-                            System.out.println("counter" + Arrays.toString(counter));
-
+                           // System.out.println("wherelist" + Arrays.toString(whereList));
+                           // System.out.println("counter" + Arrays.toString(counter));
 
 
                         }
 
-                      //  qc.whereVar2 = new ArrayList<String>();
+                        //  qc.whereVar2 = new ArrayList<String>();
 
 
                     } else {
                         System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
+                        System.out.println("What, she is wrong, damm");
                     }
                 } else {
                     if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
@@ -304,9 +308,10 @@ public class XqEvaluator extends XQueryEvaluator {
             //qc.firstVisitWhere = true;
 
 
-
             if (ctx.letClause() != null)
                 for (int i = 0; i < ctx.letClause().xq().size(); i++) {
+
+                    //in let it push a lot of times
                     qc.popVarEnv();
                 }
 
