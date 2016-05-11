@@ -18,6 +18,7 @@ public class QueryContext {
 //    public Set<String> whereVar = new HashSet<String>();
     public List<String> whereVar2 = new ArrayList<String>();
     public boolean inwhere = false;
+    public boolean firstVisitWhere =true;
 
 //    public Set<String> getWhereVar() {
 //        return this.whereVar;
