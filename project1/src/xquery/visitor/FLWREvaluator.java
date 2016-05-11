@@ -73,7 +73,12 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalWhere(@NotNull XQueryParser.WhereClauseContext ctx) {
-        return (XQueryFilter) visitor.visit(ctx.cond());
+
+        //return (XQueryFilter) visitor.visit(ctx.cond());
+        qc.inwhere = true;
+        XQueryFilter ans = (XQueryFilter) visitor.visit(ctx.cond());
+        qc.inwhere = false;
+        return ans;
     }
 
     public XQueryList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
