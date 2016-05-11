@@ -38,15 +38,9 @@ public class XqEvaluator extends XQueryEvaluator {
 
     public XQueryList evalVar(@NotNull XQueryParser.XqVarContext ctx) {
 
-        //return qc.getVar(ctx.getText());
         XQueryList ans = qc.getVar(ctx.getText());
-        //Set<String> WhereVar = qc.getWhereVar();
         List<String> WhereVar2 = qc.getWhereVar2();
         if (qc.inwhere) {
-            //qc.getWhereVar().add(qc.getVar(ctx.getText()));
-            //System.out.println(ctx.getText());
-//            if (!WhereVar.contains(ctx.getText()))
-//                WhereVar.add(ctx.getText());
             if (!WhereVar2.contains(ctx.getText()))
                 WhereVar2.add(ctx.getText());
 
@@ -118,12 +112,11 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList xq = (XQueryList) visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());
 
-        // Figure out whether to add result as text or child xmlElement
         for (XMLElement v : xq) {
             if (v.isConstantStr())
-                res.add((XMLElement) v);
+                res.add( v);
             else
-                res.add((XMLElement) v);
+                res.add( v);
         }
 
         return new XQueryList(res);
@@ -132,15 +125,14 @@ public class XqEvaluator extends XQueryEvaluator {
     public void Plusone(int[] base, int[] next) {
 
         for (int i = next.length - 1; i >= 0; i--) {
-            if ((next[i] + 1) == base[i]) {
-                //means need to update previous one
-                next[i - 1] = next[i - 1] + 1;
-                next[i] = 0;
-                break;
-            } else {
-                next[i] = next[i] + 1;
-                break;
+            if (next[i] < base[i]){
+                if (next[i] + 1 == base[i]){
+                    next[i] = 0;
+                }else{
+                    next[i]++;
+                }
             }
+
         }
 
     }
@@ -165,27 +157,17 @@ public class XqEvaluator extends XQueryEvaluator {
                         if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
                             res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
                     } else if (ctx.letClause().xq().size() >= 1) {
-                        // now you have magic
-                        //$sc size 3, $sp size 142. then what?
-                        //var 1
-                        //String var1 = ctx.letClause().Var(0).getText();
 
-
-                        // ======================================
-                        //Set<String> varInqc = qc.cloneVarEnv().keySet();
                         visitor.visit(ctx.whereClause());
                         List<String> wherevar = qc.getWhereVar2();
-//                        for (String s : wherevar) {
-//                            System.out.print(s + ",");
-//                        }
-//                        System.out.println();
+                        //System.out.println(wherevar.toString());
 
                         int[] whereList = new int[wherevar.size()];
 
                         for (int i = 0; i < whereList.length; i++) {
                             whereList[i] = qc.st.getVar(wherevar.get(i)).size();
                         }
-
+                       // System.out.println(Arrays.toString(whereList));
 
                         int[] counter = new int[wherevar.size()];
                         int total = 1;
@@ -193,12 +175,7 @@ public class XqEvaluator extends XQueryEvaluator {
                             total = total * whereList[i];
                         }
 
-                        //System.out.println("total possibility" + total);
-
                         for (int i = 0; i < total; i++) {
-                            //start from 0000
-                           // System.out.println(Arrays.toString(counter));
-
                             VarEnvironment v = qc.cloneVarEnv();
                             for (int j = 0; j < counter.length; j++) {
                                 String varName = wherevar.get(j);
@@ -215,14 +192,10 @@ public class XqEvaluator extends XQueryEvaluator {
 
                             qc.popVarEnv();
 
-                            if(i != total-1)
-                                Plusone(whereList,counter);
 
-
+                            Plusone(whereList,counter);
 
                         }
-
-
 
                     } else {
                         System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
