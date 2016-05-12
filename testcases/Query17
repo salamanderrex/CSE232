@@ -2,7 +2,7 @@
 {
 for	$a	in	document("j_caesar.xml")/ACT
 let	$sc:=	$a/SCENE,	$sp:=$sc/SPEECH, $l:= $sp/LINE
-where some $l in $sc/SPEECH/LINE satisfies $l/text() = "No worthier than the dust!"
+where	$sp/LINE/text() ="No worthier than the dust!" and $l/text() = "No worthier than the dust!" and $l/text() = "No worthier than the dust!"
 return	<speaks>{
 <who>{$sp/SPEAKER/text()}</who>,
 <content>{$l/text()}</content>,
