@@ -152,12 +152,9 @@ public class XqEvaluator extends XQueryEvaluator {
             if (ctx.whereClause() != null) {
 
 
-                if (ctx.letClause() != null) {
 
-                    if (ctx.letClause().xq().size() == 0) {
-                        if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
-                            res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
-                    } else if (ctx.letClause().xq().size() >= 1) {
+
+                if (ctx.letClause() != null) {
 
                         visitor.visit(ctx.whereClause());
                         List<String> wherevar = qc.getWhereVar2();
@@ -192,7 +189,8 @@ public class XqEvaluator extends XQueryEvaluator {
                             qc.popVarEnv();
                             Plusone(whereList,counter);
                         }
-                    }
+
+
                 } else {
                     if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
                         res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
@@ -209,6 +207,7 @@ public class XqEvaluator extends XQueryEvaluator {
                 }
 
         }
+        qc.whereVar2 = new ArrayList<String>();
         return res;
     }
 
