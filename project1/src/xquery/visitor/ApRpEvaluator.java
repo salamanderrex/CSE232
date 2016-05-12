@@ -10,7 +10,6 @@ import project1.xquery.value.*;
 import project1.xquery.parser.*;
 import project1.xquery.xmlElement.*;
 import project1.xquery.context.*;
-import project1.utils.*;
 
 import java.io.File;
 import java.util.ArrayList;
