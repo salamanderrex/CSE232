@@ -6,8 +6,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-import project1.utils.Debugger;
-import project1.utils.XQueryExecutor;
+import project1.xquery.XQueryExecutor;
 import project1.xquery.xmlElement.XMLElement;
 
 
@@ -25,7 +24,7 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 2; i++) {
             String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
             System.out.println("start querying........." + i + "query");
@@ -45,7 +44,7 @@ public class Main {
             Document document = DocumentHelper.createDocument();
             Element root = document.addElement("xml");
             for (XMLElement c : result) {
-                Debugger.result("#" + j++);
+                System.out.println("result @" + j++);
                 //System.out.println(c.toString());
                 root.add(c.elem);
             }
