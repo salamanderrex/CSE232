@@ -50,7 +50,12 @@ public class CondEvaluator extends XQueryEvaluator {
 
     public XQueryFilter evalAnd(@NotNull XQueryParser.CondAndContext ctx){
         XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+
         XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+//        if (r == XQueryFilter.trueValue() && l == XQueryFilter.trueValue()){
+//            System.out.println(l.and(r));
+//
+//        }
         return l.and(r);
     }
 

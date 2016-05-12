@@ -130,6 +130,7 @@ public class XqEvaluator extends XQueryEvaluator {
                     next[i] = 0;
                 }else{
                     next[i]++;
+                    break;
                 }
             }
 
@@ -174,31 +175,23 @@ public class XqEvaluator extends XQueryEvaluator {
                         for (int i = 0; i < whereList.length; i++) {
                             total = total * whereList[i];
                         }
-
+                        //System.out.println(Arrays.toString(whereList));
                         for (int i = 0; i < total; i++) {
                             VarEnvironment v = qc.cloneVarEnv();
+                           // System.out.println(Arrays.toString(counter));
                             for (int j = 0; j < counter.length; j++) {
                                 String varName = wherevar.get(j);
                                 XMLElement e2 = v.get(wherevar.get(j)).get(counter[j]);
                                 XQueryList xqList = new XQueryList(e2);
                                 v.put(varName, xqList);
-
                             }
                             qc.pushVarEnv(v);
-
                             if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
                                 res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
                             }
-
                             qc.popVarEnv();
-
-
                             Plusone(whereList,counter);
-
                         }
-
-                    } else {
-                        System.out.println("Frankly, I think TA is wrong, but just want to pass testcases");
                     }
                 } else {
                     if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())

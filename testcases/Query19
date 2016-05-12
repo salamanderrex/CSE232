@@ -2,7 +2,7 @@
 {
 for	$a	in	document("j_caesar.xml")/ACT
 let	$sc:=	$a/SCENE, $l:= $sc/SPEECH/LINE
-where $sc/TITLE/text() ="SCENE I.  Rome. Before the Capitol; the Senate sitting above."  and $l/text() = "No worthier than the dust!"
+where $sc/TITLE/text() ="SCENE I.  Rome. Before the Capitol; the Senate sitting above." and $l/text() = "No worthier than the dust!"
 return	<speaks>{
 <line>{$l/text()}</line>,
 <when>

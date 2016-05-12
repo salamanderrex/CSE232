@@ -174,6 +174,11 @@ public class XMLElement {
         XMLElement e = (XMLElement) o;
 
         if (e.isconstantstring == 1) {
+
+//            if (e.elem.getName().equals("SCENE II. The Forum."))
+//                if (this.elem.getName().equals("SCENE II. The Forum."))
+//                    System.out.println("YES");
+                //System.out.println(this.elem.getName());
 //            System.out.println("compare constant string");
 //            System.out.println("elem" + e.elem.getName());
 //            System.out.println("elem" + e.elem.asXML());
