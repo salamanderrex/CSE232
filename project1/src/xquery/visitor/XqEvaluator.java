@@ -99,7 +99,7 @@ public class XqEvaluator extends XQueryEvaluator {
                 results = evalXqSlashSlash(ctx);
                 break;
             default:
-                Debugger.error("Oops, shouldn't be here");
+                System.out.println("Oops, shouldn't be here");
                 break;
         }
         return results;
@@ -107,7 +107,7 @@ public class XqEvaluator extends XQueryEvaluator {
 
     public XQueryList evalTagname(@NotNull XQueryParser.XqTagNameContext ctx) {
         if (!ctx.open.getText().equals(ctx.close.getText()))
-            Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
+            System.out.println(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
         XQueryList xq = (XQueryList) visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());

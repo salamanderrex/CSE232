@@ -73,7 +73,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
                     results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 default:
-                    Debugger.error("Oops, shouldn't be here");
+                    System.out.println("Oops, shouldn't be here");
                     break;
             }
             readFileCounter++;
@@ -105,7 +105,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
                     results.addAll((XQueryList) visitor.visit(ctx.rp()));
                     break;
                 default:
-                    Debugger.error("Oops, shouldn't be here");
+                    System.out.println("Oops, shouldn't be here");
                     break;
             }
             readFileCounter++;
@@ -231,7 +231,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
                 results = evalRpSlashSlash(ctx);
                 break;
             default:
-                Debugger.error("Oops, shouldn't be here");
+                System.out.println("Oops, shouldn't be here");
                 break;
         }
         return results;
