@@ -1,7 +1,7 @@
 package project1.xquery.parser;
 
 
-import project1.xquery.context.QueryContext;
+import project1.xquery.context.QueryEnv;
 import project1.xquery.value.*;
 import project1.xquery.visitor.*;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.NotNull;
  * Created by qingyu on 4/28/16.
  */
 public class myXQueryVisitor  extends XQueryBaseVisitor<MyQueryElement> {
-    private QueryContext qc = new QueryContext();
+    private QueryEnv qc = new QueryEnv();
     public MyXQueryEvaluator evaluator = new MyXQueryEvaluator(this,qc);
 
     /** APS **/

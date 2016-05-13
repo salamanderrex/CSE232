@@ -24,8 +24,8 @@ public class MyXQueryEvaluator {
     public XQueryList cachedXQueryList;
 
     public XQueryBaseVisitor<MyQueryElement> visitor;
-    public QueryContext qc;
-    public MyXQueryEvaluator(XQueryBaseVisitor<MyQueryElement> visitor, QueryContext qc) {
+    public QueryEnv qc;
+    public MyXQueryEvaluator(XQueryBaseVisitor<MyQueryElement> visitor, QueryEnv qc) {
 
         this.visitor = visitor;
         this.qc = qc;
