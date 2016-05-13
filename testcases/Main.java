@@ -1,13 +1,18 @@
 
 
 
+import org.antlr.v4.runtime.ANTLRFileStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
-import project1.xquery.XQueryExecutor;
-import project1.xquery.xmlElement.XMLElement;
+import project1.xquery.*;
+import project1.xquery.parser.XQueryLexer;
+import project1.xquery.parser.XQueryParser;
+import project1.xquery.parser.XQueryVisitor;
+import project1.xquery.parser.myXQueryVisitor;
 
 
 import java.io.File;
@@ -24,22 +29,23 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 20; i++) {
             String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
             System.out.println("start querying........." + i + "query");
             List<XMLElement> result = new ArrayList<>();
             try {
-                result = XQueryExecutor.executeFromFile(filename);
+            XQueryLexer lexer = new XQueryLexer(new ANTLRFileStream(filename));
+            XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
+            XQueryVisitor visitor = new myXQueryVisitor();
+            XQueryParser.XqContext context = parser.xq();
+                result = (NodeTextList) visitor.visit(context);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-
             System.out.println(result.size() + " results below:");
 
-
-            //system std output.
             Integer j = 0;
             Document document = DocumentHelper.createDocument();
             Element root = document.addElement("xml");

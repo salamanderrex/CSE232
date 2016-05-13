@@ -1,42 +1,37 @@
-package project1.xquery.value;
-import project1.xquery.xmlElement.XMLElement;
+package project1.xquery;
+import project1.xquery.*;
 
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class XQueryList implements IXQueryValue, Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
+public class NodeTextList extends MyQueryElement implements Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
     public List<XMLElement> values;
 
-    public XQueryList(int size) {
+    public NodeTextList(int size) {
         this.values = new ArrayList<>(size);
     }
 
-    public XQueryList() {
+    public NodeTextList() {
         this(10);
     }
 
 
 
-    public XQueryList(XMLElement e) {
+    public NodeTextList(XMLElement e) {
         this(1);
         values.add(e);
     }
 
-    public XQueryList(List<XMLElement> values) {
+    public NodeTextList(List<XMLElement> values) {
         this.values = values;
     }
 
-    /**
-     * Gets the unique elements (by ID (from discussion with prof 2015-04-28 after class) from this instance
-     * in a new list
-     * @return a new list with the unique elements from the current list's instance.
-     */
-    public XQueryList unique(){
+    public NodeTextList unique(){
         if (values == null)
             return null;
-        XQueryList results = new XQueryList();
+        NodeTextList results = new NodeTextList();
 
         values.stream().filter(e -> !containsRef(results, e)).forEach(results::add);
         return results;
@@ -49,36 +44,36 @@ public class XQueryList implements IXQueryValue, Iterable<XMLElement>, Collectio
         return false;
     }
 
-    public XQueryFilter equalsId(XQueryList o) {
+    public XQueryBoolean equalsId(NodeTextList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equalsRef(y))
-                    return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+                    return XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
-    public XQueryFilter empty() {
+    public XQueryBoolean empty() {
         if(this.size() == 0)
-            return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+            return  XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof XQueryList) {
-            XQueryList o = ((XQueryList) obj);
-            return equalsVal(o) == XQueryFilter.trueValue();
+        if(obj instanceof NodeTextList) {
+            NodeTextList o = ((NodeTextList) obj);
+            return equalsVal(o).booleanFlag == true;
         }
 
         return false;
     }
 
-    public XQueryFilter equalsVal(XQueryList o) {
+    public XQueryBoolean equalsVal(NodeTextList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equals(y))
-                    return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+                    return  XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
     @Override

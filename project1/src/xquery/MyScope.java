@@ -1,29 +1,25 @@
-package project1.xquery.value;
 
-/**
- * Created by kezhang on 5/6/16.
- */
+package project1.xquery;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Myscope extends MyQueryElement implements  Map<String, XQueryList> {
-    private Map<String, XQueryList> varEnv = new HashMap<>();
+public class MyScope extends MyQueryElement implements Map<String, NodeTextList> {
+    private Map<String, NodeTextList> varEnv = new HashMap<>();
 
-    public Myscope() {
+    public MyScope() {
     }
 
-    public XQueryList getVar(String varName){
-        XQueryList res = varEnv.get(varName);
-
+    public NodeTextList getVar(String varName){
+        NodeTextList res = varEnv.get(varName);
         if(res != null)
             return res;
-        return new XQueryList();
+        return new NodeTextList();
     }
 
-    public Myscope copy(){
-        Myscope ve = new Myscope();
+    public MyScope copy(){
+        MyScope ve = new MyScope();
         ve.varEnv.putAll(this.varEnv);
         return ve;
     }
@@ -49,22 +45,22 @@ public class Myscope extends MyQueryElement implements  Map<String, XQueryList> 
     }
 
     @Override
-    public XQueryList get(Object key) {
+    public NodeTextList get(Object key) {
         return varEnv.get(key);
     }
 
     @Override
-    public XQueryList put(String key, XQueryList value) {
+    public NodeTextList put(String key, NodeTextList value) {
         return varEnv.put(key, value);
     }
 
     @Override
-    public XQueryList remove(Object key) {
+    public NodeTextList remove(Object key) {
         return varEnv.remove(key);
     }
 
     @Override
-    public void putAll(Map<? extends String, ? extends XQueryList> m) {
+    public void putAll(Map<? extends String, ? extends NodeTextList> m) {
         varEnv.putAll(m);
     }
 
@@ -79,12 +75,12 @@ public class Myscope extends MyQueryElement implements  Map<String, XQueryList> 
     }
 
     @Override
-    public Collection<XQueryList> values() {
+    public Collection<NodeTextList> values() {
         return varEnv.values();
     }
 
     @Override
-    public Set<Entry<String, XQueryList>> entrySet() {
+    public Set<Entry<String, NodeTextList>> entrySet() {
         return varEnv.entrySet();
     }
 }
