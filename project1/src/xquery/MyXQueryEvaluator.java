@@ -1,4 +1,4 @@
-package project1.xquery.visitor;
+package project1.xquery;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -6,10 +6,9 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 import project1.xquery.parser.XQueryParser;
-import project1.xquery.value.*;
+import project1.xquery.*;
 import project1.xquery.parser.*;
-import project1.xquery.xmlElement.*;
-import project1.xquery.context.*;
+
 
 import java.io.File;
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 import project1.xquery.XQueryExecutor;
-import project1.xquery.xmlElement.XMLElement;
+import project1.xquery.*;
 
 
 import java.io.File;
@@ -24,7 +24,7 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 20; i++) {
             String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
             System.out.println("start querying........." + i + "query");

@@ -1,5 +1,5 @@
 
-package project1.xquery.value;
+package project1.xquery;
 
 public class XQueryBoolean extends MyQueryElement {
 

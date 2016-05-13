@@ -1,9 +1,7 @@
 package project1.xquery.parser;
 
 
-import project1.xquery.context.QueryEnv;
-import project1.xquery.value.*;
-import project1.xquery.visitor.*;
+import project1.xquery.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 /**

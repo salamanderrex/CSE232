@@ -1,5 +1,5 @@
 
-package project1.xquery.value;
+package project1.xquery;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

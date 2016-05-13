@@ -1,8 +1,8 @@
 
-package project1.xquery.xmlElement;
+package project1.xquery;
 
 import org.dom4j.*;
-import project1.xquery.value.NodeTextList;
+import project1.xquery.*;
 
 
 import java.util.ArrayList;
