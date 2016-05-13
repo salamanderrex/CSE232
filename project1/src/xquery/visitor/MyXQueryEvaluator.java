@@ -10,8 +10,7 @@ import project1.xquery.value.*;
 import project1.xquery.parser.*;
 import project1.xquery.xmlElement.*;
 import project1.xquery.context.*;
-import project1.xquery.context.*;
-import org.antlr.v4.runtime.misc.NotNull;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -204,9 +203,9 @@ public class MyXQueryEvaluator {
         XQueryList xs = (XQueryList) visitor.visit(ctx.rp());
         for (XMLElement x : xs) {
             qc.pushContextElement(x);
-            XQueryFilter y = (XQueryFilter) visitor.visit(ctx.f());
+            XQueryBoolean y = (XQueryBoolean) visitor.visit(ctx.f());
             qc.popContextElement();
-            if (y == XQueryFilter.trueValue())
+            if (y.booleanFlag == true)
                 res.add(x);
         }
         return res;
@@ -221,23 +220,23 @@ public class MyXQueryEvaluator {
 
 
 
-    public XQueryFilter evalIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx){
+    public XQueryBoolean evalIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx){
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsId(r);
     }
-    public XQueryFilter evalValEqual(@NotNull XQueryParser.CondValEqualContext ctx){
+    public XQueryBoolean evalValEqual(@NotNull XQueryParser.CondValEqualContext ctx){
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
-    public XQueryFilter evalEmpty(@NotNull XQueryParser.CondEmptyContext ctx){
+    public XQueryBoolean evalEmpty(@NotNull XQueryParser.CondEmptyContext ctx){
         XQueryList res = (XQueryList)visitor.visit(ctx.xq());
         return res.empty();
     }
 
-    public XQueryFilter evalSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx){
+    public XQueryBoolean evalSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx){
         MyScope ve = qc.cloneVarEnv();
 
         for(int i = 0; i < ctx.xq().size(); i++) {
@@ -247,71 +246,71 @@ public class MyXQueryEvaluator {
 
         qc.pushVarEnv(ve);
 
-        XQueryFilter res = (XQueryFilter)visitor.visit(ctx.cond());
+        XQueryBoolean res = (XQueryBoolean)visitor.visit(ctx.cond());
 
         qc.popVarEnv();
 
         return res;
     }
 
-    public XQueryFilter evalParen(@NotNull XQueryParser.CondParenExprContext ctx){
-        return (XQueryFilter)visitor.visit(ctx.cond());
+    public XQueryBoolean evalParen(@NotNull XQueryParser.CondParenExprContext ctx){
+        return (XQueryBoolean)visitor.visit(ctx.cond());
     }
 
-    public XQueryFilter evalAnd(@NotNull XQueryParser.CondAndContext ctx){
-        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+    public XQueryBoolean evalAnd(@NotNull XQueryParser.CondAndContext ctx){
+        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
 
-        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
 
         return l.and(r);
     }
 
-    public XQueryFilter evalOr(@NotNull XQueryParser.CondOrContext ctx){
-        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
-        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+    public XQueryBoolean evalOr(@NotNull XQueryParser.CondOrContext ctx){
+        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
         return l.or(r);
     }
 
-    public XQueryFilter evalNot(@NotNull XQueryParser.CondNotContext ctx){
-        XQueryFilter res = (XQueryFilter)visitor.visit(ctx.cond());
+    public XQueryBoolean evalNot(@NotNull XQueryParser.CondNotContext ctx){
+        XQueryBoolean res = (XQueryBoolean)visitor.visit(ctx.cond());
         return res.not();
     }
 
-    public XQueryFilter evalFRp(XQueryParser.FRpContext ctx) {
+    public XQueryBoolean evalFRp(XQueryParser.FRpContext ctx) {
         XQueryList resultR = (XQueryList)visitor.visit(ctx.rp());
         if(resultR.size() > 0)
-            return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+            return  XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
-    public XQueryFilter evalParen(XQueryParser.FParenContext ctx) {
-        return (XQueryFilter)visitor.visit(ctx.f());
+    public XQueryBoolean evalParen(XQueryParser.FParenContext ctx) {
+        return (XQueryBoolean)visitor.visit(ctx.f());
     }
 
-    public XQueryFilter evalAnd(XQueryParser.FAndContext ctx) {
-        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
-        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+    public XQueryBoolean evalAnd(XQueryParser.FAndContext ctx) {
+        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
         return l.and(r);
     }
 
-    public XQueryFilter evalOr(XQueryParser.FOrContext ctx) {
-        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
-        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+    public XQueryBoolean evalOr(XQueryParser.FOrContext ctx) {
+        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
         return l.or(r);
     }
 
-    public XQueryFilter evalNot(XQueryParser.FNotContext ctx) {
-        XQueryFilter v = (XQueryFilter)visitor.visit(ctx.f());
+    public XQueryBoolean evalNot(XQueryParser.FNotContext ctx) {
+        XQueryBoolean v = (XQueryBoolean)visitor.visit(ctx.f());
         return v.not();
     }
 
-    public XQueryFilter evalValEqual(XQueryParser.FValEqualContext ctx) {
+    public XQueryBoolean evalValEqual(XQueryParser.FValEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
-    public XQueryFilter evalIdEqual(XQueryParser.FIdEqualContext ctx) {
+    public XQueryBoolean evalIdEqual(XQueryParser.FIdEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsId(r);
@@ -370,9 +369,9 @@ public class MyXQueryEvaluator {
         return ve;
     }
 
-    public XQueryFilter evalWhere(@NotNull XQueryParser.WhereClauseContext ctx) {
+    public XQueryBoolean evalWhere(@NotNull XQueryParser.WhereClauseContext ctx) {
         qc.inwhere = true;
-        XQueryFilter ans = (XQueryFilter) visitor.visit(ctx.cond());
+        XQueryBoolean ans = (XQueryBoolean) visitor.visit(ctx.cond());
         qc.inwhere = false;
         return ans;
     }
@@ -543,7 +542,7 @@ public class MyXQueryEvaluator {
                             v.put(varName, xqList);
                         }
                         qc.pushVarEnv(v);
-                        if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                        if ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag) {
                             res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
                         }
                         qc.popVarEnv();
@@ -552,7 +551,7 @@ public class MyXQueryEvaluator {
 
 
                 } else {
-                    if (visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
+                    if  ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag)
                         res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
                 }
 

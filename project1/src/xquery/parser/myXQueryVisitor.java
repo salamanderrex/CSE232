@@ -75,7 +75,7 @@ public class myXQueryVisitor  extends XQueryBaseVisitor<MyQueryElement> {
     /** FILTERS **/
 
     @Override
-    public XQueryFilter visitFRp(@NotNull XQueryParser.FRpContext ctx) {
+    public XQueryBoolean visitFRp(@NotNull XQueryParser.FRpContext ctx) {
         return evaluator.evalFRp(ctx);
     }
 
@@ -90,22 +90,22 @@ public class myXQueryVisitor  extends XQueryBaseVisitor<MyQueryElement> {
     }
 
     @Override
-    public XQueryFilter visitFParen(@NotNull XQueryParser.FParenContext ctx) {
+    public XQueryBoolean visitFParen(@NotNull XQueryParser.FParenContext ctx) {
         return evaluator.evalParen(ctx);
     }
 
     @Override
-    public XQueryFilter visitFAnd(@NotNull XQueryParser.FAndContext ctx) {
+    public XQueryBoolean visitFAnd(@NotNull XQueryParser.FAndContext ctx) {
         return evaluator.evalAnd(ctx);
     }
 
     @Override
-    public XQueryFilter visitFOr(@NotNull XQueryParser.FOrContext ctx) {
+    public XQueryBoolean visitFOr(@NotNull XQueryParser.FOrContext ctx) {
         return evaluator.evalOr(ctx);
     }
 
     @Override
-    public XQueryFilter visitFNot(@NotNull XQueryParser.FNotContext ctx) {
+    public XQueryBoolean visitFNot(@NotNull XQueryParser.FNotContext ctx) {
         return evaluator.evalNot(ctx);
     }
 

@@ -44,36 +44,36 @@ public class XQueryList extends MyQueryElement implements Iterable<XMLElement>, 
         return false;
     }
 
-    public XQueryFilter equalsId(XQueryList o) {
+    public XQueryBoolean equalsId(XQueryList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equalsRef(y))
-                    return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+                    return XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
-    public XQueryFilter empty() {
+    public XQueryBoolean empty() {
         if(this.size() == 0)
-            return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+            return  XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof XQueryList) {
             XQueryList o = ((XQueryList) obj);
-            return equalsVal(o) == XQueryFilter.trueValue();
+            return equalsVal(o).booleanFlag == true;
         }
 
         return false;
     }
 
-    public XQueryFilter equalsVal(XQueryList o) {
+    public XQueryBoolean equalsVal(XQueryList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equals(y))
-                    return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
+                    return  XQueryBoolean.XQueryBooleanFactory(true);
+        return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
     @Override
