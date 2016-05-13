@@ -24,9 +24,9 @@ public class MyXQueryEvaluator {
     public int readFileCounter;
     public XQueryList cachedXQueryList;
 
-    public XQueryBaseVisitor<IXQueryValue> visitor;
+    public XQueryBaseVisitor<MyQueryElement> visitor;
     public QueryContext qc;
-    public MyXQueryEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
+    public MyXQueryEvaluator(XQueryBaseVisitor<MyQueryElement> visitor, QueryContext qc) {
 
         this.visitor = visitor;
         this.qc = qc;
@@ -238,7 +238,7 @@ public class MyXQueryEvaluator {
     }
 
     public XQueryFilter evalSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx){
-        VarEnvironment ve = qc.cloneVarEnv();
+        MyScope ve = qc.cloneVarEnv();
 
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
@@ -317,18 +317,18 @@ public class MyXQueryEvaluator {
         return l.equalsId(r);
     }
 
-    public VarEnvironmentList evalFor(@NotNull XQueryParser.ForClauseContext ctx) {
-        VarEnvironmentList varEnvs = new VarEnvironmentList();
+    public ScopeList evalFor(@NotNull XQueryParser.ForClauseContext ctx) {
+        ScopeList varEnvs = new ScopeList();
         varEnvs.addAll(getVarEnvs(0, ctx, qc.cloneVarEnv()));
         return varEnvs;
     }
 
-    private VarEnvironmentList getVarEnvs(int var, @NotNull XQueryParser.ForClauseContext ctx, VarEnvironment previousVE) {
-        VarEnvironmentList varEnvs = new VarEnvironmentList();
+    private ScopeList getVarEnvs(int var, @NotNull XQueryParser.ForClauseContext ctx, MyScope previousVE) {
+        ScopeList varEnvs = new ScopeList();
         XQueryList res = (XQueryList) visitor.visit(ctx.xq(var));
         if (var == ctx.xq().size() - 1) {
             for (XMLElement elem : res) {
-                VarEnvironment currentVE = new VarEnvironment();
+                MyScope currentVE = new MyScope();
                 currentVE.putAll(previousVE);
                 currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
                 varEnvs.add(currentVE);
@@ -337,7 +337,7 @@ public class MyXQueryEvaluator {
         }
         for (XMLElement elem : res) {
             qc.pushContextElement(elem);
-            VarEnvironment currentVE = previousVE.copy();
+            MyScope currentVE = previousVE.copy();
             currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
             qc.pushVarEnv(currentVE);
             varEnvs.addAll(getVarEnvs(var + 1, ctx, currentVE));
@@ -346,8 +346,8 @@ public class MyXQueryEvaluator {
         }
         return varEnvs;
     }
-    public VarEnvironment evalLet(@NotNull XQueryParser.LetClauseContext ctx) {
-        VarEnvironment ve = qc.cloneVarEnv();
+    public MyScope evalLet(@NotNull XQueryParser.LetClauseContext ctx) {
+        MyScope ve = qc.cloneVarEnv();
         if (qc.letFilter==null) {
             for (int i = 0; i < ctx.xq().size(); i++) {
                 XQueryList res = (XQueryList) visitor.visit(ctx.xq(i));
@@ -463,7 +463,7 @@ public class MyXQueryEvaluator {
                 results = evalXqSlashSlash(ctx);
                 break;
             default:
-                System.out.println("Oops, shouldn't be here");
+                System.out.println("ERROR!!");
                 break;
         }
         return results;
@@ -503,13 +503,13 @@ public class MyXQueryEvaluator {
     }
 
     public XQueryList evalFLWR(@NotNull XQueryParser.XqFLWRContext ctx) {
-        VarEnvironmentList veFor = (VarEnvironmentList) visitor.visit(ctx.forClause());
+        ScopeList veFor = (ScopeList) visitor.visit(ctx.forClause());
 
         XQueryList res = new XQueryList();
-        for (VarEnvironment ve : veFor) {
+        for (MyScope ve : veFor) {
             qc.pushVarEnv(ve);
             if (ctx.letClause() != null) {
-                VarEnvironment letEnv = (VarEnvironment) visitor.visit(ctx.letClause());
+                MyScope letEnv = (MyScope) visitor.visit(ctx.letClause());
                 qc.pushVarEnv(letEnv);
             }
 
@@ -526,7 +526,7 @@ public class MyXQueryEvaluator {
                     int[] whereList = new int[wherevar.size()];
 
                     for (int i = 0; i < whereList.length; i++) {
-                        whereList[i] = qc.st.getVar(wherevar.get(i)).size();
+                        whereList[i] = qc.getVar(wherevar.get(i)).size();
                     }
 
                     int[] counter = new int[wherevar.size()];
@@ -535,7 +535,7 @@ public class MyXQueryEvaluator {
                         total = total * whereList[i];
                     }
                     for (int i = 0; i < total; i++) {
-                        VarEnvironment v = qc.cloneVarEnv();
+                        MyScope v = qc.cloneVarEnv();
                         for (int j = 0; j < counter.length; j++) {
                             String varName = wherevar.get(j);
                             XMLElement e2 = v.get(wherevar.get(j)).get(counter[j]);
@@ -573,7 +573,7 @@ public class MyXQueryEvaluator {
 
     public XQueryList evalLet(@NotNull XQueryParser.XqLetContext ctx) {
 
-        VarEnvironment ve = (VarEnvironment) visitor.visit(ctx.letClause());
+        MyScope ve = (MyScope) visitor.visit(ctx.letClause());
 
         qc.pushVarEnv(ve);
 
@@ -584,7 +584,7 @@ public class MyXQueryEvaluator {
         return res;
     }
 
-    public IXQueryValue evalJoin(XQueryParser.JoinClauseContext ctx) {
+    public MyQueryElement evalJoin(XQueryParser.JoinClauseContext ctx) {
 
         XQueryList list1 = (XQueryList) visitor.visit(ctx.xq1);
         XQueryList list2 = (XQueryList) visitor.visit(ctx.xq2);

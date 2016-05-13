@@ -1,11 +1,7 @@
 
 package project1.xquery.value;
-/**
- * This class is simply a wrapper of boolean values returned by filters in
- * our XPath/XQuery implementation. It supports simple binary operations and
- * comparisons.
- */
-public class XQueryFilter implements IXQueryValue {
+
+public class XQueryFilter extends MyQueryElement {
     private static XQueryFilter trueVal = new XQueryFilter();
     private static XQueryFilter falseVal = new XQueryFilter();
 

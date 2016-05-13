@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class XQueryList implements IXQueryValue, Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
+public class XQueryList extends MyQueryElement implements Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
     public List<XMLElement> values;
 
     public XQueryList(int size) {
@@ -28,11 +28,6 @@ public class XQueryList implements IXQueryValue, Iterable<XMLElement>, Collectio
         this.values = values;
     }
 
-    /**
-     * Gets the unique elements (by ID (from discussion with prof 2015-04-28 after class) from this instance
-     * in a new list
-     * @return a new list with the unique elements from the current list's instance.
-     */
     public XQueryList unique(){
         if (values == null)
             return null;

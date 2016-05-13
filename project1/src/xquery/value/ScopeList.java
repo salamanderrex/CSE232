@@ -3,13 +3,10 @@ package project1.xquery.value;
 
 import java.util.*;
 
-/**
- * Created by thalley on 5/13/15.
- */
-public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
-    public List<VarEnvironment> varEnvs;
+public class ScopeList extends MyQueryElement implements List<MyScope> {
+    public List<MyScope> varEnvs;
 
-    public VarEnvironmentList() {
+    public ScopeList() {
         varEnvs = new ArrayList<>();
     }
 
@@ -29,7 +26,7 @@ public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
     }
 
     @Override
-    public Iterator<VarEnvironment> iterator() {
+    public Iterator<MyScope> iterator() {
         return varEnvs.iterator();
     }
 
@@ -44,8 +41,8 @@ public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
     }
 
     @Override
-    public boolean add(VarEnvironment varEnvironment) {
-        return varEnvs.add(varEnvironment);
+    public boolean add(MyScope MyScope) {
+        return varEnvs.add(MyScope);
     }
 
     @Override
@@ -59,12 +56,12 @@ public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends VarEnvironment> collection) {
+    public boolean addAll(Collection<? extends MyScope> collection) {
         return varEnvs.addAll(collection);
     }
 
     @Override
-    public boolean addAll(int i, Collection<? extends VarEnvironment> collection) {
+    public boolean addAll(int i, Collection<? extends MyScope> collection) {
         return varEnvs.addAll(i, collection);
     }
 
@@ -85,23 +82,23 @@ public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
     }
 
     @Override
-    public VarEnvironment get(int i) {
+    public MyScope get(int i) {
         return varEnvs.get(i);
     }
 
     @Override
-    public VarEnvironment set(int i, VarEnvironment varEnvironment) {
-        return varEnvs.set(i, varEnvironment);
+    public MyScope set(int i, MyScope MyScope) {
+        return varEnvs.set(i, MyScope);
     }
 
     @Override
-    public void add(int i, VarEnvironment varEnvironment) {
-        varEnvs.add(i, varEnvironment);
+    public void add(int i, MyScope MyScope) {
+        varEnvs.add(i, MyScope);
 
     }
 
     @Override
-    public VarEnvironment remove(int i) {
+    public MyScope remove(int i) {
         return varEnvs.remove(i);
     }
 
@@ -116,17 +113,17 @@ public class VarEnvironmentList implements IXQueryValue, List<VarEnvironment> {
     }
 
     @Override
-    public ListIterator<VarEnvironment> listIterator() {
+    public ListIterator<MyScope> listIterator() {
         return varEnvs.listIterator();
     }
 
     @Override
-    public ListIterator<VarEnvironment> listIterator(int i) {
+    public ListIterator<MyScope> listIterator(int i) {
         return varEnvs.listIterator(i);
     }
 
     @Override
-    public List<VarEnvironment> subList(int i, int i1) {
+    public List<MyScope> subList(int i, int i1) {
         return varEnvs.subList(i, i1);
     }
 }

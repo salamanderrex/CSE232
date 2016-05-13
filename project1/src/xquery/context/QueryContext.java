@@ -2,34 +2,22 @@ package project1.xquery.context;
 import project1.xquery.xmlElement.XMLElement;
 import project1.xquery.value.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-/**
- * Encapsulates everything that has to do with the context of a query: from
- * handling where the engine is in the XML tree, to what XQuery variables are in scope.
- */
+
 public class QueryContext {
     public SymbolTable st = new SymbolTable();
     private NodeContext nc = new NodeContext();
     public boolean [] letFilter = null;
-//    public Set<String> whereVar = new HashSet<String>();
     public List<String> whereVar2 = new ArrayList<String>();
     public boolean inwhere = false;
 
-//    public Set<String> getWhereVar() {
-//        return this.whereVar;
-//    }
-//    public void clearWhereVar(){
-//        whereVar.clear();
-//    }
 
     public List<String> getWhereVar2() {
         return whereVar2;
     }
     public void clearWhereVar2(){
+
 
     }
 
@@ -56,17 +44,64 @@ public class QueryContext {
         return st.getVar(var);
     }
 
-    public VarEnvironment pushVarEnv(VarEnvironment ve) {
+    public MyScope pushVarEnv(MyScope ve) {
         return st.pushVarEnv(ve);
     }
 
-    public VarEnvironment popVarEnv() {
+    public MyScope popVarEnv() {
         return st.popVarEnv();
     }
 
-    public VarEnvironment cloneVarEnv() {
+    public MyScope cloneVarEnv() {
         return st.cloneVarEnv();
     }
 
+}
+class SymbolTable {
+    private Stack<MyScope> varEnv = new Stack<>();
 
+    public SymbolTable() {
+        varEnv.push(new MyScope());
+    }
+
+    public MyScope pushVarEnv(MyScope ve) {
+        return varEnv.push(ve);
+    }
+
+    public XQueryList getVar(String var) {
+        return varEnv.peek().getVar(var);
+    }
+
+    public MyScope popVarEnv() {
+        return varEnv.pop();
+    }
+
+    public MyScope cloneVarEnv() {
+        return varEnv.peek().copy();
+    }
+}
+class NodeContext {
+    private Stack<XQueryList> ctxElems = new Stack<>();
+    public NodeContext() {
+
+    }
+    public XQueryList peekContextElement() {
+        XQueryList res = new XQueryList(this.ctxElems.peek().size());
+        for (XMLElement x : this.ctxElems.peek())
+            if (x != null)
+                res.add(x);
+        return res;
+    }
+
+    public XQueryList popContextElement() {
+        return this.ctxElems.pop();
+    }
+
+    public void pushContextElement(XMLElement elem) {
+        this.ctxElems.push(new XQueryList(elem));
+    }
+
+    public void pushContextElement(XQueryList elem) {
+        ctxElems.push(elem);
+    }
 }

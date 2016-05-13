@@ -5,22 +5,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class VarEnvironment implements IXQueryValue, Map<String, XQueryList> {
+public class MyScope extends MyQueryElement implements Map<String, XQueryList> {
     private Map<String, XQueryList> varEnv = new HashMap<>();
 
-    public VarEnvironment() {
+    public MyScope() {
     }
 
     public XQueryList getVar(String varName){
         XQueryList res = varEnv.get(varName);
-
         if(res != null)
             return res;
         return new XQueryList();
     }
 
-    public VarEnvironment copy(){
-        VarEnvironment ve = new VarEnvironment();
+    public MyScope copy(){
+        MyScope ve = new MyScope();
         ve.varEnv.putAll(this.varEnv);
         return ve;
     }
