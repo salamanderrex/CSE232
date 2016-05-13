@@ -16,59 +16,59 @@ public class myXQueryVisitor  extends XQueryBaseVisitor<MyQueryElement> {
     /** APS **/
 
     @Override
-    public XQueryList visitAp(@NotNull XQueryParser.ApContext ctx) {
+    public NodeTextList visitAp(@NotNull XQueryParser.ApContext ctx) {
         return evaluator.evalAp(ctx);
     }
 
     /** RPS **/
 
     @Override
-    public XQueryList visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
+    public NodeTextList visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
         return evaluator.evalTagName(ctx);
     }
 
     @Override
-    public XQueryList visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
+    public NodeTextList visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
         return evaluator.evalWildCard();
     }
 
     @Override
-    public XQueryList visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
+    public NodeTextList visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
         return evaluator.evalDot();
     }
 
     @Override
-    public XQueryList visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
+    public NodeTextList visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
         return evaluator.evalDotDot();
     }
 
     @Override
-    public XQueryList visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
+    public NodeTextList visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
         return evaluator.evalText();
     }
 
     @Override
-    public XQueryList visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
+    public NodeTextList visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
         return evaluator.evalParen(ctx);
     }
 
     @Override
-    public XQueryList visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+    public NodeTextList visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
         return evaluator.evalSlashes(ctx);
     }
 
     @Override
-    public XQueryList visitRpAttr(@NotNull XQueryParser.RpAttrContext ctx) {
+    public NodeTextList visitRpAttr(@NotNull XQueryParser.RpAttrContext ctx) {
         return evaluator.evalAttr(ctx);
     }
 
     @Override
-    public XQueryList visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
+    public NodeTextList visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
         return evaluator.evalFilter(ctx);
     }
 
     @Override
-    public XQueryList visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
+    public NodeTextList visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
         return evaluator.evalConcat(ctx);
     }
 

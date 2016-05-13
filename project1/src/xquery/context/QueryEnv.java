@@ -10,7 +10,7 @@ public class QueryEnv {
     public List<String> whereVar2 = new ArrayList<String>();
     private Stack<MyScope> varEnv = new Stack<>();
     public boolean inwhere = false;
-    private Stack<XQueryList> ctxElems = new Stack<>();
+    private Stack<NodeTextList> ctxElems = new Stack<>();
     public List<String> getWhereVar2() {
         return whereVar2;
     }
@@ -21,27 +21,27 @@ public class QueryEnv {
         varEnv.push(new MyScope());
     }
 
-    public XQueryList peekContextElement() {
-        XQueryList res = new XQueryList(this.ctxElems.peek().size());
+    public NodeTextList peekContextElement() {
+        NodeTextList res = new NodeTextList(this.ctxElems.peek().size());
         for (XMLElement x : this.ctxElems.peek())
             if (x != null)
                 res.add(x);
         return res;
     }
 
-    public XQueryList popContextElement() {
+    public NodeTextList popContextElement() {
         return this.ctxElems.pop();
     }
 
     public void pushContextElement(XMLElement elem) {
-        this.ctxElems.push(new XQueryList(elem));
+        this.ctxElems.push(new NodeTextList(elem));
     }
 
-    public void pushContextElement(XQueryList elem) {
+    public void pushContextElement(NodeTextList elem) {
         ctxElems.push(elem);
     }
 
-    public XQueryList getVar(String var) {
+    public NodeTextList getVar(String var) {
         return varEnv.peek().getVar(var);
     }
 

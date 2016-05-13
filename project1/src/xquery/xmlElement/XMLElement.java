@@ -2,7 +2,7 @@
 package project1.xquery.xmlElement;
 
 import org.dom4j.*;
-import project1.xquery.value.XQueryList;
+import project1.xquery.value.NodeTextList;
 
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class XMLElement {
     }
 
 
-    public void addAll(XQueryList list) {
+    public void addAll(NodeTextList list) {
         for (XMLElement e : list.values)
             this.add((XMLElement) e);
     }
@@ -62,8 +62,8 @@ public class XMLElement {
     }
 
 
-    public XQueryList parent() {
-        XQueryList res = new XQueryList(1);
+    public NodeTextList parent() {
+        NodeTextList res = new NodeTextList(1);
 
         Element parentEl = elem.getParent();
 
@@ -73,19 +73,19 @@ public class XMLElement {
     }
 
 
-    public XQueryList children() {
+    public NodeTextList children() {
         List<XMLElement> values = new ArrayList<XMLElement>();
         Iterator elementIterator = this.elem.elementIterator();
         while (elementIterator.hasNext()) {
             Element tt = (Element) elementIterator.next();
             values.add(new XMLElement(tt));
         }
-        return new XQueryList(values);
+        return new NodeTextList(values);
     }
 
 
-    public XQueryList getChildByTag(String tagName) {
-        XQueryList res = new XQueryList();
+    public NodeTextList getChildByTag(String tagName) {
+        NodeTextList res = new NodeTextList();
         for (XMLElement e : this.children())
             if (e.tag().equals(tagName))
                 res.add(e);
@@ -152,8 +152,8 @@ public class XMLElement {
         return attributes;
     }
 
-    public XQueryList descendants() {
-        XQueryList res = new XQueryList();
+    public NodeTextList descendants() {
+        NodeTextList res = new NodeTextList();
         res.add(this);
 
         for (XMLElement e : children()) {

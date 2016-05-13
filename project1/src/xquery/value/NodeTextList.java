@@ -6,32 +6,32 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class XQueryList extends MyQueryElement implements Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
+public class NodeTextList extends MyQueryElement implements Iterable<XMLElement>, Collection<XMLElement>, List<XMLElement> {
     public List<XMLElement> values;
 
-    public XQueryList(int size) {
+    public NodeTextList(int size) {
         this.values = new ArrayList<>(size);
     }
 
-    public XQueryList() {
+    public NodeTextList() {
         this(10);
     }
 
 
 
-    public XQueryList(XMLElement e) {
+    public NodeTextList(XMLElement e) {
         this(1);
         values.add(e);
     }
 
-    public XQueryList(List<XMLElement> values) {
+    public NodeTextList(List<XMLElement> values) {
         this.values = values;
     }
 
-    public XQueryList unique(){
+    public NodeTextList unique(){
         if (values == null)
             return null;
-        XQueryList results = new XQueryList();
+        NodeTextList results = new NodeTextList();
 
         values.stream().filter(e -> !containsRef(results, e)).forEach(results::add);
         return results;
@@ -44,7 +44,7 @@ public class XQueryList extends MyQueryElement implements Iterable<XMLElement>, 
         return false;
     }
 
-    public XQueryBoolean equalsId(XQueryList o) {
+    public XQueryBoolean equalsId(NodeTextList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equalsRef(y))
@@ -60,15 +60,15 @@ public class XQueryList extends MyQueryElement implements Iterable<XMLElement>, 
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof XQueryList) {
-            XQueryList o = ((XQueryList) obj);
+        if(obj instanceof NodeTextList) {
+            NodeTextList o = ((NodeTextList) obj);
             return equalsVal(o).booleanFlag == true;
         }
 
         return false;
     }
 
-    public XQueryBoolean equalsVal(XQueryList o) {
+    public XQueryBoolean equalsVal(NodeTextList o) {
         for(XMLElement x : this)
             for(XMLElement y : o)
                 if(x.equals(y))

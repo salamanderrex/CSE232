@@ -20,7 +20,7 @@ public class XQueryExecutor {
         XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
         XQueryVisitor visitor = new myXQueryVisitor();
         XQueryParser.XqContext context = parser.xq();
-        return (XQueryList) visitor.visit(context);
+        return (NodeTextList) visitor.visit(context);
     }
 
 }

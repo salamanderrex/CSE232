@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class MyXQueryEvaluator {
 
     public int readFileCounter;
-    public XQueryList cachedXQueryList;
+    public NodeTextList cachedXQueryList;
 
     public XQueryBaseVisitor<MyQueryElement> visitor;
     public QueryEnv qc;
@@ -34,7 +34,7 @@ public class MyXQueryEvaluator {
 
     }
 
-    public XQueryList evalAp(@NotNull XQueryParser.ApContext ctx) {
+    public NodeTextList evalAp(@NotNull XQueryParser.ApContext ctx) {
         Document doc=null;
         XMLElement freshRoot =null;
 
@@ -53,16 +53,16 @@ public class MyXQueryEvaluator {
             }
         }
         if (readFileCounter == 0) {
-            XQueryList results = new XQueryList();
+            NodeTextList results = new NodeTextList();
             qc.pushContextElement(freshRoot);
 
             switch (ctx.slash.getType()) {
                 case XQueryParser.SLASH:
-                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
+                    results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 case XQueryParser.SSLASH:
                     qc.pushContextElement(freshRoot.descendants());
-                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
+                    results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 default:
                     System.out.println("Oops, shouldn't be here");
@@ -72,18 +72,18 @@ public class MyXQueryEvaluator {
             return results.unique();
         }
         if (readFileCounter == 1) {
-            XQueryList results = new XQueryList();
+            NodeTextList results = new NodeTextList();
 
 
             qc.pushContextElement(freshRoot);
 
             switch (ctx.slash.getType()) {
                 case XQueryParser.SLASH:
-                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
+                    results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 case XQueryParser.SSLASH:
                     qc.pushContextElement(freshRoot.descendants());
-                    results.addAll((XQueryList) visitor.visit(ctx.rp()));
+                    results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 default:
                     System.out.println("Oops, shouldn't be here");
@@ -98,35 +98,35 @@ public class MyXQueryEvaluator {
 
     }
 
-    public XQueryList evalTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
+    public NodeTextList evalTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
         String tagName = ctx.getText();
 
-        XQueryList x = evalWildCard().stream().filter(
+        NodeTextList x = evalWildCard().stream().filter(
                 e -> e.tag().equalsIgnoreCase(tagName)
-        ).collect(Collectors.toCollection(XQueryList::new));
+        ).collect(Collectors.toCollection(NodeTextList::new));
 
         return x;
     }
 
-    public XQueryList evalWildCard() {
-        XQueryList res = new XQueryList();
+    public NodeTextList evalWildCard() {
+        NodeTextList res = new NodeTextList();
 
         for (XMLElement context : qc.peekContextElement())
             res.addAll(context.children());
         return res;
     }
 
-    public XQueryList evalDot() {
+    public NodeTextList evalDot() {
         return qc.peekContextElement();
     }
 
-    public XQueryList evalDotDot() {
+    public NodeTextList evalDotDot() {
         return qc.peekContextElement().stream().map(
                 e -> e.parent().get(0)
-        ).collect(Collectors.toCollection(XQueryList::new)).unique();
+        ).collect(Collectors.toCollection(NodeTextList::new)).unique();
     }
 
-    public XQueryList evalText() {
+    public NodeTextList evalText() {
 
         List<XMLElement> values = new ArrayList<XMLElement>();
         Iterator elementIterator = qc.peekContextElement().iterator();
@@ -136,13 +136,13 @@ public class MyXQueryEvaluator {
             ntt.istext = 1;
             values.add(ntt);
         }
-        XQueryList x = new XQueryList(values);
+        NodeTextList x = new NodeTextList(values);
         return x;
     }
 
-    public XQueryList evalAttr(XQueryParser.RpAttrContext ctx) {
+    public NodeTextList evalAttr(XQueryParser.RpAttrContext ctx) {
         String attrib = ctx.Identifier().getSymbol().getText();
-        XQueryList res = new XQueryList(qc.peekContextElement().size());
+        NodeTextList res = new NodeTextList(qc.peekContextElement().size());
         if (attrib == null)
             return res;
 
@@ -153,12 +153,12 @@ public class MyXQueryEvaluator {
         return res;
     }
 
-    public XQueryList evalParen(@NotNull XQueryParser.RpParenExprContext ctx) {
-        return (XQueryList) visitor.visit(ctx.rp());
+    public NodeTextList evalParen(@NotNull XQueryParser.RpParenExprContext ctx) {
+        return (NodeTextList) visitor.visit(ctx.rp());
     }
 
-    public XQueryList evalSlashes(@NotNull XQueryParser.RpSlashContext ctx) {
-        XQueryList results = new XQueryList();
+    public NodeTextList evalSlashes(@NotNull XQueryParser.RpSlashContext ctx) {
+        NodeTextList results = new NodeTextList();
         switch (ctx.slash.getType()) {
             case XQueryParser.SLASH:
                 results = evalRpSlash(ctx);
@@ -173,34 +173,34 @@ public class MyXQueryEvaluator {
         return results;
     }
 
-    private XQueryList evalRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
-        XQueryList y = new XQueryList();
-        XQueryList x = (XQueryList) visitor.visit(ctx.left);
+    private NodeTextList evalRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        NodeTextList y = new NodeTextList();
+        NodeTextList x = (NodeTextList) visitor.visit(ctx.left);
         qc.pushContextElement(x);
-        XQueryList context = (XQueryList) visitor.visit(ctx.right);
+        NodeTextList context = (NodeTextList) visitor.visit(ctx.right);
         y.addAll(context);
         qc.popContextElement();
         return y.unique();
     }
 
-    private XQueryList evalRpSlashSlash(@NotNull XQueryParser.RpSlashContext ctx) {
-        XQueryList l = (XQueryList) visitor.visit(ctx.left);
-        XQueryList descendants = new XQueryList();
+    private NodeTextList evalRpSlashSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList descendants = new NodeTextList();
 
         for (XMLElement x : l) {
             descendants.addAll(x.descendants());
         }
 
         qc.pushContextElement(descendants);
-        XQueryList r = (XQueryList) visitor.visit(ctx.right);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         qc.popContextElement();
 
         return r.unique();
     }
 
-    public XQueryList evalFilter(@NotNull XQueryParser.RpFilterContext ctx) {
-        XQueryList res = new XQueryList();
-        XQueryList xs = (XQueryList) visitor.visit(ctx.rp());
+    public NodeTextList evalFilter(@NotNull XQueryParser.RpFilterContext ctx) {
+        NodeTextList res = new NodeTextList();
+        NodeTextList xs = (NodeTextList) visitor.visit(ctx.rp());
         for (XMLElement x : xs) {
             qc.pushContextElement(x);
             XQueryBoolean y = (XQueryBoolean) visitor.visit(ctx.f());
@@ -211,9 +211,9 @@ public class MyXQueryEvaluator {
         return res;
     }
 
-    public XQueryList evalConcat(@NotNull XQueryParser.RpConcatContext ctx) {
-        XQueryList l = (XQueryList) visitor.visit(ctx.left);
-        XQueryList r = (XQueryList) visitor.visit(ctx.right);
+    public NodeTextList evalConcat(@NotNull XQueryParser.RpConcatContext ctx) {
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         l.addAll(r);
         return l;
     }
@@ -221,18 +221,18 @@ public class MyXQueryEvaluator {
 
 
     public XQueryBoolean evalIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx){
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
         return l.equalsId(r);
     }
     public XQueryBoolean evalValEqual(@NotNull XQueryParser.CondValEqualContext ctx){
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
     public XQueryBoolean evalEmpty(@NotNull XQueryParser.CondEmptyContext ctx){
-        XQueryList res = (XQueryList)visitor.visit(ctx.xq());
+        NodeTextList res = (NodeTextList)visitor.visit(ctx.xq());
         return res.empty();
     }
 
@@ -240,7 +240,7 @@ public class MyXQueryEvaluator {
         MyScope ve = qc.cloneVarEnv();
 
         for(int i = 0; i < ctx.xq().size(); i++) {
-            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
+            NodeTextList res = (NodeTextList)visitor.visit(ctx.xq(i));
             ve.put(ctx.Var(i).getText(), res);
         }
 
@@ -277,7 +277,7 @@ public class MyXQueryEvaluator {
     }
 
     public XQueryBoolean evalFRp(XQueryParser.FRpContext ctx) {
-        XQueryList resultR = (XQueryList)visitor.visit(ctx.rp());
+        NodeTextList resultR = (NodeTextList)visitor.visit(ctx.rp());
         if(resultR.size() > 0)
             return  XQueryBoolean.XQueryBooleanFactory(true);
         return XQueryBoolean.XQueryBooleanFactory(false);
@@ -305,14 +305,14 @@ public class MyXQueryEvaluator {
     }
 
     public XQueryBoolean evalValEqual(XQueryParser.FValEqualContext ctx) {
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
     public XQueryBoolean evalIdEqual(XQueryParser.FIdEqualContext ctx) {
-        XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
         return l.equalsId(r);
     }
 
@@ -324,12 +324,12 @@ public class MyXQueryEvaluator {
 
     private ScopeList getVarEnvs(int var, @NotNull XQueryParser.ForClauseContext ctx, MyScope previousVE) {
         ScopeList varEnvs = new ScopeList();
-        XQueryList res = (XQueryList) visitor.visit(ctx.xq(var));
+        NodeTextList res = (NodeTextList) visitor.visit(ctx.xq(var));
         if (var == ctx.xq().size() - 1) {
             for (XMLElement elem : res) {
                 MyScope currentVE = new MyScope();
                 currentVE.putAll(previousVE);
-                currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
+                currentVE.put(ctx.Var(var).getText(), new NodeTextList(elem));
                 varEnvs.add(currentVE);
             }
             return varEnvs;
@@ -337,7 +337,7 @@ public class MyXQueryEvaluator {
         for (XMLElement elem : res) {
             qc.pushContextElement(elem);
             MyScope currentVE = previousVE.copy();
-            currentVE.put(ctx.Var(var).getText(), new XQueryList(elem));
+            currentVE.put(ctx.Var(var).getText(), new NodeTextList(elem));
             qc.pushVarEnv(currentVE);
             varEnvs.addAll(getVarEnvs(var + 1, ctx, currentVE));
             qc.popVarEnv();
@@ -349,14 +349,14 @@ public class MyXQueryEvaluator {
         MyScope ve = qc.cloneVarEnv();
         if (qc.letFilter==null) {
             for (int i = 0; i < ctx.xq().size(); i++) {
-                XQueryList res = (XQueryList) visitor.visit(ctx.xq(i));
+                NodeTextList res = (NodeTextList) visitor.visit(ctx.xq(i));
                 ve.put(ctx.Var(i).getText(), res);
                 qc.pushVarEnv(ve);
             }
 
         } else {
             for (int i = 0; i < ctx.xq().size(); i++) {
-                XQueryList res = (XQueryList) visitor.visit(ctx.xq(i));
+                NodeTextList res = (NodeTextList) visitor.visit(ctx.xq(i));
                 if (!qc.letFilter[i]) {
                     ve.put(ctx.Var(i).getText(), res);
                     qc.pushVarEnv(ve);
@@ -376,31 +376,31 @@ public class MyXQueryEvaluator {
         return ans;
     }
 
-    public XQueryList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
+    public NodeTextList evalReturn(@NotNull XQueryParser.ReturnClauseContext ctx) {
 
-        return (XQueryList) visitor.visit(ctx.xq());
+        return (NodeTextList) visitor.visit(ctx.xq());
     }
 
-    public XQueryList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx) {
+    public NodeTextList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx) {
 
         String text = ctx.StringLiteral().getText();
         XMLElement t = new XMLElement(text.substring(1, text.length() - 1));
         t.isconstantstring = 1;
-        return new XQueryList(t);
+        return new NodeTextList(t);
     }
 
-    public XQueryList evalAp(@NotNull XQueryParser.XqApContext ctx) {
-        return (XQueryList) visitor.visit(ctx.ap());
+    public NodeTextList evalAp(@NotNull XQueryParser.XqApContext ctx) {
+        return (NodeTextList) visitor.visit(ctx.ap());
     }
 
-    public XQueryList evalParen(@NotNull XQueryParser.XqParenExprContext ctx) {
-        return (XQueryList) visitor.visit(ctx.xq());
+    public NodeTextList evalParen(@NotNull XQueryParser.XqParenExprContext ctx) {
+        return (NodeTextList) visitor.visit(ctx.xq());
     }
 
 
-    public XQueryList evalVar(@NotNull XQueryParser.XqVarContext ctx) {
+    public NodeTextList evalVar(@NotNull XQueryParser.XqVarContext ctx) {
 
-        XQueryList ans = qc.getVar(ctx.getText());
+        NodeTextList ans = qc.getVar(ctx.getText());
         List<String> WhereVar2 = qc.getWhereVar2();
         if (qc.inwhere) {
             if (!WhereVar2.contains(ctx.getText()))
@@ -411,32 +411,32 @@ public class MyXQueryEvaluator {
 
     }
 
-    public XQueryList evalConcat(@NotNull XQueryParser.XqConcatContext ctx) {
+    public NodeTextList evalConcat(@NotNull XQueryParser.XqConcatContext ctx) {
         //qc.openScope();
-        XQueryList l = (XQueryList) visitor.visit(ctx.left);
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
         //qc.closeScope();
 
         //qc.openScope();
-        XQueryList r = (XQueryList) visitor.visit(ctx.right);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         //qc.closeScope();
 
         l.addAll(r);
         return l;
     }
 
-    private XQueryList evalXqSlash(@NotNull XQueryParser.XqSlashContext ctx) {
-        XQueryList xq = (XQueryList) visitor.visit(ctx.xq());
+    private NodeTextList evalXqSlash(@NotNull XQueryParser.XqSlashContext ctx) {
+        NodeTextList xq = (NodeTextList) visitor.visit(ctx.xq());
 
         qc.pushContextElement(xq);
-        XQueryList rp = (XQueryList) visitor.visit(ctx.rp());
+        NodeTextList rp = (NodeTextList) visitor.visit(ctx.rp());
         qc.popContextElement();
 
         return rp.unique();
     }
 
-    private XQueryList evalXqSlashSlash(@NotNull XQueryParser.XqSlashContext ctx) {
-        XQueryList l = (XQueryList) visitor.visit(ctx.xq());
-        XQueryList descendants = new XQueryList();
+    private NodeTextList evalXqSlashSlash(@NotNull XQueryParser.XqSlashContext ctx) {
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.xq());
+        NodeTextList descendants = new NodeTextList();
 
         for (XMLElement x : l) {
             descendants.addAll(x.descendants());
@@ -444,15 +444,15 @@ public class MyXQueryEvaluator {
 
         qc.pushContextElement(descendants);
 
-        XQueryList r = (XQueryList) visitor.visit(ctx.rp());
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.rp());
 
         qc.popContextElement();
 
         return r.unique();
     }
 
-    public XQueryList evalSlashes(@NotNull XQueryParser.XqSlashContext ctx) {
-        XQueryList results = new XQueryList();
+    public NodeTextList evalSlashes(@NotNull XQueryParser.XqSlashContext ctx) {
+        NodeTextList results = new NodeTextList();
         switch (ctx.slash.getType()) {
             case XQueryParser.SLASH:
                 results = evalXqSlash(ctx);
@@ -467,11 +467,11 @@ public class MyXQueryEvaluator {
         return results;
     }
 
-    public XQueryList evalTagname(@NotNull XQueryParser.XqTagNameContext ctx) {
+    public NodeTextList evalTagname(@NotNull XQueryParser.XqTagNameContext ctx) {
         if (!ctx.open.getText().equals(ctx.close.getText()))
             System.out.println(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
-        XQueryList xq = (XQueryList) visitor.visit(ctx.xq());
+        NodeTextList xq = (NodeTextList) visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());
 
         for (XMLElement v : xq) {
@@ -481,7 +481,7 @@ public class MyXQueryEvaluator {
                 res.add( v);
         }
 
-        return new XQueryList(res);
+        return new NodeTextList(res);
     }
 
     public void Plusone(int[] base, int[] next) {
@@ -500,10 +500,10 @@ public class MyXQueryEvaluator {
 
     }
 
-    public XQueryList evalFLWR(@NotNull XQueryParser.XqFLWRContext ctx) {
+    public NodeTextList evalFLWR(@NotNull XQueryParser.XqFLWRContext ctx) {
         ScopeList veFor = (ScopeList) visitor.visit(ctx.forClause());
 
-        XQueryList res = new XQueryList();
+        NodeTextList res = new NodeTextList();
         for (MyScope ve : veFor) {
             qc.pushVarEnv(ve);
             if (ctx.letClause() != null) {
@@ -537,12 +537,12 @@ public class MyXQueryEvaluator {
                         for (int j = 0; j < counter.length; j++) {
                             String varName = wherevar.get(j);
                             XMLElement e2 = v.get(wherevar.get(j)).get(counter[j]);
-                            XQueryList xqList = new XQueryList(e2);
+                            NodeTextList xqList = new NodeTextList(e2);
                             v.put(varName, xqList);
                         }
                         qc.pushVarEnv(v);
                         if ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag) {
-                            res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                            res.addAll((NodeTextList) visitor.visit(ctx.returnClause()));
                         }
                         qc.popVarEnv();
                         Plusone(whereList,counter);
@@ -551,11 +551,11 @@ public class MyXQueryEvaluator {
 
                 } else {
                     if  ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag)
-                        res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                        res.addAll((NodeTextList) visitor.visit(ctx.returnClause()));
                 }
 
             } else
-                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                res.addAll((NodeTextList) visitor.visit(ctx.returnClause()));
 
             qc.popVarEnv();
 
@@ -569,13 +569,13 @@ public class MyXQueryEvaluator {
         return res;
     }
 
-    public XQueryList evalLet(@NotNull XQueryParser.XqLetContext ctx) {
+    public NodeTextList evalLet(@NotNull XQueryParser.XqLetContext ctx) {
 
         MyScope ve = (MyScope) visitor.visit(ctx.letClause());
 
         qc.pushVarEnv(ve);
 
-        XQueryList res = (XQueryList) visitor.visit(ctx.xq());
+        NodeTextList res = (NodeTextList) visitor.visit(ctx.xq());
 
         qc.popVarEnv();
 
@@ -584,10 +584,10 @@ public class MyXQueryEvaluator {
 
     public MyQueryElement evalJoin(XQueryParser.JoinClauseContext ctx) {
 
-        XQueryList list1 = (XQueryList) visitor.visit(ctx.xq1);
-        XQueryList list2 = (XQueryList) visitor.visit(ctx.xq2);
+        NodeTextList list1 = (NodeTextList) visitor.visit(ctx.xq1);
+        NodeTextList list2 = (NodeTextList) visitor.visit(ctx.xq2);
 
-        XQueryList res = new XQueryList();
+        NodeTextList res = new NodeTextList();
 
 
         String idl1 = ctx.IdentifierList(0).getText();
@@ -599,8 +599,8 @@ public class MyXQueryEvaluator {
             for (XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
-                    XQueryList list1Elems = elem1.getChildByTag(joinVars1.get(i));
-                    XQueryList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+                    NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
                     for (XMLElement listElem1 : list1Elems)
                         for (XMLElement listElem2 : list2Elems) {
                             if (!listElem1.childrenEquals(listElem2)) {
