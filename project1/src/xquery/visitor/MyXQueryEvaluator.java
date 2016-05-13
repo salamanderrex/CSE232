@@ -383,7 +383,6 @@ public class MyXQueryEvaluator {
 
     public XQueryList evalStringConstant(@NotNull XQueryParser.XqStringConstantContext ctx) {
 
-        // it will become < CASExxx> remove them
         String text = ctx.StringLiteral().getText();
         XMLElement t = new XMLElement(text.substring(1, text.length() - 1));
         t.isconstantstring = 1;

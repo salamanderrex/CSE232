@@ -41,10 +41,7 @@ public class XMLElement {
 
     public void add(XMLElement child) {
 
-      //  System.out.println("add"+child.toString());
-      //  System.out.println("add"+child.elem.getName());
         if (child.isText()) {
-        //    System.out.println("is text");
             this.elem.addText(child.elem.getName());
         }
 
@@ -105,11 +102,8 @@ public class XMLElement {
     }
 
 
-    //??? what ?
-
     public XMLElement attrib(String attName) {
-        // TODO: This should not return an {@link XMLElement}, but probably an {@link IXQueryValue} of type Text, or something
-        // TODO: This is the root of all evil (returning null!)
+
         String att = elem.valueOf("@" + attName);
         if (att == null)
             return null;
@@ -174,36 +168,14 @@ public class XMLElement {
         XMLElement e = (XMLElement) o;
 
         if (e.isconstantstring == 1) {
-
-//            if (e.elem.getName().equals("SCENE II. The Forum."))
-//                if (this.elem.getName().equals("SCENE II. The Forum."))
-//                    System.out.println("YES");
-                //System.out.println(this.elem.getName());
-//            System.out.println("compare constant string");
-//            System.out.println("elem" + e.elem.getName());
-//            System.out.println("elem" + e.elem.asXML());
-//            System.out.print("elem" + e.elem.getText());
-//
-//
-//            System.out.println("this" + this.elem.getName());
-//            System.out.print("this" + this.elem.asXML());
-//            System.out.print("this" + this.elem.getText());
-
-
-           // return this.elem.getText().equals(e.elem.getName());
             return this.elem.getName().equals(e.elem.getName());
         }
 
         if (e.isText() && this.isText()) {
-            //System.out.println("here!!!!");
             return this.elem.getName().equals(e.elem.getName());
         }
 
         if (o instanceof XMLElement) {
-//
-//            System.out.println("this" + this.elem.asXML());
-//            System.out.println("e" + e.elem.asXML());
-
             return this.elem.asXML().equals(e.elem.asXML());
         }
         return false;

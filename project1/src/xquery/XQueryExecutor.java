@@ -16,11 +16,11 @@ import java.util.List;
 public class XQueryExecutor {
 
     public static List<XMLElement> executeFromFile(String queryFilePath) throws IOException {
-         XQueryLexer lexer   = new XQueryLexer(new ANTLRFileStream(queryFilePath));
-        XQueryParser parser  = new XQueryParser(new CommonTokenStream(lexer));
+        XQueryLexer lexer = new XQueryLexer(new ANTLRFileStream(queryFilePath));
+        XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
         XQueryVisitor visitor = new myXQueryVisitor();
         XQueryParser.XqContext context = parser.xq();
-        return (XQueryList)visitor.visit(context);
+        return (XQueryList) visitor.visit(context);
     }
 
 }
