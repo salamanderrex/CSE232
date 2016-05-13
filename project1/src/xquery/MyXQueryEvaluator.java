@@ -369,7 +369,7 @@ public class MyXQueryEvaluator {
     }
 
     public XQueryBoolean evalWhere(@NotNull XQueryParser.WhereClauseContext ctx) {
-        qc.inwhere = true;
+        //qc.inwhere = true;
         XQueryBoolean ans = (XQueryBoolean) visitor.visit(ctx.cond());
         qc.inwhere = false;
         return ans;
