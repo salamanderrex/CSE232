@@ -58,3 +58,4 @@ project1/src/xquery/parser/XQueryBaseListener.java
 project1/src/xquery/parser/XQueryBaseVisitor.java
 project1/src/xquery/parser/XQueryLexer.tokens
 project1/src/xquery/parser/XQueryListener.java
+/antlrtutorial.iml
