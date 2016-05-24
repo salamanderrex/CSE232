@@ -2,17 +2,14 @@
 
 package project1.xquery.parser;
 
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.ParseTreeVisitor;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
 import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class XQueryParser extends Parser {
@@ -466,7 +463,7 @@ public class XQueryParser extends Parser {
 			setState(61);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -506,7 +503,7 @@ public class XQueryParser extends Parser {
 						}
 						break;
 					}
-					}
+					} 
 				}
 				setState(63);
 				_errHandler.sync(this);
@@ -536,9 +533,9 @@ public class XQueryParser extends Parser {
 		public XqContext xq(int i) {
 			return getRuleContext(XqContext.class,i);
 		}
-		public List<TerminalNode> IdentifierList() { return getTokens( XQueryParser.IdentifierList); }
+		public List<TerminalNode> IdentifierList() { return getTokens(XQueryParser.IdentifierList); }
 		public TerminalNode IdentifierList(int i) {
-			return getToken( XQueryParser.IdentifierList, i);
+			return getToken(XQueryParser.IdentifierList, i);
 		}
 		public JoinClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -599,9 +596,9 @@ public class XQueryParser extends Parser {
 	}
 
 	public static class ForClauseContext extends ParserRuleContext {
-		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens(XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken( XQueryParser.Var, i);
+			return getToken(XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -677,9 +674,9 @@ public class XQueryParser extends Parser {
 	}
 
 	public static class LetClauseContext extends ParserRuleContext {
-		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens(XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken( XQueryParser.Var, i);
+			return getToken(XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -851,7 +848,7 @@ public class XQueryParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_cond; }
-
+	 
 		public CondContext() { }
 		public void copyFrom(CondContext ctx) {
 			super.copyFrom(ctx);
@@ -901,9 +898,9 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class CondSomeSatisContext extends CondContext {
-		public List<TerminalNode> Var() { return getTokens( XQueryParser.Var); }
+		public List<TerminalNode> Var() { return getTokens(XQueryParser.Var); }
 		public TerminalNode Var(int i) {
-			return getToken( XQueryParser.Var, i);
+			return getToken(XQueryParser.Var, i);
 		}
 		public List<XqContext> xq() {
 			return getRuleContexts(XqContext.class);
@@ -1177,7 +1174,7 @@ public class XQueryParser extends Parser {
 			setState(152);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1212,7 +1209,7 @@ public class XQueryParser extends Parser {
 						}
 						break;
 					}
-					}
+					} 
 				}
 				setState(154);
 				_errHandler.sync(this);
@@ -1237,7 +1234,7 @@ public class XQueryParser extends Parser {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
 		}
-		public TerminalNode StringLiteral() { return getToken( XQueryParser.StringLiteral, 0); }
+		public TerminalNode StringLiteral() { return getToken(XQueryParser.StringLiteral, 0); }
 		public ApContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1326,7 +1323,7 @@ public class XQueryParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_rp; }
-
+	 
 		public RpContext() { }
 		public void copyFrom(RpContext ctx) {
 			super.copyFrom(ctx);
@@ -1430,7 +1427,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class RpTagNameContext extends RpContext {
-		public TerminalNode Identifier() { return getToken( XQueryParser.Identifier, 0); }
+		public TerminalNode Identifier() { return getToken(XQueryParser.Identifier, 0); }
 		public RpTagNameContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1485,7 +1482,7 @@ public class XQueryParser extends Parser {
 		}
 	}
 	public static class RpAttrContext extends RpContext {
-		public TerminalNode Identifier() { return getToken( XQueryParser.Identifier, 0); }
+		public TerminalNode Identifier() { return getToken(XQueryParser.Identifier, 0); }
 		public RpAttrContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1616,7 +1613,7 @@ public class XQueryParser extends Parser {
 			setState(194);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1671,7 +1668,7 @@ public class XQueryParser extends Parser {
 						}
 						break;
 					}
-					}
+					} 
 				}
 				setState(196);
 				_errHandler.sync(this);
@@ -1695,7 +1692,7 @@ public class XQueryParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_f; }
-
+	 
 		public FContext() { }
 		public void copyFrom(FContext ctx) {
 			super.copyFrom(ctx);
@@ -1949,7 +1946,7 @@ public class XQueryParser extends Parser {
 			setState(223);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
-			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
