@@ -9,10 +9,19 @@ class JoinOptimizer(object):
         self.querys = querys
         self.fileName = fileName
         self.forMap = self.createForMap(querys)
+        print "for map is ============"
+        print self.forMap
+        self.wherePair = self.createWhereMap(querys)
+        print "where Pair is=============== "
+        print self.wherePair
         self.DG = self.graphMaker(self.forMap)
-        print "test to print the graph....."
+        print "test to print the graph ============"
         print ""
         self.graphPrinter(self.DG)
+
+        print "variable in reutrn============="
+        self.returnVariable = self.createReturnList(querys)
+        print self.returnVariable
 
     def createForMap(self,querys):
         variable_pair = {}
@@ -25,7 +34,7 @@ class JoinOptimizer(object):
         while True:
             word = itr.next()
             if word == "return":
-                print "end for assignmentMap"
+                #print "end for assignmentMap"
                 break
             if word=="for":
                 for_flag = True
@@ -39,43 +48,64 @@ class JoinOptimizer(object):
                 val_ = itr.next()
                 variable_pair[var_] = val_
                 #print "insert" + var_ + ":" + val_
-        print  "for is====== "
-        print variable_pair
+        #print  "for is====== "
+        #print variable_pair
         return variable_pair
 
 
     def createWhereMap(self,querys):
-        variable_pair = {}
+        variable_pair = []
         tokens = self.decomposeQuery(querys)
         print "decompose to...."
         print tokens
-        #find inFor
+        #find inwhere
         where_flag = False
         itr = iter(tokens)
         while True:
             word = itr.next()
             if word == "return":
-                print "end for assignmentMap"
+                #print "end for assignmentMap"
                 break
             if word=="where":
                 where_flag = True
                 continue
             if where_flag:
-                print "meet where"
-                var_ = word
-                in_ = itr.next()
-                val_ = itr.next()
-                variable_pair[var_] = val_
-        print variable_pair
+                #print "meet where@",word
+                var1 = word
+                in_ = itr.next() #this should be eq
+                var2 = itr.next()
+                variable_pair.append((var1, var2))
+        return variable_pair
+
+
+
+    def createReturnList(self,querys):
+        variables = []
+        tokens = self.decomposeQuery(querys)
+        #find where
+        where_index = tokens.index("return")
+        tokens = tokens[where_index:]
+        itr = iter(tokens)
+        while True:
+            try:
+                word = itr.next()
+            except StopIteration:
+                break
+            matchObj = re.match(r'\$\w+',word)
+            if matchObj:
+                print "match@",word
+                variables.append(matchObj.group())
+        return variables
+
     def graphMaker(self,forMap):
         #create a directed graph
-        print "in graph marker"
-        print forMap
+        #print "in graph marker"
+        #print forMap
         DG = nx.DiGraph()
         for key, value in forMap.iteritems():
             DG.add_node(key)
             #if something like $b/dsfs/sfdsf
-            print "value is "
+            #print "value is "
             print value
 
             matchObj = re.match(r'(\$\w+)?(.+)', value)
