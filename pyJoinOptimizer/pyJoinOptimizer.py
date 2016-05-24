@@ -1,13 +1,50 @@
 __author__ = 'qingyu'
 import re
+import networkx as nx
+import matplotlib.pyplot as plt
+from networkx.drawing.nx_pydot import write_dot
+
 class JoinOptimizer(object):
     def __init__(self,querys,fileName):
         self.querys = querys
         self.fileName = fileName
-        self.createForMap(querys)
-
+        self.forMap = self.createForMap(querys)
+        self.DG = self.graphMaker(self.forMap)
+        print "test to print the graph....."
+        print ""
+        self.graphPrinter(self.DG)
 
     def createForMap(self,querys):
+        variable_pair = {}
+        tokens = self.decomposeQuery(querys)
+        print "decompose to...."
+        print tokens
+        #find inFor
+        for_flag = False
+        itr = iter(tokens)
+        while True:
+            word = itr.next()
+            if word == "return":
+                print "end for assignmentMap"
+                break
+            if word=="for":
+                for_flag = True
+                continue
+            if (word == "where" or word == "return"):
+                break
+            if for_flag:
+                #print "meet for"
+                var_ = word
+                in_ = itr.next()
+                val_ = itr.next()
+                variable_pair[var_] = val_
+                #print "insert" + var_ + ":" + val_
+        print  "for is====== "
+        print variable_pair
+        return variable_pair
+
+
+    def createWhereMap(self,querys):
         variable_pair = {}
         tokens = self.decomposeQuery(querys)
         print "decompose to...."
@@ -30,6 +67,36 @@ class JoinOptimizer(object):
                 val_ = itr.next()
                 variable_pair[var_] = val_
         print variable_pair
+    def graphMaker(self,forMap):
+        #create a directed graph
+        print "in graph marker"
+        print forMap
+        DG = nx.DiGraph()
+        for key, value in forMap.iteritems():
+            DG.add_node(key)
+            #if something like $b/dsfs/sfdsf
+            print "value is "
+            print value
+
+            matchObj = re.match(r'(\$\w+)?(.+)', value)
+            if matchObj:
+                # $b
+                target_node = matchObj.group(1)
+                path = matchObj.group(2)
+                DG.add_edge(key,target_node,path=str(path))
+        return DG
+
+    def graphPrinter(self,DG):
+        for n,nbrs in DG.adjacency_iter():
+            for nbr,eattr in nbrs.items():
+                data=eattr['path']
+                print('(%s, %s, %s)' % (n,nbr,data))
+        write_dot(DG,'file.dot')
+
+
+
+
+
 
 
 
