@@ -1,12 +1,20 @@
-for $b in doc("input")/book
-    $a in doc("input")/entry
-    $tb in $b/title
-    $ta in $a/title
-where $tb eq $ta
-return
-    <book-with-prices>
-    { $tb,
-    <price-review>{ $a/price/node() }</price-review>,
-    <price>{ $b/price/node() }</price>
-    }
-    </book-with-prices>
+for $b1 in doc("input")/book
+$aj in $b1/author/first/node()
+$a1 in $b1/author
+$af1 in $a1/first/node()
+$al1 in $a1/last/node()
+$b2 in doc("input")/book
+$a21 in $b2/author
+$af21 in $a21/first/node()
+$al21 in $a21/last/node()
+$a22 in $b2/author
+$af22 in $a22/first/node()
+$al22 in $a22/last/node()
+$b3 in doc("input")/book
+$a3 in $b3/author
+$af3 in $a3/first/node()
+$al3 in $a3/last/node()
+where $aj eq "John" AND
+$af1 eq $af21 AND $al1 eq $al21 AND
+$af22 eq $af3 AND $al22 eq $al3
+return <triplet> {$b1, $b2, $b3} </triplet>

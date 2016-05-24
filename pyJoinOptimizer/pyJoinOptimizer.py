@@ -11,17 +11,19 @@ class JoinOptimizer(object):
         self.forMap = self.createForMap(querys)
         print "for map is ============"
         print self.forMap
+
         self.wherePair = self.createWhereMap(querys)
         print "where Pair is=============== "
         print self.wherePair
-        self.DG = self.graphMaker(self.forMap)
-        print "test to print the graph ============"
-        print ""
-        self.graphPrinter(self.DG)
 
         print "variable in reutrn============="
         self.returnVariable = self.createReturnList(querys)
         print self.returnVariable
+
+        self.DG = self.graphMaker(self.forMap)
+        print "test to print the graph ============"
+        self.graphPrinter(self.DG)
+
 
     def createForMap(self,querys):
         variable_pair = {}
@@ -56,13 +58,17 @@ class JoinOptimizer(object):
     def createWhereMap(self,querys):
         variable_pair = []
         tokens = self.decomposeQuery(querys)
-        print "decompose to...."
-        print tokens
+        #print "decompose to...."
+        #print tokens
         #find inwhere
         where_flag = False
         itr = iter(tokens)
         while True:
-            word = itr.next()
+            try:
+                word = itr.next()
+            except StopIteration:
+                break
+
             if word == "return":
                 #print "end for assignmentMap"
                 break
@@ -70,11 +76,14 @@ class JoinOptimizer(object):
                 where_flag = True
                 continue
             if where_flag:
-                #print "meet where@",word
-                var1 = word
-                in_ = itr.next() #this should be eq
-                var2 = itr.next()
-                variable_pair.append((var1, var2))
+                print "meet where@",word
+                # is a pure variable !!!!!!! , like $a
+                matchObj = re.match(r'(\$\w+)',word)
+                if matchObj:
+                    var1 = matchObj.group(1)
+                    in_ = itr.next() #this should be eq
+                    var2 = itr.next()
+                    variable_pair.append((var1, var2))
         return variable_pair
 
 
@@ -84,17 +93,17 @@ class JoinOptimizer(object):
         tokens = self.decomposeQuery(querys)
         #find where
         where_index = tokens.index("return")
-        tokens = tokens[where_index:]
+        tokens = tokens[where_index+1:]
+        #print tokens
         itr = iter(tokens)
         while True:
             try:
                 word = itr.next()
             except StopIteration:
                 break
-            matchObj = re.match(r'\$\w+',word)
+            matchObj = re.match(r'.*(\$\w+).*',word)
             if matchObj:
-                print "match@",word
-                variables.append(matchObj.group())
+                variables.append(matchObj.group(1))
         return variables
 
     def graphMaker(self,forMap):
@@ -106,7 +115,7 @@ class JoinOptimizer(object):
             DG.add_node(key)
             #if something like $b/dsfs/sfdsf
             #print "value is "
-            print value
+            #print value
 
             matchObj = re.match(r'(\$\w+)?(.+)', value)
             if matchObj:
@@ -144,6 +153,13 @@ class JoinOptimizer(object):
                 #if origin has , then we need to remove,
                 r_list.append(matchObj)
         return filter(None,reduce(lambda x, y : x + y,r_list))
+
+    def isVariabl(self,str):
+        matchObj = re.match(r'\$\w+',str)
+        if matchObj:
+            return True
+        return False
+
 
 
 
