@@ -64,7 +64,7 @@ public class MyXQueryEvaluator {
                     results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 default:
-                    System.out.println("Oops, shouldn't be here");
+                    System.out.println("Error");
                     break;
             }
             readFileCounter++;
@@ -85,7 +85,7 @@ public class MyXQueryEvaluator {
                     results.addAll((NodeTextList) visitor.visit(ctx.rp()));
                     break;
                 default:
-                    System.out.println("Oops, shouldn't be here");
+                    System.out.println("Error");
                     break;
             }
             readFileCounter++;
@@ -411,13 +411,9 @@ public class MyXQueryEvaluator {
     }
 
     public NodeTextList evalConcat(@NotNull XQueryParser.XqConcatContext ctx) {
-        //qc.openScope();
         NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
-        //qc.closeScope();
 
-        //qc.openScope();
         NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
-        //qc.closeScope();
 
         l.addAll(r);
         return l;
@@ -468,7 +464,7 @@ public class MyXQueryEvaluator {
 
     public NodeTextList evalTagname(@NotNull XQueryParser.XqTagNameContext ctx) {
         if (!ctx.open.getText().equals(ctx.close.getText()))
-            System.out.println(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
+            System.out.println("Error");
 
         NodeTextList xq = (NodeTextList) visitor.visit(ctx.xq());
         XMLElement res = new XMLElement(ctx.open.getText());

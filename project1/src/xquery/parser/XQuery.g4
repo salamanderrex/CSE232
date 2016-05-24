@@ -4,7 +4,6 @@ grammar XQuery;
 package project1.xquery.parser;
 }
 
-// XQuery
 xq
   : Var                                                          #xqVar
   | StringLiteral                                                #xqStringConstant
@@ -26,27 +25,26 @@ joinClause
            ')'
   ;
 
-// For Clause: for $var1 in $someList, $var2 in $var1)
+
 forClause
   : 'for' Var 'in' xq (',' Var 'in' xq)*
   ;
 
-// Let Clause: let $var1 := "superman", $var2 := "batman", ...
+
 letClause
   : 'let' Var ':=' xq (',' Var ':=' xq)*
   ;
 
-// Where Clause: where $var1 == $var2
+
 whereClause
   : 'where' cond
   ;
 
-// Return Clause: return $var1
+
 returnClause
   : 'return' xq
   ;
 
-// Condition
 cond
   : left=xq ('='|'eq')  right=xq                           #condValEqual
   | left=xq ('=='|'is') right=xq                           #condIdEqual
@@ -59,13 +57,11 @@ cond
   ;
 
 
-// Absolute path
 ap
   : 'doc(' fileName=StringLiteral ')' slash=('/'|'//') rp
   | 'document(' fileName=StringLiteral ')' slash=('/'|'//') rp
   ;
 
-// Relative path
 rp
   : '*'                               #rpWildcard
   | '.'                               #rpDot
@@ -79,7 +75,7 @@ rp
   | left=rp ',' right=rp              #rpConcat
   ;
 
-// Path filter
+
 f
   : rp                                #fRp
   | left=rp ('eq'|'=')  right=rp      #fValEqual
@@ -95,7 +91,7 @@ UP       : '..';
 WILDCARD : '*' ;
 THEN     : ',' ;
 
-// Separators
+
 LPAREN : '(';
 RPAREN : ')';
 LBRACE : '{';
@@ -105,7 +101,6 @@ RBRACK : ']';
 LANGLE : '<' | '</';
 RANGLE : '>';
 
-// Operators
 ASSIGN : ':=';
 EQLS   : '=';
 EQUAL  : '==';
@@ -129,7 +124,7 @@ SPACE : ' ' | '\u000C';
 
 fragment
 StringCharacter
-  : ~[\"\\@] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
+  : ~[\"\\@]
 	 ;
 
 Var
@@ -154,4 +149,4 @@ LetterOrDigit
   : [a-zA-Z0-9_-]
   ;
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+WS : [ \t\r\n]+ -> skip ;
