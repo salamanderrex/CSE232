@@ -24,6 +24,9 @@ class JoinOptimizer(object):
         print "test to print the graph ============"
         self.graphPrinter(self.DG)
 
+        print "connented components========"
+        self.componentsFinder(self.DG)
+
 
     def createForMap(self,querys):
         variable_pair = {}
@@ -76,7 +79,7 @@ class JoinOptimizer(object):
                 where_flag = True
                 continue
             if where_flag:
-                print "meet where@",word
+                #print "meet where@",word
                 # is a pure variable !!!!!!! , like $a
                 matchObj = re.match(r'(\$\w+)',word)
                 if matchObj:
@@ -131,6 +134,24 @@ class JoinOptimizer(object):
                 data=eattr['path']
                 print('(%s, %s, %s)' % (n,nbr,data))
         write_dot(DG,'file.dot')
+
+
+    def componentsFinder(self,DG):
+        uG = DG.to_undirected()
+        edge_list = []
+        for (a,b) in uG.edges():
+            print a,b
+            if (a is not None) and (b is not None):
+                edge_list.append((a,b))
+        #print edge_list
+        new_graph_without_None = nx.Graph(edge_list)
+        i = 0
+        for h in nx.connected_components(new_graph_without_None):
+            print "component ", i , " : ", h
+            i = i +1
+
+
+
 
 
 
