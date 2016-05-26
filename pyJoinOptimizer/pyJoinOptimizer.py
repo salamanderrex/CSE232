@@ -290,7 +290,7 @@ class JoinOptimizer(object):
                 return_co.append(return_t_co)
 
             print "return co ",co1,return_co[0]
-            print "return co" ,co2,return_co[1]
+            print "return co " ,co2,return_co[1]
 
 
 
