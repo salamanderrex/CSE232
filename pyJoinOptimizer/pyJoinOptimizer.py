@@ -295,21 +295,6 @@ class JoinOptimizer(object):
 
 
 
-            # this part is asymetric
-            return_list_co1 = filter(lambda (a,b): (a[1] == co1 and b[1] <= co2) #different here
-                                                        ,labeled_where)
-            return_list_co1 = filter(lambda (a,b): b[1] !=-1,return_list_co1)
-            return_list_co1 = map(lambda (a,b): a if (a[1] == co1) else b,return_list_co1)
-            return_list_co1 = map(lambda (a,b): a,return_list_co1)
-            print "return list co",co1,return_list_co1
-
-
-            return_list_co2 = filter(lambda (a,b): (a[1] == co2 and b[1] <= co2)
-                                                        or  (b[1] == co2 and a[1] <= co2),labeled_where)
-            return_list_co2 = filter(lambda (a,b): b[1] !=-1,return_list_co2)
-            return_list_co2 = map(lambda (a,b): a if (a[1] == co2) else b,return_list_co2)
-            return_list_co2 = map(lambda (a,b): a,return_list_co2)
-            print "return list co",co2,return_list_co2
 
             lists_part = []
             for t_co in (co1,co2):
