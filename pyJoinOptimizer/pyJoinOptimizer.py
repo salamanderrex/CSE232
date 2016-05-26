@@ -56,7 +56,7 @@ class JoinOptimizer(object):
     def returnMaker(self,nReturn,indent):
         return  ' '*indent+"\treturn <tuple>" \
                 + '\n\t'\
-                + '\n\t'.join(map(lambda x : ' '*indent + '<'+x[1:]+'>' + x+ '<'+x[1:]+'>', nReturn)) \
+                + '\n\t'.join(map(lambda x : ' '*indent + '<'+x[1:]+'> {' + x+ '}<'+x[1:]+'>', nReturn)) \
                 + '\n' +' '*indent+'\t</tuple>,'
 
     def forMaker(self,nFor,indent):
@@ -67,7 +67,8 @@ class JoinOptimizer(object):
                 + '\t'+ '\n'
     def listMakder(self,nList1,nList2,indent):
         return  "\n"\
-                +" "*indent +str(nList1) + "," + str(nList2)
+                +" "*indent +str(map (lambda x: x[1:],nList1)) + "," + str(map(lambda x: x[1:],nList2))
+
 
     def finalSongMaker(self):
         base = ""
