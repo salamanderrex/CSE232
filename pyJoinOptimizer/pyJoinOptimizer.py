@@ -480,12 +480,12 @@ class JoinOptimizer(object):
 
 
 
-def main():
-    fileName = 'testcase'
-    with open(fileName,'r') as myfile:
-        origindata = myfile.read()
-        data = map(lambda x: x.strip(),origindata.splitlines())
-        print data
-    JoinOptimizer(data,fileName,origindata)
-if __name__ == "__main__":
-    main()
+# def main():
+#     fileName = 'testcase'
+#     with open(fileName,'r') as myfile:
+#         origindata = myfile.read()
+#         data = map(lambda x: x.strip(),origindata.splitlines())
+#         print data
+#     JoinOptimizer(data,fileName,origindata)
+# if __name__ == "__main__":
+#     main()
