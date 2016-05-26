@@ -223,11 +223,20 @@ class JoinOptimizer(object):
             #print "a new root", root
         print "choose", pre_root, "as the component entry"
 
-        #bfs
-        myset = set()
+        #dfs
+        mylist = []
         queue = deque()
+        queue.append(pre_root)
+        mylist.append(pre_root)
         while len(queue) >0:
-            pass
+            node = queue.pop()
+            #print "node is ",node
+            a_list = self.DG.predecessors(node)
+            for x in a_list:
+                mylist.append(x)
+                queue.append(x)
+        print "for loop variables are", mylist
+
 
 
 
@@ -246,6 +255,7 @@ class JoinOptimizer(object):
 
         #-1 is contant
         for first_x in range(len(components)-1):
+            print first_x, "join+++++++++++++++++++++++"
             co1 = first_x
             co2 = first_x+1
             #analysis base on co2
@@ -319,6 +329,10 @@ class JoinOptimizer(object):
 
             self.reGenerate_for(return_co[0])
             self.reGenerate_for(return_co[1])
+
+
+            print 'end',first_x, "join+++++++++++++++++++++++"
+            print ''
 
 
 
