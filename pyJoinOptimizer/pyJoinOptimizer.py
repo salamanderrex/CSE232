@@ -54,19 +54,20 @@ class JoinOptimizer(object):
         return ' '*indent+ '\twhere ' + ','.join(map(lambda (a,b): a +' eq '+b,nWhere)) +'\n'
 
     def returnMaker(self,nReturn,indent):
-        return  ' '*indent+"\treturn <tuple>\n" \
-                + '\n'.join(map(lambda x : ' '*indent + '<'+x[1:]+'>' + x+ '<'+x[1:]+'>', nReturn)) \
-                + '\n' +' '*indent+'\t<tuple>,'
+        return  ' '*indent+"\treturn <tuple>" \
+                + '\n\t'\
+                + '\n\t'.join(map(lambda x : ' '*indent + '<'+x[1:]+'>' + x+ '<'+x[1:]+'>', nReturn)) \
+                + '\n' +' '*indent+'\t</tuple>,'
 
     def forMaker(self,nFor,indent):
-        return  '\n'+' '*indent+'\t'\
-                + 'for'  +'\n' \
-                + '\n'.join(map(lambda x: ' '*indent + x + ' in ' +\
+        return  '\n'+' '*indent+'\tfor'  \
+                + "\n\t" \
+                +'\n\t'.join(map(lambda x: ' '*indent + x + ' in ' +\
                                           str(map ( lambda c:  c[1]+ c[2] if c[1] else c[2] ,self.DG.edges(x,data="path"))[0]) ,nFor)) \
                 + '\t'+ '\n'
     def listMakder(self,nList1,nList2,indent):
         return  "\n"\
-                +" "*indent +str(nList1) + str(nList2)
+                +" "*indent +str(nList1) + "," + str(nList2)
 
     def finalSongMaker(self):
         base = ""
@@ -84,7 +85,7 @@ class JoinOptimizer(object):
         print "joiner",joiner
 
         #if empty, make a base
-
+        indent = indent +2
         def make_MetaStr(i):
             return  self.forMaker(joiner['nFor'+i],indent) \
                      + self.whereMaker(joiner['nWhere'+i],indent) \
@@ -93,10 +94,10 @@ class JoinOptimizer(object):
             return make_MetaStr('1') \
                     +"\n"
         else:
-            return  ' '*indent+"join(\n" \
+            return  ' '*indent+"\tjoin(\n" \
                     + base_str + make_MetaStr('2') \
                     + self.listMakder(joiner['nList1'],joiner['nList2'],indent) \
-                    +")"
+                    +'\n'+' '*indent+"),"
 
 
 
