@@ -42,8 +42,10 @@ class JoinOptimizer(object):
         print "new clause dictionary ======"
         print self.new_Clause
 
+
+        outFile = open(self.fileName+"_rewirte","w")
         print 'make final song'
-        print self.finalSongMaker()
+        outFile.write(self.finalSongMaker())
 
 
 
@@ -52,25 +54,26 @@ class JoinOptimizer(object):
         if not nWhere:
             return ""
 
-        return ' '*indent+ '\twhere ' + ','.join(map(lambda (a,b): a +' eq '+b,nWhere)) +'\n'
+        return ' '*indent+ '\twhere '\
+               + ','.join(map(lambda (a,b):  a +' eq '+b,nWhere)) +'\n'
 
     def returnMaker(self,nReturn,indent):
         return  ' '*indent+"\treturn <tuple>" \
                 + '\n\t'\
-                + '\n\t'.join(map(lambda x : ' '*indent + '<'+x[1:]+'> {' + x+ '}<'+x[1:]+'>', nReturn)) \
+                + '\n\t'.join(map(lambda x : '\t'+ ' ' * indent + '<'+x[1:]+'>\t{' + x+ '}\t<'+x[1:]+'>', nReturn)) \
                 + '\n' +' '*indent+'\t</tuple>,'
 
     def forMaker(self,nFor,indent):
         return  '\n'+' '*indent+'\tfor'  \
-                + "\n\t" \
-                +'\n\t'.join(map(lambda x: ' '*indent + x + ' in ' +\
+                +'\n\t' \
+                +'\n\t'.join(map(lambda x: ' '*(indent+2) + x + '\tin ' +\
                                           str(map ( lambda c:  c[1]+ c[2] if c[1] else c[2] ,self.DG.edges(x,data="path"))[0]) ,nFor)) \
                 + '\t'+ '\n'
     def listMakder(self,nList1,nList2,indent):
         return  "\n"\
-                +" "*indent \
-                +  "[" + ",".join(map(str, nList1)) + "],"\
-                + "["  + ",".join(map(str,nList2)) +"]"
+                +" "*indent+"\t" \
+                + "[" + ",".join(map(lambda x: str(x[1:]), nList1)) + "],"\
+                + "["  + ",".join(map(lambda x : str(x[1:]),nList2)) +"]"
     def last_returnMaker(self):
         print self.rawData
         return_index = self.rawData.index("return")
@@ -88,15 +91,16 @@ class JoinOptimizer(object):
 
     def finalSongMaker(self):
         base = ""
-        indent = 20
+        indent = len(self.new_Clause) * 1
         for x in self.new_Clause:
             if not base:
                 base = self.songMaker(x,base,indent)
 
             base = self.songMaker(x,base,indent)
 
-            indent -=6
-        return base \
+            indent -=2
+        return  "for $tuple in\n"\
+                + base[:-1] \
                 +"\n"+self.last_returnMaker()
         
 
