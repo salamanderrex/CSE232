@@ -1,7 +1,7 @@
 __author__ = 'qingyu'
 import re
 import networkx as nx
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from collections import deque
 
 from networkx.drawing.nx_pydot import write_dot
@@ -219,7 +219,11 @@ class JoinOptimizer(object):
         #print "regerent",root
         while (root!= None):
             pre_root = root
-            root = self.DG.successors(random_a_vable)[0]
+
+            root = self.DG.successors(root)
+            #print root
+            if root !=None:
+                root = root[0]
             #print "a new root", root
         print "choose", pre_root, "as the component entry"
 
