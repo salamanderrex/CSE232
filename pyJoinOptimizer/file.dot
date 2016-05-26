@@ -1,0 +1,35 @@
+strict digraph G {
+"$af3";
+"$af22";
+"$af1";
+"$af21";
+"$a22";
+"$a21";
+"$al21";
+"$al22";
+"$al1";
+"$aj";
+"$al3";
+"$a3";
+"$b1";
+None;
+"$b3";
+"$b2";
+"$a1";
+"$af3" -> "$a3"  [path="/first/node()"];
+"$af22" -> "$a22"  [path="/first/node()"];
+"$af1" -> "$a1"  [path="/first/node()"];
+"$af21" -> "$a21"  [path="/first/node()"];
+"$a22" -> "$b2"  [path="/author"];
+"$a21" -> "$b2"  [path="/author"];
+"$al21" -> "$a21"  [path="/last/node()"];
+"$al22" -> "$a22"  [path="/last/node()"];
+"$al1" -> "$a1"  [path="/last/node()"];
+"$aj" -> "$b1"  [path="/author/first/node()"];
+"$al3" -> "$a3"  [path="/last/node()"];
+"$a3" -> "$b3"  [path="/author"];
+"$b1" -> None  [path="doc(\"input\")/book"];
+"$b3" -> None  [path="doc(\"input\")/book"];
+"$b2" -> None  [path="doc(\"input\")/book"];
+"$a1" -> "$b1"  [path="/author"];
+}
