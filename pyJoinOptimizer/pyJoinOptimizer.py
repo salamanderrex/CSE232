@@ -31,14 +31,75 @@ class JoinOptimizer(object):
         for c in self.components:
             print "compoents ",c[1],c[0]
 
-        #special for this testcase, to look nicer
-
         '''
         make assumption here
         how many component means how many join
         '''
         print "regerenate where ========"
-        self.new_returnInJoin= self.reGenerate_returnInJoin(self.components,self.returnVariable,self.wherePair)
+        self.new_Clause= self.reGenerate_returnInJoin(self.components,self.returnVariable,self.wherePair)
+
+        print "new clause dictionary ======"
+        print self.new_Clause
+
+        print 'make final song'
+        print self.finalSongMaker()
+
+
+
+
+    def whereMaker(self,nWhere,indent):
+        if not nWhere:
+            return ""
+
+        return ' '*indent+ '\twhere ' + ','.join(map(lambda (a,b): a +' eq '+b,nWhere)) +'\n'
+
+    def returnMaker(self,nReturn,indent):
+        return  ' '*indent+"\treturn <tuple>\n" \
+                + '\n'.join(map(lambda x : ' '*indent + '<'+x[1:]+'>' + x+ '<'+x[1:]+'>', nReturn)) \
+                + '\n' +' '*indent+'\t<tuple>,'
+
+    def forMaker(self,nFor,indent):
+        return  '\n'+' '*indent+'\t'\
+                + 'for'  +'\n' \
+                + '\n'.join(map(lambda x: ' '*indent + x + ' in ' +\
+                                          str(map ( lambda c:  c[1]+ c[2] if c[1] else c[2] ,self.DG.edges(x,data="path"))[0]) ,nFor)) \
+                + '\t'+ '\n'
+    def listMakder(self,nList1,nList2,indent):
+        return  "\n"\
+                +" "*indent +str(nList1) + str(nList2)
+
+    def finalSongMaker(self):
+        base = ""
+        indent = 20
+        for x in self.new_Clause:
+            if not base:
+                base = self.songMaker(x,base,indent)
+
+            base = self.songMaker(x,base,indent)
+
+            indent -=6
+        return base
+
+    def songMaker(self,joiner,base_str,indent):
+        print "joiner",joiner
+
+        #if empty, make a base
+
+        def make_MetaStr(i):
+            return  self.forMaker(joiner['nFor'+i],indent) \
+                     + self.whereMaker(joiner['nWhere'+i],indent) \
+                    + self.returnMaker(joiner['nReturn'+i],indent)
+        if not base_str:
+            return make_MetaStr('1') \
+                    +"\n"
+        else:
+            return  ' '*indent+"join(\n" \
+                    + base_str + make_MetaStr('2') \
+                    + self.listMakder(joiner['nList1'],joiner['nList2'],indent) \
+                    +")"
+
+
+
 
 
 
@@ -240,6 +301,7 @@ class JoinOptimizer(object):
                 mylist.append(x)
                 queue.append(x)
         print "for loop variables are", mylist
+        return mylist
 
 
 
@@ -257,6 +319,8 @@ class JoinOptimizer(object):
         labeled_return = self.label_componentNum(components,return_list)
         print "return ===>" , labeled_return
 
+
+        final_return = []
         #-1 is contant
         for first_x in range(len(components)-1):
             print first_x, "join+++++++++++++++++++++++"
@@ -316,12 +380,27 @@ class JoinOptimizer(object):
             print ""
 
 
-            self.reGenerate_for(return_co[0])
-            self.reGenerate_for(return_co[1])
+            newFor_1 = self.reGenerate_for(return_co[0])
+            newFor_2 = self.reGenerate_for(return_co[1])
 
 
             print 'end',first_x, "join+++++++++++++++++++++++"
             print ''
+
+
+            some_shit = {}
+            some_shit['nFor1'] = newFor_1
+            some_shit['nFor2'] = newFor_2
+            some_shit['nWhere1'] = where_co[0]
+            some_shit['nWhere2'] = where_co[1]
+            some_shit['nReturn1'] =  return_co[0]
+            some_shit['nReturn2'] = return_co[1]
+            some_shit['nList1'] = lists_part[0]
+            some_shit['nList2'] = lists_part[1]
+            final_return.append(some_shit)
+        return final_return
+
+
 
 
 
