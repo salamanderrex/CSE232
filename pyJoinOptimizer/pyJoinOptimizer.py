@@ -7,7 +7,8 @@ from collections import deque
 from networkx.drawing.nx_pydot import write_dot
 
 class JoinOptimizer(object):
-    def __init__(self,querys,fileName):
+    def __init__(self,querys,fileName,rawData):
+        self.rawData = rawData
         self.querys = querys
         self.fileName = fileName
         self.forMap = self.createForMap(querys)
@@ -67,7 +68,22 @@ class JoinOptimizer(object):
                 + '\t'+ '\n'
     def listMakder(self,nList1,nList2,indent):
         return  "\n"\
-                +" "*indent +str(map (lambda x: x[1:],nList1)) + "," + str(map(lambda x: x[1:],nList2))
+                +" "*indent \
+                +  "[" + ",".join(map(str, nList1)) + "],"\
+                + "["  + ",".join(map(str,nList2)) +"]"
+    def last_returnMaker(self):
+        print self.rawData
+        return_index = self.rawData.index("return")
+        return_string = self.rawData[return_index:]
+        return_string =  return_string.replace("$","$tuple/")
+        #print return_string
+        return return_string
+        
+        
+        
+
+
+
 
 
     def finalSongMaker(self):
@@ -80,7 +96,9 @@ class JoinOptimizer(object):
             base = self.songMaker(x,base,indent)
 
             indent -=6
-        return base
+        return base \
+                +"\n"+self.last_returnMaker()
+        
 
     def songMaker(self,joiner,base_str,indent):
         print "joiner",joiner
@@ -461,8 +479,9 @@ class JoinOptimizer(object):
 def main():
     fileName = 'testcase'
     with open(fileName,'r') as myfile:
-        data = map(lambda x: x.strip(),myfile.read().splitlines())
+        origindata = myfile.read()
+        data = map(lambda x: x.strip(),origindata.splitlines())
         print data
-    JoinOptimizer(data,fileName)
+    JoinOptimizer(data,fileName,origindata)
 if __name__ == "__main__":
     main()
