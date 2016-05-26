@@ -2,6 +2,8 @@ __author__ = 'qingyu'
 import re
 import networkx as nx
 import matplotlib.pyplot as plt
+from collections import deque
+
 from networkx.drawing.nx_pydot import write_dot
 
 class JoinOptimizer(object):
@@ -25,7 +27,23 @@ class JoinOptimizer(object):
         self.graphPrinter(self.DG)
 
         print "connented components========"
-        self.componentsFinder(self.DG)
+        self.components = self.componentsFinder(self.DG)
+        for c in self.components:
+            print "compoents ",c[1],c[0]
+
+        #special for this testcase, to look nicer
+
+        '''
+        make assumption here
+        how many component means how many join
+        '''
+        print "regerenate where ========"
+        self.new_returnInJoin= self.reGenerate_returnInJoin(self.components,self.returnVariable,self.wherePair)
+
+
+
+
+
 
 
     def createForMap(self,querys):
@@ -146,9 +164,174 @@ class JoinOptimizer(object):
         #print edge_list
         new_graph_without_None = nx.Graph(edge_list)
         i = 0
+        '''
+        return_list = []
         for h in nx.connected_components(new_graph_without_None):
-            print "component ", i , " : ", h
-            i = i +1
+            print "component ", i, " : ", h
+            return_list.append((h,i))
+            i += 1
+        i = 0
+        '''
+
+        return_list =  sorted([ sorted(list(x)) for x in list(nx.connected_components(new_graph_without_None))], key= lambda x: x[0])
+        return zip(return_list,range((len(return_list))))
+
+
+    #label component number for node
+    def label_componentNum(self,components,list):
+        list = map (lambda var: (var,-1),list)
+        i = 0
+        for component in components:
+            #print ""
+            #print "normal here",component
+            list  = map(lambda (var,label): (var, i) if var in component[0] else (var,label),list)
+            i += 1
+        return sorted(list, key=lambda p : p[1])
+
+
+    # [($a,$b),($c,$d)]
+    def label_componentNum_Pair(self,components,list):
+        list = map(lambda (v1,v2): ((v1,-1),(v2,-1)), list)
+        i = 0
+        for component in components:
+            #print ""
+            #print "pair here",component
+            list = map(lambda ((v1,l1),(v2,l2)):
+                                (
+                                    (v1, i if v1 in component[0] else l1),
+                                    (v2, i if v2 in component[0] else l2)
+                                ),
+                        list)
+            i += 1
+        #sort it to make nicer to check
+        list = [ ((v1,l1),(v2,l2)) if (l1<l2) else ((v2,l2),(v1,l1)) for ((v1,l1),(v2,l2)) in list]
+        list = [ ((v1,l1),(v2,l2)) if (l1!=-1) else ((v2,l2),(v1,l1)) for ((v1,l1),(v2,l2)) in list]
+        list = sorted(list,key = lambda x: x[0][1])
+        return list
+
+    #find parent of
+    def reGenerate_for(self,return_clause):
+        #find root first
+        random_a_vable = next(iter(return_clause))
+        #print "pick",random_a_vable
+        pre_root =  random_a_vable
+        root = self.DG.successors(random_a_vable)[0]
+        #print "regerent",root
+        while (root!= None):
+            pre_root = root
+            root = self.DG.successors(random_a_vable)[0]
+            #print "a new root", root
+        print "choose", pre_root, "as the component entry"
+
+        #bfs
+        myset = set()
+        queue = deque()
+        while len(queue) >0:
+            pass
+
+
+
+
+
+
+
+    def reGenerate_where(self):
+        pass
+    def reGenerate_returnInJoin(self,components,return_list,where_list):
+        labeled_where = self.label_componentNum_Pair(components,where_list)
+        print "where  ===>", labeled_where
+
+        labeled_return = self.label_componentNum(components,return_list)
+        print "return ===>" , labeled_return
+
+        #-1 is contant
+        for first_x in range(len(components)-1):
+            co1 = first_x
+            co2 = first_x+1
+            #analysis base on co2
+
+            where_co = []
+            for t_co in (co1,co2):
+                where_co1 = filter(lambda (a,b): a[1] == t_co and b[1] == -1, labeled_where)
+                where_co1 = map(lambda (a,b): (a[0],b[0]),where_co1)
+                where_co.append(where_co1)
+
+            print "where co",co1,where_co[0]
+            print "where co",co2,where_co[1]
+
+
+            #return = where + return
+            return_co=[]
+            for t_co in (co1,co2):
+                return_t_co =  filter(lambda (a,b) : a[1] ==t_co or b[1] ==t_co,labeled_where)
+                #remove constant
+                return_t_co=  filter(lambda (a,b): a[1] is not -1 and b[1] is not  -1,return_t_co)
+                return_t_co = map(lambda (a,b): a[0] if a[1] ==t_co else b[0],return_t_co)
+
+                return_var_detector = filter(lambda (a,b): b ==t_co,labeled_return)
+                return_var_detector = map(lambda (a,b): a,return_var_detector)
+                t_set = set()
+                return_t_co = t_set.union(return_t_co,return_var_detector)
+
+                return_co.append(return_t_co)
+
+            print "return co ",co1,return_co[0]
+            print "return co" ,co2,return_co[1]
+
+
+
+
+            # this part is asymetric
+            return_list_co1 = filter(lambda (a,b): (a[1] == co1 and b[1] <= co2) #different here
+                                                        ,labeled_where)
+            return_list_co1 = filter(lambda (a,b): b[1] !=-1,return_list_co1)
+            return_list_co1 = map(lambda (a,b): a if (a[1] == co1) else b,return_list_co1)
+            return_list_co1 = map(lambda (a,b): a,return_list_co1)
+            print "return list co",co1,return_list_co1
+
+
+            return_list_co2 = filter(lambda (a,b): (a[1] == co2 and b[1] <= co2)
+                                                        or  (b[1] == co2 and a[1] <= co2),labeled_where)
+            return_list_co2 = filter(lambda (a,b): b[1] !=-1,return_list_co2)
+            return_list_co2 = map(lambda (a,b): a if (a[1] == co2) else b,return_list_co2)
+            return_list_co2 = map(lambda (a,b): a,return_list_co2)
+            print "return list co",co2,return_list_co2
+
+            lists_part = []
+            for t_co in (co1,co2):
+                if t_co == co1:
+                    return_list_co = filter(lambda (a,b): (a[1] == co1 and b[1] <= co2) #different here
+                                                        ,labeled_where)
+                if t_co == co2:
+                    return_list_co = filter(lambda (a,b): (a[1] == co2 and b[1] <= co2)
+                                                        or  (b[1] == co2 and a[1] <= co2),labeled_where)
+                return_list_co = filter(lambda (a,b): b[1] !=-1,return_list_co)
+                return_list_co = map(lambda (a,b): a if a[1] == t_co else b,return_list_co)
+                return_list_co = map(lambda (a,b): a,return_list_co)
+                lists_part.append(return_list_co)
+
+            print "list co",co1,lists_part[0]
+            print "list co",co2,lists_part[1]
+
+
+            print ""
+
+
+            self.reGenerate_for(return_co[0])
+            self.reGenerate_for(return_co[1])
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
