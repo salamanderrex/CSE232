@@ -50,7 +50,7 @@ returnClause
 cond
   : left=xq ('='|'eq')  right=xq                           #condValEqual
   | left=xq ('=='|'is') right=xq                           #condIdEqual
-  | 'empty(' xq ')'                                        #condEmpty
+  | 'empty' '(' xq ')'                                        #condEmpty
   | 'some' Var 'in' xq (',' Var 'in' xq)* 'satisfies' cond #condSomeSatis
   | '(' cond ')'                                           #condParenExpr
   | left=cond 'and' right=cond                             #condAnd
@@ -61,8 +61,8 @@ cond
 
 // Absolute path
 ap
-  : 'doc(' fileName=StringLiteral ')' slash=('/'|'//') rp
-  | 'document(' fileName=StringLiteral ')' slash=('/'|'//') rp
+  : 'doc' '(' fileName=StringLiteral ')' slash=('/'|'//') rp
+  | 'document' '(' fileName=StringLiteral ')' slash=('/'|'//') rp
   ;
 
 // Relative path

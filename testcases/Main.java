@@ -29,7 +29,7 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 22; i <= 22; i++) {
             String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
             System.out.println("start querying........." + i + "query");
