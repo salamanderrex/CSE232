@@ -58,25 +58,26 @@ class JoinOptimizer(object):
                + ','.join(map(lambda (a,b):  a +' eq '+b,nWhere)) +'\n'
 
     def returnMaker(self,nReturn,indent):
-        return  ' '*indent+"\treturn <tuple>" \
+        return  ' '*indent+"\treturn <tuple>{" \
                 + '\n\t'\
-                + '\n\t'.join(map(lambda x : '\t'+ ' ' * indent + '<'+x[1:]+'>\t{' + x+ '}\t<'+x[1:]+'>', nReturn)) \
-                + '\n' +' '*indent+'\t</tuple>,'
+                + ',\n\t'.join(map(lambda x : '\t'+ ' ' * indent + '<'+x[1:]+'>\t{' + x+ '}\t</'+x[1:]+'>', nReturn)) \
+                + '\n' +' '*indent+'\t}</tuple>,'
 
     def forMaker(self,nFor,indent):
         return  '\n'+' '*indent+'\tfor'  \
                 +'\n\t' \
-                +'\n\t'.join(map(lambda x: ' '*(indent+2) + x + '\tin ' +\
+                +',\n\t'.join(map(lambda x: ' '*(indent+2) + x + '\tin ' +\
                                           str(map ( lambda c:  c[1]+ c[2] if c[1] else c[2] ,self.DG.edges(x,data="path"))[0]) ,nFor)) \
                 + '\t'+ '\n'
+
     def listMakder(self,nList1,nList2,indent):
         return  "\n"\
-                +" "*indent+"\t" \
-                + "[" + ",".join(map(lambda x: str(x[1:]), nList1)) + "],"\
-                + "["  + ",".join(map(lambda x : str(x[1:]),nList2)) +"]"
+                +" "*indent+ "\t" \
+                + "[" + ",". join(map(lambda x: str(x[1:]), nList1)) + "],"\
+                + "["  + "," .join(map(lambda x : str(x[1:]),nList2)) +"]"
     def last_returnMaker(self):
         print self.rawData
-        return_index = self.rawData.index("return")
+        return_index = self. rawData.index("return")
         return_string = self.rawData[return_index:]
         return_string =  return_string.replace("$","$tuple/")
         #print return_string
@@ -110,6 +111,7 @@ class JoinOptimizer(object):
         #if empty, make a base
         indent = indent +2
         def make_MetaStr(i):
+            #remove last , in for
             return  self.forMaker(joiner['nFor'+i],indent) \
                      + self.whereMaker(joiner['nWhere'+i],indent) \
                     + self.returnMaker(joiner['nReturn'+i],indent)
@@ -228,7 +230,11 @@ class JoinOptimizer(object):
                 # $b
                 target_node = matchObj.group(1)
                 path = matchObj.group(2)
-                DG.add_edge(key,target_node,path=str(path))
+                path_str = str(path)
+                #if path_str end with ,
+                if (path_str[-1]==','):
+                    path_str = path_str[:-1]
+                DG.add_edge(key,target_node,path=str(path_str))
         return DG
 
     def graphPrinter(self,DG):
@@ -480,12 +486,14 @@ class JoinOptimizer(object):
 
 
 
-# def main():
-#     fileName = 'testcase'
-#     with open(fileName,'r') as myfile:
-#         origindata = myfile.read()
-#         data = map(lambda x: x.strip(),origindata.splitlines())
-#         print data
-#     JoinOptimizer(data,fileName,origindata)
-# if __name__ == "__main__":
-#     main()
+def main(numOfTestCase):
+    for i in range(1,numOfTestCase+1):
+        #fileName = 'testcase'+str(i)
+        fileName = 'testcase'+'3'
+        with open(fileName,'r') as myfile:
+            origindata = myfile.read()
+            data = map(lambda x: x.strip(),origindata.splitlines())
+            print data
+        JoinOptimizer(data,fileName,origindata)
+if __name__ == "__main__":
+    main(1)
