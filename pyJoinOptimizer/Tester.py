@@ -9,7 +9,7 @@ def main(i):
         print data
     Op.JoinOptimizer(data,fileName,origindata)
 if __name__ == "__main__":
-    testcase_number = 2
+    testcase_number = 4
     for i in range(1,testcase_number + 1):
         print "============= Start test case" , i , "=================="
         main(i)
