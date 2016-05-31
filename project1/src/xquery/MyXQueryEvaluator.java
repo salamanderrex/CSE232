@@ -594,6 +594,45 @@ public class MyXQueryEvaluator {
         List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
 
+        //use hash join
+        //build
+        /*
+        HashMap <XMLElement,HashMap <Integer,NodeTextList>> map1 = new HashMap<>();
+
+        for (XMLElement elem1 : list1) {
+            HashMap <Integer,NodeTextList> temp = new HashMap<>();
+            for (int i = 0 ; i < joinVars1.size();i++) {
+                temp.put(i,elem1.getChildByTag(joinVars1.get(i)));
+            }
+            map1.put(elem1,temp);
+        }
+
+        //probe
+        for (XMLElement elem1 : list1) {
+            for (XMLElement elem2 : list2) {
+                boolean join = true;
+                for (int i = 0; i < joinVars1.size(); i++) {
+                   // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+                    NodeTextList list1Elems = map1.get(elem1).get(i);
+                    for (XMLElement listElem1 : list1Elems)
+                        for (XMLElement listElem2 : list2Elems) {
+                            if (!listElem1.childrenEquals(listElem2)) {
+                                join = false;
+                            }
+                        }
+                }
+                if (join) {
+                    XMLElement tuple = new XMLElement("tuple");
+                    tuple.addAll(elem1.children());
+                    tuple.addAll(elem2.children());
+                    res.add(tuple);
+                }
+
+            }
+        }
+*/
+
         for (XMLElement elem1 : list1)
             for (XMLElement elem2 : list2) {
                 boolean join = true;
