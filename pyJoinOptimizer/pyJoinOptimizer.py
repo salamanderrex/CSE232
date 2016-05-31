@@ -79,9 +79,15 @@ class JoinOptimizer(object):
         print self.rawData
         return_index = self. rawData.index("return")
         return_string = self.rawData[return_index:]
-        return_string =  return_string.replace("$","$tuple/")
+        #return_string = return_string.replace("$","$tuple/")
+        #return_string =  return_string.replace("$","$tuple/"+self.DG.edges("\1" ,data="path"))
+        #print "===="
+        return re.sub(r"(\$\w+)",lambda pat: "$tuple/"+pat.group(1)[1:]+"/"+
+                                            re.sub(r".*(\/((\/)?(.*?)$))",lambda x : x.group(1),
+                                                str(self.DG.edges(pat.group(1),data="path")[0][2])),return_string)
+        #print "xxxx"
         #print return_string
-        return return_string
+        #return return_string
         
         
         
