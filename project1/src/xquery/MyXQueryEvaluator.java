@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.*;
@@ -419,8 +420,14 @@ public class MyXQueryEvaluator {
         NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         //qc.closeScope();
 
-        l.addAll(r);
-        return l;
+        //make a deep copy
+        NodeTextList temp = new NodeTextList(l.values.size());
+        for (int i =0 ; i < l.values.size();i++) {
+            temp.values.add(l.values.get(i));
+        }
+        //l.addAll(r);
+        temp.addAll(r);
+        return temp;
     }
 
     private NodeTextList evalXqSlash(@NotNull XQueryParser.XqSlashContext ctx) {
@@ -643,17 +650,27 @@ public class MyXQueryEvaluator {
                         for (XMLElement listElem2 : list2Elems) {
                             if (!listElem1.childrenEquals(listElem2)) {
                                 join = false;
+                                break;
                             }
                         }
+                    if(!join) {
+                        break;
+                    }
                 }
+
+
                 if (join) {
                     XMLElement tuple = new XMLElement("tuple");
                     tuple.addAll(elem1.children());
-                    tuple.addAll(elem2.children());
+
+                    //tuple.addAll(elem2.children());
                     res.add(tuple);
                 }
             }
+
+
         return res;
     }
+
 
 }
