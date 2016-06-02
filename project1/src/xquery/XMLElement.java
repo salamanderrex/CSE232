@@ -194,6 +194,41 @@ public class XMLElement {
         return false;
     }
 
+    public boolean childrenAndItselfEquals(Object o) {
+        if (o instanceof XMLElement) {
+
+            XMLElement e = (XMLElement) o;
+            if (e.children().size()!=this.children().size()) {
+                return false;
+            }
+            if (e.children().size()==0) {
+                return e.txt().equals(this.txt());
+            }
+
+            if (e.txt()!=null &&this.txt() == null) {
+                return  false;
+            }
+
+            if (e.txt() == null && this.txt() != null) {
+                return false;
+            }
+            if (e.txt() !=null && this.txt() !=null) {
+                if (!this.txt().equals(e.txt())) {
+                    return false;
+                }
+            }
+
+
+            for (XMLElement e1 : this.children())
+                for (XMLElement e2 : e.children())
+                    if (!e1.equals(e2))
+                        return false;
+            return true;
+        }
+        return false;
+
+    }
+
    
     public String toCompactString() {
         return this.elem.asXML();
