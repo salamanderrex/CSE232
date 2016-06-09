@@ -1,5 +1,7 @@
 package project1.xquery;
 
+
+import org.antlr.v4.runtime.misc.IntegerList;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import org.dom4j.Document;
@@ -13,7 +15,7 @@ import project1.xquery.parser.*;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 public class MyXQueryEvaluator {
 
@@ -613,6 +615,20 @@ public class MyXQueryEvaluator {
         */
         //probe
 
+
+        IntStream.range(0,list1.size())
+                              .parallel()
+                .mapToObj(a  -> new int[]{a})
+                // stream is int[1] array
+                .flatMap(ab  -> appendInts(ab, list2.size())).
+                parallel()
+                .forEach(abArray -> anotherHelper(list1.get(abArray[0]),list2.get(abArray[1]),joinVars1,joinVars2,res));
+
+
+        //        .forEachOrdered(ress-> sb.append(Arrays.toString(ress)).append("\n"))
+        //;
+        //System.out.println("Enjoy your Cartesian product." + sb.toString());
+        /*
         for (int j = 0 ; j < list1.size(); j ++) {
 
             HashMap <Integer,NodeTextList> temp = new HashMap<>();
@@ -623,7 +639,7 @@ public class MyXQueryEvaluator {
             for (XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
-                   // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
                     NodeTextList list1Elems = temp.get(i);
                     for (XMLElement listElem1 : list1Elems)
@@ -643,7 +659,7 @@ public class MyXQueryEvaluator {
 
             }
         }
-
+        */
 /*
         for (XMLElement elem1 : list1) {
             for (XMLElement elem2 : list2) {
@@ -680,5 +696,56 @@ public class MyXQueryEvaluator {
         return res;
     }
 
+
+    public static boolean helper(XMLElement elem2, List<String> joinVars2, HashMap<Integer, NodeTextList> temp, int i) {
+        // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+        NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+        NodeTextList list1Elems = temp.get(i);
+        for (XMLElement listElem1 : list1Elems)
+            for (XMLElement listElem2 : list2Elems) {
+                if (!listElem1.childrenAndItselfEquals(listElem2)) {
+                    return false;
+                    //join = false;
+
+                }
+            }
+
+
+        return true;
+    }
+
+    public static final int[] append(int[] base, int val) {
+        int[] ret = Arrays.copyOf(base, base.length + 1);
+        ret[base.length] = val;
+        return ret;
+    }
+    /** Stream an int range and map to an appended array */
+    private static final Stream<int[]> appendInts(int[] base, int size) {
+        return IntStream.range(0, size).mapToObj(a -> append(base, a));
+    }
+
+
+    public void anotherHelper( XMLElement x1 , XMLElement x2,  List<String> joinVars1 ,List<String> joinVars2 , NodeTextList res) {
+
+        HashMap<Integer, NodeTextList> temp = new HashMap<>();
+        for (int i = 0; i < joinVars1.size(); i++) {
+            temp.put(i, x1.getChildByTag(joinVars1.get(i)));
+        }
+
+        XMLElement elem2 = x2;
+        boolean join = true;
+
+        join = IntStream.range(0, joinVars1.size())
+                .parallel()
+                .allMatch((i) -> helper(elem2, joinVars2, temp, i));
+        if (join) {
+            XMLElement tuple = new XMLElement("tuple");
+            tuple.addAll(x1.children());
+            tuple.addAll(x2.children());
+            res.add(tuple);
+        }
+
+
+    }
 
 }

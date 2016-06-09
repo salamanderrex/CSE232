@@ -10,7 +10,7 @@ public class NodeTextList extends MyQueryElement implements Iterable<XMLElement>
     public List<XMLElement> values;
 
     public NodeTextList(int size) {
-        this.values = new ArrayList<>(size);
+        this.values = Collections.synchronizedList( new ArrayList<>(size));
     }
 
     public NodeTextList() {
@@ -131,6 +131,14 @@ public class NodeTextList extends MyQueryElement implements Iterable<XMLElement>
         boolean result = false;
         for (XMLElement x : c)
             result |= add(x);
+        return result;
+    }
+
+    public boolean gentalAdd(Collection<? extends XMLElement> c) {
+        boolean result = false;
+        for (XMLElement x : c) {
+            result |= add(x);
+        }
         return result;
     }
 
