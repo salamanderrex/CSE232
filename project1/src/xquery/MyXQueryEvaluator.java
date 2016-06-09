@@ -600,35 +600,43 @@ public class MyXQueryEvaluator {
 
         //use hash join
         //build
+/*
+        HashMap <Integer,HashMap<Integer,NodeTextList>> map1 = new HashMap<>();
 
-        HashMap <XMLElement,HashMap<Integer,NodeTextList>> map1 = new HashMap<>();
-
-        for (XMLElement elem1 : list1) {
+        for (int j = 0 ; j < list1.size(); j++) {
             HashMap <Integer,NodeTextList> temp = new HashMap<>();
             for (int i = 0 ; i < joinVars1.size();i++) {
-                temp.put(i,elem1.getChildByTag(joinVars1.get(i)));
+                temp.put(i,list1.get(j).getChildByTag(joinVars1.get(i)));
             }
-            map1.put(elem1,temp);
+            map1.put(j,temp);
         }
-
+        */
         //probe
-        for (XMLElement elem1 : list1) {
+
+        for (int j = 0 ; j < list1.size(); j ++) {
+
+            HashMap <Integer,NodeTextList> temp = new HashMap<>();
+            for (int i = 0 ; i < joinVars1.size();i++) {
+                temp.put(i,list1.get(j).getChildByTag(joinVars1.get(i)));
+            }
+
             for (XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
                    // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
-                    NodeTextList list1Elems = map1.get(elem1).get(i);
+                    NodeTextList list1Elems = temp.get(i);
                     for (XMLElement listElem1 : list1Elems)
                         for (XMLElement listElem2 : list2Elems) {
                             if (!listElem1.childrenAndItselfEquals(listElem2)) {
                                 join = false;
+                                break;
                             }
                         }
                 }
                 if (join) {
                     XMLElement tuple = new XMLElement("tuple");
-                    tuple.addAll(elem1.children());
+                    tuple.addAll(list1.get(j).children());
                     tuple.addAll(elem2.children());
                     res.add(tuple);
                 }
@@ -666,8 +674,8 @@ public class MyXQueryEvaluator {
             }
         }
 
-                */
 
+*/
 
         return res;
     }
