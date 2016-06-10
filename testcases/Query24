@@ -1,0 +1,27 @@
+for $tuple in
+   	join(
+
+   	for
+	     $a	in document("j_caesar.xml")//ACT,
+	     $sp	in $a//SPEAKER
+   	return <tuple>{
+		   <sp>	{$sp}	</sp>,
+		   <a>	{$a}	</a>}
+   	</tuple>,
+
+   	for
+	     $s	in document("j_caesar.xml")//SPEAKER,
+	     $stxt	in $s/text()
+   	where $stxt eq "CAESAR"
+   	return <tuple>{
+		   <s>	{$s}	</s>}
+   	</tuple>,
+   	[sp],[s]
+   )
+return
+
+<act>
+
+{ $tuple/a/TITLE/text()}
+
+</act>

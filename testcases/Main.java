@@ -29,7 +29,10 @@ public class Main {
         System.out.println("here");
 
 
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 21; i <= 24; i++) {
+            long startTime = System.currentTimeMillis();
+
+
             String filename = System.getProperty("user.dir").toString() + "/testcases/Query" + i;
             System.out.println(filename);
             System.out.println("start querying........." + i + "query");
@@ -44,25 +47,31 @@ public class Main {
                 e.printStackTrace();
             }
 
+            long endTime   = System.currentTimeMillis();
             System.out.println(result.size() + " results below:");
 
             Integer j = 0;
             Document document = DocumentHelper.createDocument();
             Element root = document.addElement("xml");
             for (XMLElement c : result) {
-                System.out.println("result @" + j++);
+               // System.out.println("result @" + j++);
                 //System.out.println(c.toString());
                 root.add(c.elem);
             }
+
             XMLWriter writer = null;
+
             OutputFormat format = OutputFormat.createPrettyPrint();
+            /*
             try {
                 writer = new XMLWriter(System.out, format);
                 writer.write(document);
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
 
+            long totalTime = endTime - startTime;
+            System.out.println("total ------- time"+totalTime);
             FileOutputStream fop = null;
             File file;
             try {

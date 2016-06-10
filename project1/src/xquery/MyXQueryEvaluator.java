@@ -1,9 +1,12 @@
 package project1.xquery;
 
+
+import org.antlr.v4.runtime.misc.IntegerList;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 import project1.xquery.parser.XQueryParser;
 import project1.xquery.*;
@@ -11,11 +14,8 @@ import project1.xquery.parser.*;
 
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
+import java.util.stream.*;
 
 public class MyXQueryEvaluator {
 
@@ -24,6 +24,7 @@ public class MyXQueryEvaluator {
 
     public XQueryBaseVisitor<MyQueryElement> visitor;
     public QueryEnv qc;
+
     public MyXQueryEvaluator(XQueryBaseVisitor<MyQueryElement> visitor, QueryEnv qc) {
 
         this.visitor = visitor;
@@ -34,14 +35,14 @@ public class MyXQueryEvaluator {
     }
 
     public NodeTextList evalAp(@NotNull XQueryParser.ApContext ctx) {
-        Document doc=null;
-        XMLElement freshRoot =null;
+        Document doc = null;
+        XMLElement freshRoot = null;
 
-        if (readFileCounter <=1) {
+        if (readFileCounter <= 1) {
 
             try {
                 String filename = ctx.fileName.getText();
-                System.out.println("to read the xml file ......" +filename);
+                System.out.println("to read the xml file ......" + filename);
                 File inputFile = new File(System.getProperty("user.dir").toString() + "/" + filename.substring(1, filename.length() - 1));
                 SAXReader reader = new SAXReader();
                 doc = reader.read(inputFile);
@@ -218,100 +219,100 @@ public class MyXQueryEvaluator {
     }
 
 
-
-    public XQueryBoolean evalIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx){
-        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
-        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
+    public XQueryBoolean evalIdEqual(@NotNull XQueryParser.CondIdEqualContext ctx) {
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         return l.equalsId(r);
     }
-    public XQueryBoolean evalValEqual(@NotNull XQueryParser.CondValEqualContext ctx){
-        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
-        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
+
+    public XQueryBoolean evalValEqual(@NotNull XQueryParser.CondValEqualContext ctx) {
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
-    public XQueryBoolean evalEmpty(@NotNull XQueryParser.CondEmptyContext ctx){
-        NodeTextList res = (NodeTextList)visitor.visit(ctx.xq());
+    public XQueryBoolean evalEmpty(@NotNull XQueryParser.CondEmptyContext ctx) {
+        NodeTextList res = (NodeTextList) visitor.visit(ctx.xq());
         return res.empty();
     }
 
-    public XQueryBoolean evalSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx){
+    public XQueryBoolean evalSomeSatis(@NotNull XQueryParser.CondSomeSatisContext ctx) {
         MyScope ve = qc.cloneVarEnv();
 
-        for(int i = 0; i < ctx.xq().size(); i++) {
-            NodeTextList res = (NodeTextList)visitor.visit(ctx.xq(i));
+        for (int i = 0; i < ctx.xq().size(); i++) {
+            NodeTextList res = (NodeTextList) visitor.visit(ctx.xq(i));
             ve.put(ctx.Var(i).getText(), res);
         }
 
         qc.pushVarEnv(ve);
 
-        XQueryBoolean res = (XQueryBoolean)visitor.visit(ctx.cond());
+        XQueryBoolean res = (XQueryBoolean) visitor.visit(ctx.cond());
 
         qc.popVarEnv();
 
         return res;
     }
 
-    public XQueryBoolean evalParen(@NotNull XQueryParser.CondParenExprContext ctx){
-        return (XQueryBoolean)visitor.visit(ctx.cond());
+    public XQueryBoolean evalParen(@NotNull XQueryParser.CondParenExprContext ctx) {
+        return (XQueryBoolean) visitor.visit(ctx.cond());
     }
 
-    public XQueryBoolean evalAnd(@NotNull XQueryParser.CondAndContext ctx){
-        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
+    public XQueryBoolean evalAnd(@NotNull XQueryParser.CondAndContext ctx) {
+        XQueryBoolean l = (XQueryBoolean) visitor.visit(ctx.left);
 
-        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
+        XQueryBoolean r = (XQueryBoolean) visitor.visit(ctx.right);
 
         return l.and(r);
     }
 
-    public XQueryBoolean evalOr(@NotNull XQueryParser.CondOrContext ctx){
-        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
-        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
+    public XQueryBoolean evalOr(@NotNull XQueryParser.CondOrContext ctx) {
+        XQueryBoolean l = (XQueryBoolean) visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean) visitor.visit(ctx.right);
         return l.or(r);
     }
 
-    public XQueryBoolean evalNot(@NotNull XQueryParser.CondNotContext ctx){
-        XQueryBoolean res = (XQueryBoolean)visitor.visit(ctx.cond());
+    public XQueryBoolean evalNot(@NotNull XQueryParser.CondNotContext ctx) {
+        XQueryBoolean res = (XQueryBoolean) visitor.visit(ctx.cond());
         return res.not();
     }
 
     public XQueryBoolean evalFRp(XQueryParser.FRpContext ctx) {
-        NodeTextList resultR = (NodeTextList)visitor.visit(ctx.rp());
-        if(resultR.size() > 0)
-            return  XQueryBoolean.XQueryBooleanFactory(true);
+        NodeTextList resultR = (NodeTextList) visitor.visit(ctx.rp());
+        if (resultR.size() > 0)
+            return XQueryBoolean.XQueryBooleanFactory(true);
         return XQueryBoolean.XQueryBooleanFactory(false);
     }
 
     public XQueryBoolean evalParen(XQueryParser.FParenContext ctx) {
-        return (XQueryBoolean)visitor.visit(ctx.f());
+        return (XQueryBoolean) visitor.visit(ctx.f());
     }
 
     public XQueryBoolean evalAnd(XQueryParser.FAndContext ctx) {
-        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
-        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
+        XQueryBoolean l = (XQueryBoolean) visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean) visitor.visit(ctx.right);
         return l.and(r);
     }
 
     public XQueryBoolean evalOr(XQueryParser.FOrContext ctx) {
-        XQueryBoolean l = (XQueryBoolean)visitor.visit(ctx.left);
-        XQueryBoolean r = (XQueryBoolean)visitor.visit(ctx.right);
+        XQueryBoolean l = (XQueryBoolean) visitor.visit(ctx.left);
+        XQueryBoolean r = (XQueryBoolean) visitor.visit(ctx.right);
         return l.or(r);
     }
 
     public XQueryBoolean evalNot(XQueryParser.FNotContext ctx) {
-        XQueryBoolean v = (XQueryBoolean)visitor.visit(ctx.f());
+        XQueryBoolean v = (XQueryBoolean) visitor.visit(ctx.f());
         return v.not();
     }
 
     public XQueryBoolean evalValEqual(XQueryParser.FValEqualContext ctx) {
-        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
-        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 
     public XQueryBoolean evalIdEqual(XQueryParser.FIdEqualContext ctx) {
-        NodeTextList l = (NodeTextList)visitor.visit(ctx.left);
-        NodeTextList r = (NodeTextList)visitor.visit(ctx.right);
+        NodeTextList l = (NodeTextList) visitor.visit(ctx.left);
+        NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         return l.equalsId(r);
     }
 
@@ -344,9 +345,10 @@ public class MyXQueryEvaluator {
         }
         return varEnvs;
     }
+
     public MyScope evalLet(@NotNull XQueryParser.LetClauseContext ctx) {
         MyScope ve = qc.cloneVarEnv();
-        if (qc.letFilter==null) {
+        if (qc.letFilter == null) {
             for (int i = 0; i < ctx.xq().size(); i++) {
                 NodeTextList res = (NodeTextList) visitor.visit(ctx.xq(i));
                 ve.put(ctx.Var(i).getText(), res);
@@ -419,8 +421,14 @@ public class MyXQueryEvaluator {
         NodeTextList r = (NodeTextList) visitor.visit(ctx.right);
         //qc.closeScope();
 
-        l.addAll(r);
-        return l;
+        //make a deep copy
+        NodeTextList temp = new NodeTextList(l.values.size());
+        for (int i = 0; i < l.values.size(); i++) {
+            temp.values.add(l.values.get(i));
+        }
+        //l.addAll(r);
+        temp.addAll(r);
+        return temp;
     }
 
     private NodeTextList evalXqSlash(@NotNull XQueryParser.XqSlashContext ctx) {
@@ -475,9 +483,9 @@ public class MyXQueryEvaluator {
 
         for (XMLElement v : xq) {
             if (v.isConstantStr())
-                res.add( v);
+                res.add(v);
             else
-                res.add( v);
+                res.add(v);
         }
 
         return new NodeTextList(res);
@@ -486,10 +494,10 @@ public class MyXQueryEvaluator {
     public void Plusone(int[] base, int[] next) {
 
         for (int i = next.length - 1; i >= 0; i--) {
-            if (next[i] < base[i]){
-                if (next[i] + 1 == base[i]){
+            if (next[i] < base[i]) {
+                if (next[i] + 1 == base[i]) {
                     next[i] = 0;
-                }else{
+                } else {
                     next[i]++;
                     break;
                 }
@@ -511,8 +519,6 @@ public class MyXQueryEvaluator {
             }
 
             if (ctx.whereClause() != null) {
-
-
 
 
                 if (ctx.letClause() != null) {
@@ -540,16 +546,16 @@ public class MyXQueryEvaluator {
                             v.put(varName, xqList);
                         }
                         qc.pushVarEnv(v);
-                        if ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag) {
+                        if (((XQueryBoolean) (visitor.visit(ctx.whereClause()))).booleanFlag) {
                             res.addAll((NodeTextList) visitor.visit(ctx.returnClause()));
                         }
                         qc.popVarEnv();
-                        Plusone(whereList,counter);
+                        Plusone(whereList, counter);
                     }
 
 
                 } else {
-                    if  ( ((XQueryBoolean)(visitor.visit(ctx.whereClause()))).booleanFlag)
+                    if (((XQueryBoolean) (visitor.visit(ctx.whereClause()))).booleanFlag)
                         res.addAll((NodeTextList) visitor.visit(ctx.returnClause()));
                 }
 
@@ -594,27 +600,152 @@ public class MyXQueryEvaluator {
         List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
 
-        for (XMLElement elem1 : list1)
+        //use hash join
+        //build
+/*
+        HashMap <Integer,HashMap<Integer,NodeTextList>> map1 = new HashMap<>();
+
+        for (int j = 0 ; j < list1.size(); j++) {
+            HashMap <Integer,NodeTextList> temp = new HashMap<>();
+            for (int i = 0 ; i < joinVars1.size();i++) {
+                temp.put(i,list1.get(j).getChildByTag(joinVars1.get(i)));
+            }
+            map1.put(j,temp);
+        }
+        */
+        //probe
+
+
+        IntStream.range(0,list1.size())
+                              .parallel()
+                .mapToObj(a  -> new int[]{a})
+                // stream is int[1] array
+                .flatMap(ab  -> appendInts(ab, list2.size())).
+                parallel()
+                .forEach(abArray -> anotherHelper(list1.get(abArray[0]),list2.get(abArray[1]),joinVars1,joinVars2,res));
+
+
+        //        .forEachOrdered(ress-> sb.append(Arrays.toString(ress)).append("\n"))
+        //;
+        //System.out.println("Enjoy your Cartesian product." + sb.toString());
+        /*
+        for (int j = 0 ; j < list1.size(); j ++) {
+
+            HashMap <Integer,NodeTextList> temp = new HashMap<>();
+            for (int i = 0 ; i < joinVars1.size();i++) {
+                temp.put(i,list1.get(j).getChildByTag(joinVars1.get(i)));
+            }
+
             for (XMLElement elem2 : list2) {
                 boolean join = true;
                 for (int i = 0; i < joinVars1.size(); i++) {
-                    NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+                    NodeTextList list1Elems = temp.get(i);
                     for (XMLElement listElem1 : list1Elems)
                         for (XMLElement listElem2 : list2Elems) {
-                            if (!listElem1.childrenEquals(listElem2)) {
+                            if (!listElem1.childrenAndItselfEquals(listElem2)) {
                                 join = false;
+                                break;
                             }
                         }
                 }
                 if (join) {
                     XMLElement tuple = new XMLElement("tuple");
+                    tuple.addAll(list1.get(j).children());
+                    tuple.addAll(elem2.children());
+                    res.add(tuple);
+                }
+
+            }
+        }
+        */
+/*
+        for (XMLElement elem1 : list1) {
+            for (XMLElement elem2 : list2) {
+                boolean join = true;
+                for (int i = 0; i < joinVars1.size(); i++) {
+                    NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+                    for (XMLElement listElem1 : list1Elems) {
+                        for (XMLElement listElem2 : list2Elems) {
+                            if (!listElem1.childrenAndItselfEquals(listElem2)) {
+                                join = false;
+
+                            }
+                        }
+                    }
+                }
+
+
+                if (join) {
+                    XMLElement tuple = new XMLElement("tuple");
+
+
                     tuple.addAll(elem1.children());
+
                     tuple.addAll(elem2.children());
                     res.add(tuple);
                 }
             }
+        }
+
+
+*/
+
         return res;
+    }
+
+
+    public static boolean helper(XMLElement elem2, List<String> joinVars2, HashMap<Integer, NodeTextList> temp, int i) {
+        // NodeTextList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+        NodeTextList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+        NodeTextList list1Elems = temp.get(i);
+        for (XMLElement listElem1 : list1Elems)
+            for (XMLElement listElem2 : list2Elems) {
+                if (!listElem1.childrenAndItselfEquals(listElem2)) {
+                    return false;
+                    //join = false;
+
+                }
+            }
+
+
+        return true;
+    }
+
+    public static final int[] append(int[] base, int val) {
+        int[] ret = Arrays.copyOf(base, base.length + 1);
+        ret[base.length] = val;
+        return ret;
+    }
+    /** Stream an int range and map to an appended array */
+    private static final Stream<int[]> appendInts(int[] base, int size) {
+        return IntStream.range(0, size).mapToObj(a -> append(base, a));
+    }
+
+
+    public void anotherHelper( XMLElement x1 , XMLElement x2,  List<String> joinVars1 ,List<String> joinVars2 , NodeTextList res) {
+
+        HashMap<Integer, NodeTextList> temp = new HashMap<>();
+        for (int i = 0; i < joinVars1.size(); i++) {
+            temp.put(i, x1.getChildByTag(joinVars1.get(i)));
+        }
+
+        XMLElement elem2 = x2;
+        boolean join = true;
+
+        join = IntStream.range(0, joinVars1.size())
+                .parallel()
+                .allMatch((i) -> helper(elem2, joinVars2, temp, i));
+        if (join) {
+            XMLElement tuple = new XMLElement("tuple");
+            tuple.addAll(x1.children());
+            tuple.addAll(x2.children());
+            res.add(tuple);
+        }
+
+
     }
 
 }
